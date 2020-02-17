@@ -1,0 +1,9 @@
+{
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "dependencies": {
+        "create-react-app": "^3.4.0"
+    }
+}

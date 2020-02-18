@@ -1,9 +1,14 @@
 전체 설명
 
-Adding React Apollo and React Rounter - part 2 부터
 
-시작하기전에
+가동 절차
+
 1. Redis-server start
+    => redis-server
 2. PostgreSQL start
+     [마이컴용]
+    => pg_ctl -D /Users/mac/work/mobileHomeHub/abb/db_postgre -l logfile start
 3. Server start
+    => npm start
 4. client start
+    => npm start

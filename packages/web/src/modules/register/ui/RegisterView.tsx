@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { withFormik, FormikErrors, FormikProps } from 'formik';
-import * as yup from 'yup';
-
+import { Form as AntForm, Icon, Button, Checkbox } from 'antd';
+import { withFormik, FormikErrors, FormikProps, Field, Form } from 'formik';
+import { validUserSchema } from "@abb/common";
+import { InputField } from "../../shared/InputField";
 
 interface FormValues {
     email: string;
@@ -14,86 +14,57 @@ interface Props {
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
     
     render() {
-        const {values, handleChange, handleBlur, handleSubmit, touched, errors} = this.props;
-        console.log(errors);
+       // const { handleSubmit, errors} = this.props;
+       // console.log(errors);
         return (
-          <form style={{ display: "flex" }} onSubmit={handleSubmit}>
+          <Form style={{ display: "flex" }}> 
           <div style={{width: 400, margin:'auto'}}>
           {/* <Form onSubmit={this.handleSubmit} className="login-form"> */}
-            <Form.Item 
-                help={touched.email && errors.email ? errors.email : ""}
-                validateStatus={touched.email && errors.email ? "error" : undefined } 
-            >
-                <Input
-                  name="email"
-                  prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-            </Form.Item>
-            <Form.Item
-                help={touched.password && errors.password ? errors.password : ""}
-                validateStatus={
-                    touched.password && errors.password ? "error" : undefined 
-                }  
-            >
-                <Input
-                  name="password"
-                  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  type="password"
-                  placeholder="Password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-            </Form.Item>
-            <Form.Item>
+            <Field  
+              name="email"
+              prefix={
+                <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
+              }
+              placeholder="Email"
+              component={InputField}
+            />
+            <Field  
+              name="password"
+              prefix={
+                <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+              }
+              placeholder="Password"
+              component={InputField}
+            />
+       
+            <AntForm>
               <Checkbox>Remember me</Checkbox>
               <a className="login-form-forgot" href="">
                 Forgot password
               </a>
-            </Form.Item>
-              <Form.Item>
+            </AntForm>
+            <AntForm>
               <Button type="primary" htmlType="submit" className="login-form-button">
                 Register
               </Button>
-              </Form.Item>
-             <Form.Item>
+            </AntForm>
+            <AntForm>
               Or <a href="">Login now!</a>
-            </Form.Item>
+            </AntForm>
             </div>
-          </form>
+          </Form>
         );
     }
 }
 
-// const duplicateEmail = "already taken";
-const emailNotLongEnough = "email must be at least 3 characters";
-const passwordNotLongEnough = "password must be at least 3 characters";
-const invalidEmail = "email must be a valid email";
 
 
 
-const validationSchema = yup.object().shape({
-    email: yup
-        .string()
-        .min(3, emailNotLongEnough)
-        .max(255)
-        .email(invalidEmail)
-        .required(),
-    password: yup
-        .string()
-        .min(3, passwordNotLongEnough)
-        .max(255)
-        .required()
-});
 
 export const RegisterView = withFormik<Props, FormValues>({
-    validationSchema,
-    validateOnChange : false,
-    validateOnBlur: false,
+    validationSchema: validUserSchema,
+    // validateOnChange : false,
+    // validateOnBlur: false,
     mapPropsToValues: () => ({ email: "", password: "" }),
     handleSubmit: async (values, {props, setErrors}) => {
         const errors = await props.submit(values);

@@ -1,6 +1,6 @@
 전체 설명
 
-차례 : Adding a Controller Package to share code between React and React Native - Part 7
+차례 : Calling the Register Mutation - Part 8
 
 가동 절차
 

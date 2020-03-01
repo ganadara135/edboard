@@ -19,6 +19,9 @@
     "@abb/common": "1.0.0",
     "@abb/controller": "1.0.0"
   },
+  "resolutions": {
+    "graphql": "14.6.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

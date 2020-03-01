@@ -11,6 +11,7 @@
     "@types/faker": "^4.1.2",
     "@types/glob": "^5.0.35",
     "@types/ioredis": "^3.2.7",
+    "@types/jest": "^24.0.0",
     "@types/node": "^9.6.6",
     "@types/node-fetch": "^1.6.9",
     "@types/request-promise": "^4.1.41",
@@ -19,7 +20,6 @@
     "@types/ws": "^5.1.2",
     "@types/yup": "^0.24.3",
     "gql2ts": "^1.7.2",
-    "@types/jest": "^24.0.0",
     "nodemon": "^1.17.3",
     "ts-jest": "^22.4.4",
     "ts-node": "6.0.0",
@@ -28,6 +28,7 @@
     "typescript": "^2.9.1"
   },
   "dependencies": {
+    "@abb/common": "1.0.0",
     "@gql2ts/from-schema": "^1.8.0",
     "@types/express": "^4.11.1",
     "axios": "^0.18.0",
@@ -39,7 +40,7 @@
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
     "glob": "^7.1.2",
-    "graphql": "^0.13.2",
+    "graphql": "14.6.0",
     "graphql-import": "^0.5.0",
     "graphql-tools": "^3.0.0",
     "graphql-yoga": "^1.9.2",
@@ -53,8 +54,10 @@
     "sparkpost": "^2.1.2",
     "typeorm": "0.2.0",
     "uuid": "^3.2.1",
-    "yup": "^0.28.1",
-    "@abb/common": "1.0.0"
+    "yup": "^0.28.1"
+  },
+  "resolutions": {
+    "graphql": "14.6.0"
   },
   "scripts": {
     "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",

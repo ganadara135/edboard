@@ -1,6 +1,6 @@
 전체 설명
 
-차례 : Calling the Register Mutation - Part 8
+차례 : Generating Typescript Types with Apollo Codegen - Part 9
 
 가동 절차
 

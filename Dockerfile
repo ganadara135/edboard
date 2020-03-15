@@ -16,11 +16,11 @@ COPY ./packages/common/package.json ./packages/common/
 # RUN npm i -g yarn 999   # node 13 버전은 yarn 사전 탑재됨
 RUN yarn install --production
 
-COPY ./packages/server/dist ./packages/server/dist
-COPY ./packages/common/dist ./packages/common/dist
-COPY ./packages/server/.env.prod ./packages/server/.env
-COPY ./packages/server/.env.example ./packages/server/
-COPY ./ormconfig.json .
+COPY /abb/packages/server/dist /abb/packages/server/dist
+COPY /abb/packages/common/dist /abb/packages/common/dist
+COPY /abb/packages/server/.env.prod /abb/packages/server/.env
+COPY /abb/packages/server/.env.example /abb/packages/server/
+COPY /abb/ormconfig.json .
 
 WORKDIR /abb/packages/server
 

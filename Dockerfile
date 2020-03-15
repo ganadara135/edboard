@@ -15,8 +15,8 @@ RUN ls -a
 RUN ls packages/
 RUN ls packages/server/
 RUN pwd
-COPY ./packages/server/dist/ ./packages/server/dist/
 COPY ./packages/common/dist/ ./packages/common/dist/
+COPY ./packages/server/dist/ ./packages/server/dist/
 COPY ./packages/server/.env.prod ./packages/server/.env
 COPY ./packages/server/.env.example ./packages/server/
 COPY ./ormconfig.json .

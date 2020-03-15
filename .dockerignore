@@ -1,7 +1,8 @@
 !./package.json
 !./packages/server/package.json 
 !./packages/common/packages.json
-!./packages/server/dist
-!./packages/common/dist
+!./packages/server/dist/
+!./packages/common/dist/
 !./packages/server/.env.prod
+!./packages/server/.env.example
 !./ormconfig.json

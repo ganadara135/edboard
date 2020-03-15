@@ -13,8 +13,8 @@ COPY ./packages/server/package.json ./packages/server/
 COPY ./packages/common/package.json ./packages/common/
 
 
-COPY ./packages/server/dist ./packages/server/dist
-COPY ./packages/common/dist ./packages/common/dist
+COPY ./packages/server/dist/ ./packages/server/dist/
+COPY ./packages/common/dist/ ./packages/common/dist/
 COPY ./packages/server/.env.prod ./packages/server/.env
 COPY ./packages/server/.env.example ./packages/server/
 COPY ./ormconfig.json .

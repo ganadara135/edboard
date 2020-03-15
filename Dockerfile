@@ -11,6 +11,8 @@ RUN pwd
 COPY package.json .
 COPY ./packages/server/package.json ./packages/server/
 COPY ./packages/common/package.json ./packages/common/
+RUN ls -a
+RUN pwd
 COPY ./packages/server/dist/ ./packages/server/dist/
 COPY ./packages/common/dist/ ./packages/common/dist/
 COPY ./packages/server/.env.prod ./packages/server/.env

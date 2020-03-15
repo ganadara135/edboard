@@ -12,6 +12,8 @@ COPY package.json .
 COPY ./packages/server/package.json ./packages/server/
 COPY ./packages/common/package.json ./packages/common/
 RUN ls -a
+RUN ls packages/
+RUN ls packages/server/
 RUN pwd
 COPY ./packages/server/dist/ ./packages/server/dist/
 COPY ./packages/common/dist/ ./packages/common/dist/

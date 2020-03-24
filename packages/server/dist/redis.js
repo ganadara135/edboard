@@ -4,5 +4,5 @@ const Redis = require("ioredis");
 console.log("process.env.REDIS_IP : " + process.env.REDIS_IP);
 exports.redis = process.env.NODE_ENV === 'production'
     ? new Redis(process.env.REDIS_IP)
-    : new Redis(process.env.REDIS_IP);
+    : new Redis();
 //# sourceMappingURL=redis.js.map

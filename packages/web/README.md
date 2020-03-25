@@ -1,3 +1,24 @@
+# 설치과정
+
+1. docker 이미지 빌드 <br>
+   => docker build -t kcod/abbweb:1.0.7 . 
+    1.1. docker 컨테이너 실행 <br>
+        => docker run -d -p 80:80 -v $PWD/nginx_conf/default.conf:/etc/nginx/conf.d/default.conf --name abbweb kcod/abbweb:1.0.7
+    1.2. docker 컨테이너 디버깅 <br>
+        => docker commit 298b7344f067a4a1d96fa866ee93e1304c98d9b9c0124da616e80e5ef9d17f33 broken_container  &&={ ; } docker run -it broken_container /bin/bash <br>
+        => node dist/index.js <br>
+2. docker push on dockerhub
+   docker tag local-image:tagname new-repo:tagname
+   docker push new-repo:tagname
+   2.1 docker tag kcod/abbweb:1.0.7  ganadara135/abbweb:latest
+   2.2 docker push ganadara135/abbweb:latest
+
+
+참고자료 :
+1. nginx 설정 : https://blog.naver.com/ganadara1379/221872407771
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

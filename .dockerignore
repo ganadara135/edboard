@@ -7,3 +7,5 @@
 !./packages/server/.env.prod
 !./packages/server/.env.example
 !./ormconfig.json
+!./packages/web/
+!./packages/web/build/

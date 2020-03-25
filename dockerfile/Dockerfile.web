@@ -1,0 +1,40 @@
+FROM nginx
+
+# WORKDIR /root
+
+# 앞쪽은 web 서버 안에서 build 폴더
+COPY ./packages/web/build/ /usr/share/nginx/html
+
+
+# FROM centos/nginx-116-centos7
+
+# # RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+# # RUN chown -R www-data:www-data /var/lib/nginx
+
+# EXPOSE 80
+# EXPOSE 443
+
+# COPY ./build/ /var/www/html
+
+# # Define working directory.
+# WORKDIR /etc/nginx
+
+# CMD [ "nginx" ]
+
+
+
+
+# FROM centos/httpd
+
+# LABEL Vendor="KCOD" \
+#       License=GPLv2 \
+#       Version=1.0.0
+
+
+# EXPOSE 80
+
+# # WORKDIR /var
+
+# COPY ./build/ /var/www/html
+
+# CMD ["/run-httpd.sh"]

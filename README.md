@@ -1,6 +1,6 @@
 ## 전체 설명
 
-차례 : Setting up React Native with Expo - Part 15
+차례 :  Adding GraphQL and Routing to React Native - Part 16
 추가고려사항 : postgres 와 redis 도 docker  위에서 작동시키고, docker container 들을 swarm 처리 
 
 # 가동 절차
@@ -36,7 +36,10 @@
 8. Redis 설정
    8.1 .env  와 .env.prod  두 개 다 사용함.  .env.prod  실제 production 환경에서 사용
    8.2 redis 가 설정이 안되면 아무 에러 메시지 없이 ERR_EMPTY_RESPONSE  메시지 받음
-   
+9. Web 설정 : deploy_web.sh  and check README.md on web folder
+10. app 설정
+
+
 # ISUSE
 1. 로컬에서 schema 읽어오는 것은 apollo.config.js 설정에서 못 읽어옴, 예제처럼 명령어에 옵션으로 처리해야 함 <br>
   ex) npx apollo client:codegen --target typescript --localSchemaFile ./schema.graphql <br>

@@ -2,37 +2,19 @@
     "private": true,
     "scripts": {
         "build:server": "lerna run build --scope={@abb/server,@abb/common}",
-        "build:web": "lerna run build --scope={@abb/web,@abb/common}"
+        "build:web": "lerna run build --scope={@abb/web,@abb/common}",
+        "cleanPackages": "rm -rf node_modules yarn.lock ./packages/app/node_modules ./packages/common/node_modules ./packages/controller/node_modules ./packages/server/node_modules ./packages/web/node_modules && yarn cache clean"
     },
 
     "workspaces": {
         "packages": [
             "packages/*",
-            "packages/app"
-        ],
-        "nohoist": [
-            "**/rimraf",
-            "**/rimraf/**",
-            "**/react-native",
-            "**/react-native/**",
-            "**/react-native-elements",
-            "**/react-native-elements/**",
-            "**/react-native-unimodules",
-            "**/react-native-unimodules/**",
-            "**/react-native-community",
-            "**/react-native-community/**",
-            "**/react-native*",
-            "**/react-native**/**", 
-            "**/expo",
-            "**/expo/**",
-            "**/react-native-typescript-transformer",
-            "**/react-native-typescript-transformer/**",
-            "**/metro-bundler-config-yarn-workspaces",
-            "**/metro-bundler-config-yarn-workspaces/**",
-
-            "**/react-apollo",
-            "**/react-apollo/**"
-        ]
+            "packages/app",
+            "packages/common",
+            "packages/controller",
+            "packages/server",
+            "packages/web"
+        ]       
 
     },
 

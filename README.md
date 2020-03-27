@@ -65,10 +65,10 @@
    => rm -rf node_modules ../../node_modules  ../../yarn.lock
 5. workspace 체크 명령어
    => yarn workspaces run
-6. expo issue
+6. expo issue : expo 는 실행시 필요 모듈을 다 가지고 있어야 함
    => workspace 즉 yarn packages 가 작동하지 않는다, 아래 방식으로 해결가능
    6.1 expo package.json 에 nohoist 로 설치된 모듈을 전부 표시
-
+7. keep watch SemVer  ^(caret, inverted caret) ~(tilde, swung dash)
    
 # 참고링크
 1. apollo-codegen :   https://github.com/expo/apollo-codegen <br>

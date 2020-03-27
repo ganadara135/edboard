@@ -10,6 +10,7 @@ import { client } from "./apollo";
 import { Routes } from './routes';
 import "./index.css";
 
+// console.log("apollo clinet : ", client);
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(

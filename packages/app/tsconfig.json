@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "jsx":"react-native",
+    "baseUrl": ".",
+    // "outDir": "build/dist",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-native",
     "lib": ["es6", "esnext"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    
+    "resolveJsonModule": true,
     "strict": true,
     "esModuleInterop": true,
     "rootDir": "src",
@@ -15,10 +20,16 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "noEmit": true,
-    "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest"
+  ]
 }

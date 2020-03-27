@@ -1,22 +1,23 @@
-import  * as React from 'react';
-import { FieldProps, ErrorMessage } from "formik";
+import * as React from "react";
+import { FieldProps } from "formik";
 import { Input } from "react-native-elements";
+
 
 
 const errStyle = {
     color: "red"
 };
 
-export const InputField extends React.Component<FieldProps<any>> {
-    onChangeText = (test: string) => {
+export class InputField extends React.Component<FieldProps<any>> {
+    onChangeText = (text: string) => {
         const {
             form: { setFieldValue},
-
+            field: { name }
         } = this.props;
-        this.props.form.setFieldValue()
+        setFieldValue(name, text);
     };
     render () {
-        cnost {
+        const {
             field,
             form: { touched, errors },
             ...props
@@ -27,7 +28,7 @@ export const InputField extends React.Component<FieldProps<any>> {
             <Input
                 placeholder="INPUT WITH ERROR MESSAGE"
                 errorStyle={ errStyle }
-                errorMessage={errorMsg}
+                errorMessage={errorMsg as string}
                 onChangeText={this.onChangeText}
                 value={field.value}
              />

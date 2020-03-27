@@ -3,6 +3,7 @@
 차례 :  Adding GraphQL and Routing to React Native - Part 16
 추가고려사항 : postgres 와 redis 도 docker  위에서 작동시키고, docker container 들을 swarm 처리 
 
+
 # 가동 절차
 
 1. Redis-server start
@@ -44,11 +45,36 @@
 1. 로컬에서 schema 읽어오는 것은 apollo.config.js 설정에서 못 읽어옴, 예제처럼 명령어에 옵션으로 처리해야 함 <br>
   ex) npx apollo client:codegen --target typescript --localSchemaFile ./schema.graphql <br>
 2. apollo client:check 검증용 명령어는 apollo 사의 registry 만 됨, 로컬은 안됨. <br>
+3. 매체별(server, web, app)로 전용 모듈은 해당 매체에서만 사용하게 하는 명령어 on package.json
+   "nohoist": [
+      "**/rimraf",
+      "**/rimraf/**",
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-elements",
+      "**/react-native-elements/**",
+      "**/expo",
+      "**/expo/**",
+      "**/react-native-typescript-transformer",
+      "**/react-native-typescript-transformer/**",
+      "**/metro-bundler-config-yarn-workspaces",
+      "**/metro-bundler-config-yarn-workspaces/**"
+   ]
+   3.1  check packages 상태 :  yarn workspaces info
+4. remove well
+   => rm -rf node_modules ../../node_modules  ../../yarn.lock
+5. workspace 체크 명령어
+   => yarn workspaces run
+6. expo issue
+   => workspace 즉 yarn packages 가 작동하지 않는다, 아래 방식으로 해결가능
+   6.1 expo package.json 에 nohoist 로 설치된 모듈을 전부 표시
 
+   
 # 참고링크
 1. apollo-codegen :   https://github.com/expo/apollo-codegen <br>
 2. nohoist : https://classic.yarnpkg.com/blog/2018/02/15/nohoist/ <br>
 3. node.js dockerizing : https://nodejs.org/en/docs/guides/nodejs-docker-webapp/ <br>
 4. lerna : https://github.com/lerna/lerna#readme
 5. netlify : https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file
+8. monorepo : https://doppelmutzi.github.io/monorepo-lerna-yarn-workspaces/
 

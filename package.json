@@ -4,28 +4,41 @@
         "build:server": "lerna run build --scope={@abb/server,@abb/common}",
         "build:web": "lerna run build --scope={@abb/web,@abb/common}"
     },
+
     "workspaces": {
         "packages": [
-            "packages/*"
+            "packages/*",
+            "packages/app"
         ],
         "nohoist": [
             "**/rimraf",
             "**/rimraf/**",
             "**/react-native",
             "**/react-native/**",
+            "**/react-native-elements",
+            "**/react-native-elements/**",
+            "**/react-native-unimodules",
+            "**/react-native-unimodules/**",
+            "**/react-native-community",
+            "**/react-native-community/**",
+            "**/react-native*",
+            "**/react-native**/**", 
             "**/expo",
             "**/expo/**",
             "**/react-native-typescript-transformer",
             "**/react-native-typescript-transformer/**",
             "**/metro-bundler-config-yarn-workspaces",
-            "**/metro-bundler-config-yarn-workspaces/**"
+            "**/metro-bundler-config-yarn-workspaces/**",
+
+            "**/react-apollo",
+            "**/react-apollo/**"
         ]
+
     },
-    "dependencies": {
-        "create-react-app": "^3.4.0"
-    },
+
     "name": "abb",
     "devDependencies": {
-        "lerna": "^3.20.2"
+        "lerna": "^3.20.2",
+        "create-react-app": "^3.4.0"
     }
 }

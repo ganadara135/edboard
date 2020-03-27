@@ -1,5 +1,6 @@
 {
     "name": "@abb/common",
+    "private": true,
     "version": "1.0.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
@@ -12,9 +13,17 @@
         "rimraf": "^3.0.2",
         "tslint": "^6.0.0",
         "tslint-config-prettier": "^1.18.0",
-        "typescript": "^3.7.5"
+        "typescript": "^3.6.3"
+
     },
     "dependencies": {
         "yup": "^0.28.1"
+    },
+    "workspaces": {
+
+        "nohoist": [
+            "**/yup",
+            "**/yup/**"
+        ]
     }
 }

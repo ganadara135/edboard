@@ -1,7 +1,7 @@
 import * as React from "react";
 // import { Form as AntForm, Icon, Button, Checkbox } from 'antd';
-import { View, Button } from "react-native";
-// import {  } from "react-native-elements";
+import { View, Text } from "react-native";
+import { Card, Button  } from "react-native-elements";
 import { withFormik, FormikErrors, FormikProps, Field } from 'formik';
 import { validUserSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
@@ -20,19 +20,35 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
        // console.log(errors);
         return (
           // <Form style={{ display: "flex" }}> 
-          <View style={{marginTop: 200}}>
-            <Field  name="email"  placeholder="Email" component={InputField} />
+          <View style={{ 
+              flex: 1,
+              display: "flex",
+              justifyContent: "center"
+          }}>
+          <Card>
+            <Text style={{ fontSize: 30, marginBottom: 10 }}> Register </Text>
+            <Field  
+                name="email"  
+                placeholder="Email" 
+                component={InputField}
+                containerStyle={{ width: 300 }}
+                autoCapitalize="none"
+            />
             <Field  
               name="password"
               secureTextEntry={true}
               placeholder="Password"
               component={InputField}
-            />
-            <Button title='Submit' onPress={handleSubmit as any}>
+              containerStyle={{ width: 300 }}
+              autoCapitalize="none"/>
+            <Button  
+                style={{ marginTop: 30 }}
+                title='Submit' 
+                onPress={handleSubmit as any}>
             </Button>
-
-            </View>
-          // </Form>
+          </Card>
+        </View>
+            
         );
     }
 }

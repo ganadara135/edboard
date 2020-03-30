@@ -26,7 +26,8 @@
             "**/rimraf",
             "**/rimraf/**",
             "**/typescript",
-            "**/typescript/**"
+            "**/typescript/**",
+            "**/tslint"
         ]
     }
 }

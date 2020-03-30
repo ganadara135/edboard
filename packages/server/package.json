@@ -86,7 +86,8 @@
   "workspaces": {
     "nohoist": [
       "**/rimraf",
-      "**/rimraf/**"
+      "**/rimraf/**",
+      "**/tslint"
     ]
   }
 }

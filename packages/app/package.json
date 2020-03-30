@@ -1,5 +1,5 @@
 {
-    "name": "app",
+    "name": "@abb/app",
     "version": "1.0.0",
     "scripts": {
       "android": "react-native run-android",

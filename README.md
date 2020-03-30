@@ -37,7 +37,10 @@
    8.1 .env  와 .env.prod  두 개 다 사용함.  .env.prod  실제 production 환경에서 사용
    8.2 redis 가 설정이 안되면 아무 에러 메시지 없이 ERR_EMPTY_RESPONSE  메시지 받음
 9. Web 설정 : deploy_web.sh  and check README.md on web folder
-10. app 설정
+10. app 설정 주의사항
+   10.1. expo 는 의존관계 모듈을 실행시 다가지고 있어야 함, workspaces nohoist 설정 주의
+   10.2. dependency 설정시 react 관련 항목은 같은 버전이라도 2개 이상 갖고 있으면, 중복 예러 발생(react-hooks 때문), 따라서 의존소스를 복사해서 expo 내에서 옮겨놓고 코딩하기 
+   10.3. npm is reac-dom     으로 확인
 
 
 # ISUSE
@@ -68,6 +71,7 @@
    => workspace 즉 yarn packages 가 작동하지 않는다, 아래 방식으로 해결가능
    6.1 expo package.json 에 nohoist 로 설치된 모듈을 전부 표시
 7. keep watch SemVer  ^(caret, inverted caret) ~(tilde, swung dash)
+8. VScode 는 탐색창에서 소스 복사나 옮기는거 금지, 큰 용량은 제대로 이동 안됨.
    
 # 참고링크
 1. apollo-codegen :   https://github.com/expo/apollo-codegen <br>

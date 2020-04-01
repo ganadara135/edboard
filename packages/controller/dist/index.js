@@ -4,4 +4,5 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./modules/RegisterController"));
+__export(require("./modules/LoginController"));
 //# sourceMappingURL=index.js.map

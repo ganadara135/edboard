@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf ./dist && tsc",
-    "schema:download": "npx apollo client:download-schema --endpoint=http://49.50.163.26:4000 schema.graphql",
+    "schema:download": "npx apollo client:download-schema --endpoint=http://localhost:4000 schema.graphql",
+    "schema:downloadFromEx": "npx apollo client:download-schema --endpoint=http://49.50.163.26:4000 schema.graphql",
     "codegen:generate": "npx apollo client:codegen --target=typescript --localSchemaFile=./schema.graphql --outputFlat=./src/schemaTypes.ts",
     "gen:types": "yarn schema:download && yarn codegen:generate",
     "refresh:types": "yarn gen:types && yarn build",
@@ -15,6 +16,7 @@
   "dependencies": {
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
+   
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-apollo": "3.1.3"
@@ -23,14 +25,18 @@
     "@babel/core": "~7.6.0",
     "@babel/runtime": "^7.9.2",
     "@types/node": "^13.7.7",
-    "@types/react": "16.9.0",
+    "@types/react": "16.9.12",
     "@types/react-dom": "16.9.0",
-    "apollo": "^2.25.0",
+    "apollo": "2.26.0",
     "apollo-codegen": "^0.20.2",
     "rimraf": "^3.0.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.3"
+  },
+  "resolutions": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
   },
   "private": true,
   "workspaces": {
@@ -41,13 +47,9 @@
       "**/typescript/**",
       "**/tslint",
 
-      "**/graphql",
-      "**/graphql/**",
-      "**/graphql-tag",
-      "**/graphql-tag/**",
-
-      "**/react-apollo",
-      "**/react-apollo/**",
+   
+ 
+      
       "**/@babel/runtime",
       "**/@babel/runtime/**"
     ]

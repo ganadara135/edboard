@@ -37,10 +37,15 @@ type Error {
   message: String!
 }
 
+type LoginResponse {
+  errors: [Error!]
+  sessionId: String
+}
+
 type Mutation {
   sendForgotPasswordEmail(email: String!): Boolean
   forgotPasswordChange(newPassword: String!, key: String!): [Error!]
-  login(email: String!, password: String!): [Error!]
+  login(email: String!, password: String!): LoginResponse!
   logout: Boolean
   register(email: String!, password: String!): [Error!]
 }

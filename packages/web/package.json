@@ -1,15 +1,12 @@
 {
   "name": "@abb/web",
   "version": "1.0.0",
-  "resolutions": {
-    "graphql": "14.6.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cleanDependency": "rm -rf node_modules ../../node_modules ../../yarn.lock && yarn cache clean"
+    "cleanWeb": "rm -rf node_modules ../../node_modules ../../yarn.lock && yarn cache clean"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,10 +34,11 @@
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "react": "16.9.0",
+    "react-apollo": "3.1.3",
     "react-dom": "16.9.0",
-    "react-apollo": "3.1.3", 
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "typescript": "~3.6.3",
     "yup": "^0.28.1"
   },
   "devDependencies": {
@@ -49,11 +47,16 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
+    "@types/react": "16.9.12",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.3",
     "@types/yup": "^0.26.31",
+    "tslint": "^6.1.1",
     "typescript": "~3.6.3"
+  },
+  "resolutions": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
   },
   "private": true,
   "workspaces": {
@@ -61,10 +64,7 @@
       "**/rimraf",
       "**/rimraf/**",
       "**/react-scripts",
-      "**/react-scripts/**",
-      "**/tslint",
-      "**/react-apollo",
-      "**/react-apollo/**"
+      "**/tslint"
     ]
   }
 }

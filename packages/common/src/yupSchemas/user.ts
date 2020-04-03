@@ -19,3 +19,17 @@ export const validUserSchema = yup.object().shape({
         .required(),
     password: registerPasswordValidation
 });
+
+const invalidLogin = 'invalid Login';
+
+export const loginSchema =  yup.object().shape({
+    email: yup.string()
+    .min(3, invalidLogin)
+    .max(255, invalidEmail)
+    .email(invalidLogin)
+    .required(),
+    password: yup.string()
+    .min(3, invalidLogin)
+    .max(255, invalidLogin)
+    .required(),
+})

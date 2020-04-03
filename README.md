@@ -1,6 +1,6 @@
 ## 전체 설명
 
-차례 :  Adding GraphQL and Routing to React Native - Part 16
+차례 :  React Login Page - Part 20
 추가고려사항 : postgres 와 redis 도 docker  위에서 작동시키고, docker container 들을 swarm 처리 
 
 # 가동 절차

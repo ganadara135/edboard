@@ -25,6 +25,7 @@ export const startServer = async () => {
     schema: genSchema() as any,
     context: ({ request }) => ({
       redis,
+      // 10.0.2.2   
       url: request.protocol + "://" + request.get("host"),
       session: request.session,
       req: request

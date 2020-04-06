@@ -1,22 +1,24 @@
 import * as React from "react";
 import {    Icon, Button, Checkbox } from 'antd';
-import { withFormik, FormikErrors, FormikProps, Field, Form } from 'formik';
+import { withFormik,     FormikProps, Field, Form } from 'formik';
 import { validUserSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
 import { Link } from "react-router-dom";
+import { NormalizedErrorMap } from "@abb/controller";
 
 interface FormValues {
     email: string;
     password : string;
 }
 interface Props {
-    submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
+    submit: (values: FormValues) => Promise<NormalizedErrorMap | null>;
 }
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
     
     render() {
        // const { handleSubmit, errors} = this.props;
        // console.log(errors);
+    
         return (
           <Form style={{ display: "flex" }}> 
           <div style={{width: 400, margin:'auto'}}>
@@ -69,6 +71,7 @@ export const RegisterView = withFormik<Props, FormValues>({
     // validateOnBlur: false,
     mapPropsToValues: () => ({ email: "", password: "" }),
     handleSubmit: async (values, {props, setErrors}) => {
+ 
         const errors = await props.submit(values);
         if(errors){
             setErrors(errors)

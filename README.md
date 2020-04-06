@@ -1,6 +1,6 @@
 ## 전체 설명
 
-차례 :  React Login Page - Part 20
+차례 : Learn how to call ForgetPassowrd - Part 25
 추가고려사항 : postgres 와 redis 도 docker  위에서 작동시키고, docker container 들을 swarm 처리 
 
 # 가동 절차
@@ -41,7 +41,9 @@
    10.1. expo 는 의존관계 모듈을 실행시 다가지고 있어야 함, workspaces nohoist 설정 주의
    10.2. dependency 설정시 react 관련 항목은 같은 버전이라도 2개 이상 갖고 있으면, 중복 예러 발생(react-hooks 때문), 따라서 의존소스를 복사해서 expo 내에서 옮겨놓고 코딩하기 
    10.3. npm is reac-dom     으로 확인
-
+11. change Mailserver as Nodemailer.
+   11.1 ./testnodemailer/node index.js   실행
+   
 
 # ISUSE
 1. 로컬에서 schema 읽어오는 것은 apollo.config.js 설정에서 못 읽어옴, 예제처럼 명령어에 옵션으로 처리해야 함 <br>
@@ -79,5 +81,7 @@
 3. node.js dockerizing : https://nodejs.org/en/docs/guides/nodejs-docker-webapp/ <br>
 4. lerna : https://github.com/lerna/lerna#readme
 5. netlify : https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file
-8. monorepo : https://doppelmutzi.github.io/monorepo-lerna-yarn-workspaces/
+6. monorepo : https://doppelmutzi.github.io/monorepo-lerna-yarn-workspaces/
+7. https://nodemailer.com/about/
+8. https://ethereal.email/
 

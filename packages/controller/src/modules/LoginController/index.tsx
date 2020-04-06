@@ -2,7 +2,9 @@ import * as React from 'react';
 import {graphql, ChildMutateProps} from 'react-apollo';
 import gql from 'graphql-tag';
 import {LoginMutation,   LoginMutationVariables,      } from '../../schemaTypes';
-// import { normalizeErrors } from '../../utils/normalizedErrors';
+import { normalizeErrors } from '../../utils/normalizeErrors';
+import { NormalizedErrorMap } from '../../types/NormalizedErrorMap';
+
 // import { useMutation } from '@apollo/react-hooks';
 
 
@@ -14,7 +16,7 @@ interface Props {
         submit: (
           values: LoginMutationVariables
         //   ) => Promise< any| null>;
-        ) => Promise<{[key: string]: string }| null>;
+        ) => Promise<NormalizedErrorMap | null>;
       }
     ) => JSX.Element | null;
 }
@@ -32,8 +34,14 @@ class C extends React.PureComponent<
         });
         console.log("sessionId: ", sessionId)
         console.log("errors: ", errors)
-        // console.log("login.errors: ", login.errors)
+        
+        if (errors) {
+            return normalizeErrors(errors);
+        }
 
+        if (sessionId && this.props.onSessionId) {
+            this.props.onSessionId(sessionId);
+        }
 
         return null;
     };

@@ -3,20 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const react_apollo_1 = require("react-apollo");
 const graphql_tag_1 = require("graphql-tag");
+const normalizeErrors_1 = require("../../utils/normalizeErrors");
 class C extends React.PureComponent {
     constructor() {
         super(...arguments);
         this.submit = async (values) => {
             console.log(values);
-            const { data: { login } // : {sessionId, errors}}
-             } = await this.props.mutate({
+            const { data: { login: { sessionId, errors } } } = await this.props.mutate({
                 variables: values
             });
-            // console.log("sessionId: ", sessionId)
-            // console.log("errors: ", errors)
-            console.log("login.errors: ", login.errors);
-            // const {chk} = login as LoginMutation_login;
-            // const error : LoginMutation | undefined = login;
+            console.log("sessionId: ", sessionId);
+            console.log("errors: ", errors);
+            if (errors) {
+                return normalizeErrors_1.normalizeErrors(errors);
+            }
+            if (sessionId && this.props.onSessionId) {
+                this.props.onSessionId(sessionId);
+            }
             return null;
         };
     }

@@ -9,28 +9,73 @@ class C extends React.PureComponent {
         super(...arguments);
         this.submit = async (values) => {
             console.log(values);
-            const { data: { login } } = await this.props.mutate({
+            
+            const { data: { login: { sessionId, errors } } } = await this.props.mutate({
                 variables: values
             });
-            console.log('response : ', login);
-            if (login) {
-                //show erros
-                return normalizeErrors_1.normalizeErrors(login);
+            console.log("sessionId: ", sessionId);
+            console.log("errors: ", errors);
+            if (errors) {
+                return normalizeErrors_1.normalizeErrors(errors);
+            }
+            if (sessionId && this.props.onSessionId) {
+                this.props.onSessionId(sessionId);
             }
             return null;
         };
     }
+    // submit = MyController({email:'', name:''});
     render() {
         return this.props.children({ submit: this.submit });
     }
 }
-const loginMutation = graphql_tag_1.default `
+// const loginMutation = gql`
+const LOGIN_MUTATION = graphql_tag_1.default `
     mutation LoginMutation($email: String!, $password: String!){
         login(email: $email, password: $password){
-            path
-            message
+            errors {
+                path
+                message
+            }
+            sessionId
+            
         }
     }
 `;
-exports.LoginController = react_apollo_1.graphql(loginMutation)(C);
+exports.LoginController = react_apollo_1.graphql(LOGIN_MUTATION)(C);
+// interface Props {    // 아래와 같음; interface == type  의미는 같으나, 작동안되기도 함, interface 로 통일
+// // type Props = {
+//   onSessionId?: (sessionId: string) => void;
+//   children: (
+//     data : {
+//       submit: (
+//         values: LoginMutationVariables
+//       //   ) => Promise< any| null>;
+//       ) => Promise<{[key: string]: string }| null>;
+//     }
+//    ) => JSX.Element | null;
+// }
+// export const LoginController: React.FC<Props> = (props) => {
+// // export function LoginController(props : Props): React.FC<Props> {
+//   const [login, {data, loading, error }] = useMutation(LOGIN_MUTATION);
+//   console.log("response : ", login)
+//   console.log("data : ", data)
+//   console.log("loading : ", loading)
+//   console.log("error : ", error)
+//   // const mySubmit : any = '한글입력';
+//   // const mySubmit = data; 
+//   // return mySubmit;//  
+//   // React.Children
+//   return props.children({ submit: data});
+// }
+// const MyController: React.FC<Props> = (props) => {
+// // export function LoginController(props : Props): React.FC<Props> {
+//   const [login, {data, loading, error }] = useMutation(LOGIN_MUTATION);
+//   console.log("response : ", login)
+//   console.log("data : ", data)
+//   console.log("loading : ", loading)
+//   console.log("error : ", error)
+//   // React.Children
+//   return props.children({ submit: data});
+// }
 //# sourceMappingURL=index.js.map

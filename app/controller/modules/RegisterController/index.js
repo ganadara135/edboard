@@ -8,10 +8,10 @@ class C extends React.PureComponent {
         super(...arguments);
         this.submit = async (values) => {
             console.log(values);
-            const response = await this.props.mutate({
+            const { data: register } = await this.props.mutate({
                 variables: values
             });
-            console.log('response : ', response);
+            console.log('response : ', register);
             return null;
         };
     }

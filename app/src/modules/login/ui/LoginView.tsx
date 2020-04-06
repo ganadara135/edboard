@@ -65,6 +65,7 @@ export const LoginView = withFormik<Props, FormValues>({
     handleSubmit: async (values, {props, setErrors}) => {
         const errors = await props.submit(values);
         if(errors){
+            
             setErrors(errors)
         }
     }

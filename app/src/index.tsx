@@ -5,6 +5,7 @@ import { client } from "./apollo";
 
 export default class App extends React.PureComponent {
     render() {
+        console.log("apollo client : ", client)
         return (
         <ApolloProvider client={client}>
             <Routes/>

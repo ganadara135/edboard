@@ -25,7 +25,7 @@ const invalidLogin = 'invalid Login';
 export const loginSchema =  yup.object().shape({
     email: yup.string()
     .min(3, invalidLogin)
-    .max(255, invalidEmail)
+    .max(255, invalidLogin)
     .email(invalidLogin)
     .required(),
     password: yup.string()

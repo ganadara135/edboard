@@ -1,9 +1,10 @@
 import * as React from "react";
-import {  Icon, Button, Checkbox } from 'antd';
+import {  Icon, Button,} from 'antd';
 import { withFormik,      FormikProps, Field, Form } from 'formik';
 import { loginSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
 import { Link } from "react-router-dom";
+import { NormalizedErrorMap } from "@abb/controller";
 
 interface FormValues {
     email: string;
@@ -12,13 +13,13 @@ interface FormValues {
 interface Props {
   //  submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
 
-    submit: (values: FormValues) => Promise<{
-      [key: string]: string;
-    } | null>;
+    submit: (values: FormValues) => Promise<NormalizedErrorMap | null>;
 }
 
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
+
     render() {
+      console.log("props in LoginView : ", this.props)
         return (
           <Form > 
           <div style={{width: 400, margin:'auto'}}>
@@ -40,10 +41,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             />
        
             <div>
-              <Checkbox>Remember me</Checkbox>
-              
-                Forgot password
-              
+              <Link to="/forgot-password">Forgot password</Link>
             </div>
             <div>
               <Button type="primary" htmlType="submit" className="login-form-button">
@@ -66,6 +64,7 @@ export const LoginView = withFormik<Props, FormValues>({
     validateOnBlur: false,
     mapPropsToValues: () => ({ email: "", password: "" }),
     handleSubmit: async (values, {props, setErrors}) => {
+      
         const errors = await props.submit(values);
         if(errors){
             setErrors(errors)

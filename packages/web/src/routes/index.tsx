@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch  } from 'react-router-dom';
 
 import { RegisterConnector } from "../modules/register/RegisterConnector";
 import { LoginConnector } from "../modules/login/LoginConnector";
+import { ForgotPasswordConnector } from "../modules/ForgotPassword/ForgotPasswordConnector";
 // import { RegisterView } from "../modules/register/ui/RegisterView";
 
 export const Routes = () => (
@@ -12,6 +13,7 @@ export const Routes = () => (
             {/* <Route   path="/" componet={<div><h1 color="blue">Hello</h1></div>} /> */}
             <Route exact={true} path="/register" component={RegisterConnector} />
             <Route exact={true} path="/login" component={LoginConnector} />
+            <Route exact={true} path="/forgot-password" component={ForgotPasswordConnector} />
         </Switch>
     </BrowserRouter>
 );

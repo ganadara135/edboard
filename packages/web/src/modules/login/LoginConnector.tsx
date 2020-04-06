@@ -9,6 +9,7 @@ import { LoginView } from "./ui/LoginView";
 // controller -> connector -> view
 
 
+
 export class LoginConnector extends React.PureComponent {
     // dummySubmit = async (values: any) => {
     //     console.log(values);
@@ -16,14 +17,15 @@ export class LoginConnector extends React.PureComponent {
     // };
 
     render() {
+      console.log("Con Pros: ", this.props)
         return (
+
             // <LoginView submit={this.dummySubmit} />
-        <LoginController >
-           {({ submit }) => <LoginView submit={submit} />} 
-        </LoginController>
+        <LoginController> 
+      
+           {({ submit }) => (  <LoginView submit={submit || console.log("Con: ", submit)} /> )}
+         </LoginController>
   
         );
     }
 }
-
-// curl -v -H "Content-Type: application/json" -u 72fb5b2fc067d4e6c5f03a9b08b71e31c8b297b1: -X GET "https://api.sparkpost.com/api/v1/metrics/deliverability"

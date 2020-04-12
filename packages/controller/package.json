@@ -8,7 +8,7 @@
     "build": "rimraf ./dist && tsc",
     "schema:download": "npx apollo client:download-schema --endpoint=http://localhost:4000 schema.json",
     "schema:downloadFromEx": "npx apollo client:download-schema --endpoint=http://49.50.163.26:4000 schema.graphql",
-    "codegen:generate": "npx apollo client:codegen --target=typescript --localSchemaFile=./schema.json --outputFlat=./src/schemaTypes.ts",
+    "codegen:generate": "npx apollo client:codegen --localSchemaFile=./schema.json --target=typescript --includes=src/**/*.tsx --addTypename --outputFlat=./src/schemaTypes.ts",
     "gen:types": "yarn schema:download && yarn codegen:generate",
     "refresh:types": "yarn gen:types && yarn build",
     "cleanController": "rm -rf node_modules ../../node_modules ../../yarn.lock"

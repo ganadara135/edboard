@@ -1,19 +1,8 @@
-export interface LoginMutation_login_errors {
-    __typename: "Error";
-    path: string;
-    message: string;
+export interface SendForgotPasswordEmailMutation {
+    sendForgotPasswordEmail: boolean | null;
 }
-export interface LoginMutation_login {
-    __typename: "LoginResponse";
-    errors: LoginMutation_login_errors[] | null;
-    sessionId: string | null;
-}
-export interface LoginMutation {
-    login: LoginMutation_login;
-}
-export interface LoginMutationVariables {
+export interface SendForgotPasswordEmailMutationVariables {
     email: string;
-    password: string;
 }
 export interface RegisterMutation_register {
     __typename: "Error";

@@ -74,7 +74,9 @@
    6.1 expo package.json 에 nohoist 로 설치된 모듈을 전부 표시
 7. keep watch SemVer  ^(caret, inverted caret) ~(tilde, swung dash)
 8. VScode 는 탐색창에서 소스 복사나 옮기는거 금지, 큰 용량은 제대로 이동 안됨.
-   
+9. gql 문장 바로 위에는 첨삭문 넣지 마라, 아마 에러메시지도 없이 schema 생성하지 않는다
+
+
 # 참고링크
 1. apollo-codegen :   https://github.com/expo/apollo-codegen <br>
 2. nohoist : https://classic.yarnpkg.com/blog/2018/02/15/nohoist/ <br>

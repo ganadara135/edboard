@@ -33,7 +33,7 @@ class C extends React.PureComponent<
     }
 }
 
-const registerMutation = gql`
+const REGISTER_MUTATION = gql`
     mutation RegisterMutation($email: String!, $password: String!){
         register(email: $email, password: $password){
             path
@@ -46,4 +46,4 @@ export const RegisterController = graphql<
     Props,
     RegisterMutation,
     RegisterMutationVariables
->(registerMutation)(C);
+>(REGISTER_MUTATION)(C);

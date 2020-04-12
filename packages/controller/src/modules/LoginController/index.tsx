@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {graphql, ChildMutateProps} from 'react-apollo';
 import gql from 'graphql-tag';
-import {LoginMutation,   LoginMutationVariables,      } from '../../schemaTypes';
+import {LoginMutation,   LoginMutationVariables     } from '../../schemaTypes';
 import { normalizeErrors } from '../../utils/normalizeErrors';
 import { NormalizedErrorMap } from '../../types/NormalizedErrorMap';
 
@@ -52,7 +52,9 @@ class C extends React.PureComponent<
     }
 }
 
-// const loginMutation = gql`
+// don't put any comments on gql sentenses very above //  gql 문장 바로 위에는 아무 코멘트 문 넣지 마라, 아무 에러 메시지도 없이 생성하지도 않는다
+
+
 const LOGIN_MUTATION = gql`
     mutation LoginMutation($email: String!, $password: String!){
         login(email: $email, password: $password){
@@ -61,7 +63,6 @@ const LOGIN_MUTATION = gql`
                 message
             }
             sessionId
-            
         }
     }
 `;
@@ -71,47 +72,3 @@ export const LoginController = graphql<
     LoginMutation,
     LoginMutationVariables
 >(LOGIN_MUTATION)(C);
-
-// interface Props {    // 아래와 같음; interface == type  의미는 같으나, 작동안되기도 함, interface 로 통일
-// // type Props = {
-//   onSessionId?: (sessionId: string) => void;
-//   children: (
-//     data : {
-//       submit: (
-//         values: LoginMutationVariables
-//       //   ) => Promise< any| null>;
-//       ) => Promise<{[key: string]: string }| null>;
-//     }
-//    ) => JSX.Element | null;
-// }
-
-// export const LoginController: React.FC<Props> = (props) => {
-// // export function LoginController(props : Props): React.FC<Props> {
-
-//   const [login, {data, loading, error }] = useMutation(LOGIN_MUTATION);
-
-//   console.log("response : ", login)
-//   console.log("data : ", data)
-//   console.log("loading : ", loading)
-//   console.log("error : ", error)
-//   // const mySubmit : any = '한글입력';
-//   // const mySubmit = data; 
-  
-//   // return mySubmit;//  
-//   // React.Children
-//   return props.children({ submit: data});
-// }
-
-// const MyController: React.FC<Props> = (props) => {
-// // export function LoginController(props : Props): React.FC<Props> {
-
-//   const [login, {data, loading, error }] = useMutation(LOGIN_MUTATION);
-
-//   console.log("response : ", login)
-//   console.log("data : ", data)
-//   console.log("loading : ", loading)
-//   console.log("error : ", error)
-
-//   // React.Children
-//   return props.children({ submit: data});
-// }

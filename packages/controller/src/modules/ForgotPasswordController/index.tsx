@@ -2,8 +2,7 @@ import * as React from 'react';
 import {graphql, ChildMutateProps} from 'react-apollo';
 import gql from 'graphql-tag';
 import { SendForgotPasswordEmailMutation, SendForgotPasswordEmailMutationVariables } from '../../schemaTypes';
-// import { normalizeErrors } from '../../utils/normalizeErrors';
-// import { NormalizedErrorMap } from '../../types/NormalizedErrorMap';
+
 
 interface Props {
     children: 

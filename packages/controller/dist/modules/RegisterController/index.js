@@ -23,7 +23,7 @@ class C extends React.PureComponent {
         return this.props.children({ submit: this.submit });
     }
 }
-const registerMutation = graphql_tag_1.default `
+const REGISTER_MUTATION = graphql_tag_1.default `
     mutation RegisterMutation($email: String!, $password: String!){
         register(email: $email, password: $password){
             path
@@ -31,5 +31,5 @@ const registerMutation = graphql_tag_1.default `
         }
     }
 `;
-exports.RegisterController = react_apollo_1.graphql(registerMutation)(C);
+exports.RegisterController = react_apollo_1.graphql(REGISTER_MUTATION)(C);
 //# sourceMappingURL=index.js.map

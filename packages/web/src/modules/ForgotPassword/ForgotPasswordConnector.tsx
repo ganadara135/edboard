@@ -1,9 +1,6 @@
 import * as React from "react";
-// import {LoginController} from '@abb/controller';
-
-// import { RegisterConnector } from "../../modules/register/RegisterConnector";
-// import { LoginConnector } from "../modules/login/LoginConnector";
 import { ForgotPasswordView } from "./ui/ForgotPasswordView";
+import {ForgotPasswordController} from '@abb/controller';
 
 
 // container -> view
@@ -13,12 +10,16 @@ import { ForgotPasswordView } from "./ui/ForgotPasswordView";
 
 
 export class ForgotPasswordConnector extends React.PureComponent {
-    dummySubmit = async (values: any) => {
-        console.log(values);
-        return null;
-    };
+    // dummySubmit = async (values: any) => {
+    //     console.log(values);
+    //     return null;
+    // };
 
     render() {
-      return <ForgotPasswordView submit={this.dummySubmit} />
+      return (
+      <ForgotPasswordController>
+        {({ submit }) => <ForgotPasswordView submit={submit} />}
+      </ForgotPasswordController>
+      )
     }
 }

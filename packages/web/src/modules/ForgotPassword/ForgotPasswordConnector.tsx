@@ -1,24 +1,22 @@
 import * as React from "react";
 import { ForgotPasswordView } from "./ui/ForgotPasswordView";
 import {ForgotPasswordController} from '@abb/controller';
+import { RouteComponentProps } from "react-router-dom";
 
 
-// container -> view
-// container -> connector -> view
-// controller -> connector -> view
-
-
-
-export class ForgotPasswordConnector extends React.PureComponent {
-    // dummySubmit = async (values: any) => {
-    //     console.log(values);
-    //     return null;
-    // };
+export class ForgotPasswordConnector extends React.PureComponent<
+  RouteComponentProps<{}>
+  > {
+      onFinish = () => {
+          this.props.history.push("/m/reset-password", {
+              message: "check your email to reset your password"
+          });
+      }
 
     render() {
       return (
       <ForgotPasswordController>
-        {({ submit }) => <ForgotPasswordView submit={submit} />}
+        {({ submit }) => <ForgotPasswordView onFinish={this.onFinish} submit={submit} />}
       </ForgotPasswordController>
       )
     }

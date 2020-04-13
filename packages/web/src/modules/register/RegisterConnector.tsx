@@ -2,6 +2,7 @@ import * as React from "react";
 import {RegisterController} from '@abb/controller';
 
 import { RegisterView } from "./ui/RegisterView";
+import { RouteComponentProps } from "react-router-dom";
 
 
 // container -> view
@@ -11,7 +12,15 @@ import { RegisterView } from "./ui/RegisterView";
 
 // export const RegisterConnector = () => <RegisterView/>;
 
-export class RegisterConnector extends React.PureComponent {
+export class RegisterConnector extends React.PureComponent<
+    RouteComponentProps<{}>
+> {
+    onFinish = () => {
+        this.props.history.push("/m/confirm-email", {
+            message: "check your email to confirm your account"
+        });
+    }
+
     // dummySubmit = async (values: any) => {
     //     console.log(values);
     //     return null;
@@ -21,7 +30,7 @@ export class RegisterConnector extends React.PureComponent {
         return (
         <RegisterController >
 
-           {({ submit }) => <RegisterView submit={submit} />} 
+           {({ submit }) => <RegisterView onFinish={this.onFinish} submit={submit} />} 
         </RegisterController>
   
         );

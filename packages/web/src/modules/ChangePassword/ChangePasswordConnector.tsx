@@ -6,13 +6,11 @@ import { ChangePasswordController} from "@abb/controller";
 
 export class ChangePasswordConnector extends React.PureComponent
     <RouteComponentProps<{
-        key: string,
-        
+        key: string;
     }>> {
-    submit = async (values: any) => {
-        console.log(values);
-        return null;
-    };
+    onFinish = () => {
+        this.props.history.push("/login");
+    }
 
     // console.log(this.props)
     render() {
@@ -25,10 +23,14 @@ export class ChangePasswordConnector extends React.PureComponent
 
         return (
             <ChangePasswordController>
-                {({submit}) => <ChangePasswordView submit={async({newPassword}) => submit({
+                {({submit}) => <ChangePasswordView 
+                onFinish={this.onFinish}
+                key={key} submit={submit} />
+                
+                /* {({submit}) => <ChangePasswordView submit={async({newPassword}) => submit({
                     key,
                     newPassword
-                })} />}
+                })} />} */}
             </ChangePasswordController>
         )
     }

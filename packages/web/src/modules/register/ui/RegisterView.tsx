@@ -53,8 +53,8 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
               </Button>
             </div>
             <div>
-              {/* Or <a href="register">Login now!</a> */}
-              Or <Link to="/login ">Login now!</Link>
+              {/* Or <a href="/login">Login now!</a> */}
+              Or <Link to="/login">Login now!</Link>
             </div>
           </div>
           </Form>

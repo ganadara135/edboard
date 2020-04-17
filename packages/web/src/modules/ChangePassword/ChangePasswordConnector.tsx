@@ -25,7 +25,8 @@ export class ChangePasswordConnector extends React.PureComponent
             <ChangePasswordController>
                 {({submit}) => <ChangePasswordView 
                 onFinish={this.onFinish}
-                key={key} submit={submit} />
+                token={key} 
+                submit={submit} />
                 
                 /* {({submit}) => <ChangePasswordView submit={async({newPassword}) => submit({
                     key,

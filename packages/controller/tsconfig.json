@@ -20,6 +20,11 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
+
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+
+    
     "types": [
       "jest",
       "node",
@@ -30,9 +35,8 @@
     "skipLibCheck": true,
     "declaration": true,
   },
-  "include": [
-    "src"
-  ],
+  
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
   "exclude": [
     "node_modules",
     "build",

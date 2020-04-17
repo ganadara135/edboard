@@ -49,7 +49,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
               </Button>
             </div>
             <div>
-              Or <Link to="/register ">Register!</Link>
+              Or <Link to="/register">Register!</Link>
             </div>
           </div>
           </Form>

@@ -9,32 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const yup = require("yup");
 const bcrypt = require("bcryptjs");
 const common_1 = require("@abb/common");
-const forgotPasswordLockAccount_1 = require("../../../utils/forgotPasswordLockAccount");
 const createForgotPasswordLink_1 = require("../../../utils/createForgotPasswordLink");
 const User_1 = require("../../../entity/User");
 const errorMessages_1 = require("./errorMessages");
 const constants_1 = require("../../../constants");
 const formatYupError_1 = require("../../../utils/formatYupError");
-const schema = yup.object().shape({
-    newPassword: common_1.registerPasswordValidation
-});
+const sendEmail_1 = require("../../../utils/sendEmail");
 exports.resolvers = {
     Mutation: {
         sendForgotPasswordEmail: (_, { email }, { redis }) => __awaiter(void 0, void 0, void 0, function* () {
             const user = yield User_1.User.findOne({ where: { email } });
             if (!user) {
-                return [
-                    {
-                        path: "email",
-                        message: errorMessages_1.userNotFoundError
-                    }
-                ];
+                return { ok: true };
             }
-            yield forgotPasswordLockAccount_1.forgotPasswordLockAccount(user.id, redis);
-            yield createForgotPasswordLink_1.createForgotPasswordLink("", user.id, redis);
+            const url = yield createForgotPasswordLink_1.createForgotPasswordLink(process.env.FRONTEND_HOST, user.id, redis);
+            yield sendEmail_1.sendEmail(email, url, "reset password");
             return true;
         }),
         forgotPasswordChange: (_, { newPassword, key }, { redis }) => __awaiter(void 0, void 0, void 0, function* () {
@@ -49,7 +40,7 @@ exports.resolvers = {
                 ];
             }
             try {
-                yield schema.validate({ newPassword }, { abortEarly: false });
+                yield common_1.changePasswordSchema.validate({ newPassword }, { abortEarly: false });
             }
             catch (err) {
                 return formatYupError_1.formatYupError(err);

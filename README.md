@@ -86,4 +86,5 @@
 6. monorepo : https://doppelmutzi.github.io/monorepo-lerna-yarn-workspaces/
 7. https://nodemailer.com/about/
 8. https://ethereal.email/
+9. https://typeorm.io/#/
 

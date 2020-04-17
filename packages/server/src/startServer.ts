@@ -35,7 +35,7 @@ export const startServer = async () => {
   server.express.use(
     new RateLimit({
       store: new RateLimitRedisStore({
-        client: redis
+        client: redis as any
       }),
       windowMs: 15 * 60 * 1000, // 15 minutes
       max: 100, // limit each IP to 100 requests per windowMs
@@ -74,7 +74,8 @@ export const startServer = async () => {
   if (process.env.NODE_ENV === "test") {
     await createTestConn(true);
   } else {
-    await createTypeormConn();
+    const conn = await createTypeormConn();
+    await conn.runMigrations();
   }
 
   const port = process.env.PORT || 4000;

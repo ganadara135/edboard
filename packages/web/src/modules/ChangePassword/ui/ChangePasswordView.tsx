@@ -13,7 +13,7 @@ interface FormValues {
 interface Props {
   //  submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
     onFinish: () => void;
-    key: string;
+    token: string;
     submit: (values: ForgotPasswordChangeMutationVariables) => Promise<NormalizedErrorMap | null>;
 }
 
@@ -47,7 +47,7 @@ export const ChangePasswordView = withFormik<Props, FormValues>({
     mapPropsToValues: () => ({ newPassword: ""}),
     handleSubmit: async ({newPassword}, {props, setErrors}) => {
       
-        const errors = await props.submit({newPassword, key: props.key});
+        const errors = await props.submit({newPassword, key: props.token});
         if(errors){
             setErrors(errors)
         } else {

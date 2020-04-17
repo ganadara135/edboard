@@ -39,11 +39,11 @@ exports.resolvers = {
             }
             const user = User_1.User.create({
                 email,
-                password
+                password,
             });
             yield user.save();
             if (process.env.NODE_ENV !== "test") {
-                yield sendEmail_1.sendEmail(email, yield createConfirmEmailLink_1.createConfirmEmailLink(url, user.id, redis));
+                yield sendEmail_1.sendEmail(email, yield createConfirmEmailLink_1.createConfirmEmailLink(url, user.id, redis), "confirm email");
             }
             return null;
         })

@@ -1,6 +1,6 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Listing } from "../../../entity/Listing";
-// import { element } from "prop-types";
+// import { isAuthenticated } from "../../shared/isAuthenticated";
 
 
 export const resolvers: ResolverMap = {
@@ -8,11 +8,8 @@ export const resolvers: ResolverMap = {
         createListing: async (_, {input}, {session}) => {
             console.log(session);
 
-            if (!session.userId) {
-                // user is not logged in
-                throw new Error("not authenticated");
-            }
-
+            // isAuthenticated(session);
+            
             const list = await Listing.create({
             // await Listing.create({
                 ...input as Listing, // 이게 핵심,  This is main point. This makes to understand Array Like Object(pseudo array)

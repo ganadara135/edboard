@@ -6,6 +6,9 @@ import { LoginConnector } from "../modules/login/LoginConnector";
 import { ForgotPasswordConnector } from "../modules/ForgotPassword/ForgotPasswordConnector";
 import { ChangePasswordConnector } from "../modules/ChangePassword/ChangePasswordConnector";
 import { TextPage } from "../modules/TestPage";
+import { AuthRoute } from "@abb/controller";
+import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
+import { DemoDelete } from "../modules/listing/delete/DemoDelete";
 
 export const Routes = () => (
     <BrowserRouter>
@@ -13,10 +16,12 @@ export const Routes = () => (
         {/* <div> <h1>Hello</h1></div>; */}
             {/* <Route   path="/" componet={<div><h1 color="blue">Hello</h1></div>} /> */}
             <Route exact={true} path="/register" component={RegisterConnector} />
-            <Route  path="/login" component={LoginConnector} />
+            <Route exact={true} path="/login" component={LoginConnector} />
             <Route exact={true} path="/forgot-password" component={ForgotPasswordConnector} />
             <Route exact={true} path="/change-password/:key" component={ChangePasswordConnector} />
             <Route path="/m" component={TextPage} />
+            <AuthRoute path="/create-listing" component={CreateListingConnector} />
+            <AuthRoute path="/delete-demo" component={DemoDelete} />
         </Switch>
     </BrowserRouter>
 );

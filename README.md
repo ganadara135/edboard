@@ -1,6 +1,6 @@
 ## 전체 설명
 
-차례 : Learn how to call ForgetPassowrd - Part 25
+차례 : Multi Step Form in React with Formik - Part 36
 추가고려사항 : postgres 와 redis 도 docker  위에서 작동시키고, docker container 들을 swarm 처리 
 
 # 가동 절차
@@ -50,7 +50,7 @@
 3. 접속터미널끄기 : \q
    
 
-# ISUSE
+# ISSUE
 1. 로컬에서 schema 읽어오는 것은 apollo.config.js 설정에서 못 읽어옴, 예제처럼 명령어에 옵션으로 처리해야 함 <br>
   ex) npx apollo client:codegen --target typescript --localSchemaFile ./schema.graphql <br>
 2. apollo client:check 검증용 명령어는 apollo 사의 registry 만 됨, 로컬은 안됨. <br>

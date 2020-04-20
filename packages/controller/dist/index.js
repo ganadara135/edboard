@@ -7,4 +7,5 @@ __export(require("./modules/RegisterController"));
 __export(require("./modules/LoginController"));
 __export(require("./modules/ForgotPasswordController"));
 __export(require("./modules/ChangePasswordController"));
+__export(require("./modules/auth/AuthRoute"));
 //# sourceMappingURL=index.js.map

@@ -14,13 +14,13 @@
     "cleanController": "rm -rf node_modules ../../node_modules ../../yarn.lock"
   },
   "dependencies": {
+    "@apollo/react-hooks": "~3.1.4",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "react": "16.9.0",
     "react-apollo": "3.1.1",
     "react-dom": "16.9.0",
-    
-    "@apollo/react-hooks":"~3.1.4"
+    "react-router": "^5.1.2"
   },
   "devDependencies": {
     "@babel/core": "~7.6.0",
@@ -30,6 +30,7 @@
     "@types/react-dom": "^16.9.0",
     "apollo": "2.26.0",
     "apollo-codegen": "^0.20.2",
+    "react-router": "^5.1.2",
     "rimraf": "^3.0.2",
     "tslint": "^6.1.1",
     "tslint-config-prettier": "^1.18.0",

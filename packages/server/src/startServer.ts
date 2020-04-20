@@ -35,7 +35,7 @@ export const startServer = async () => {
   server.express.use(
     new RateLimit({
       store: new RateLimitRedisStore({
-        client: redis as any
+        client: redis
       }),
       windowMs: 15 * 60 * 1000, // 15 minutes
       max: 100, // limit each IP to 100 requests per windowMs

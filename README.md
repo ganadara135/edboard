@@ -43,6 +43,11 @@
    10.3. npm is reac-dom     으로 확인
 11. change Mailserver as Nodemailer.
    11.1 ./testnodemailer/node index.js   실행
+
+# postgre  사용법
+1. db 접속 방법:  psql graphql-ts-server-boilerplate (db명)
+2. 테이블 조회  : \d
+3. 접속터미널끄기 : \q
    
 
 # ISUSE

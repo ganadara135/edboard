@@ -1,0 +1,11 @@
+import * as React from 'react'
+import { Field } from "formik";
+import { InputField } from "../../../shared/InputField";
+
+export const Page3 = () => (
+    <React.Fragment>
+        <Field name="latitude" placeholder="Latitude" component={InputField} />
+        <Field name="longitude" placeholder="Longtitude" component={InputField} />
+        <Field name="amenities" placeholder="Amenities" component={InputField} />
+    </React.Fragment>
+);

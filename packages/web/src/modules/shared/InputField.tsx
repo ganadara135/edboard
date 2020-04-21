@@ -25,6 +25,7 @@ export const InputField: React.SFC<
         >
             <Comp 
                 {...field} 
+                // {...props}
                 {...props.meta} 
                 {...props.prefix} 
                 {...props.children} 

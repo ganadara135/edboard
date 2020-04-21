@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {  RouteComponentProps } from 'react-router-dom';
-import {   Formik } from 'formik';
-import { Form as AntForm,  Button } from 'antd';
+import {   Formik, Form } from 'formik';
+import {   Button } from 'antd';
 // import { InputField } from "../../../modules/shared/InputField";
 import { Page1 } from './ui/Page1';
 import { Page2 } from './ui/Page2';
@@ -56,12 +56,12 @@ export class CreateListingConnector extends React.PureComponent<
              onSubmit={this.submit}
             >
             {() => (
-            // <Form style={{ display: "flex" }}> 
+            <Form style={{ display: "flex" }}> 
                 <div style={{width: 400, margin:'auto'}}>
                 
                 {pages[this.state.page]}
                             
-                <AntForm>
+                {/* <AntForm> */}
                     <div 
                         style={{
                             display: "flex",
@@ -70,18 +70,20 @@ export class CreateListingConnector extends React.PureComponent<
                     >
                     {this.state.page === pages.length - 1 ? (
                         // htmlType="submit"  이 onSubmit() 을 호출
-                        <Button type="primary" htmlType="submit"> 
+                        <div>
+                         <Button type="primary" htmlType="submit">   {/* htmlType="submit">  */}
                             create listing
                         </Button>
+                        </div>
                     ) : (
                         <Button type="primary" onClick={this.nextPage}>
                             next page
                         </Button>
                     )}
                     </div>
-                </AntForm>
+                {/* </AntForm> */}
                 </div>
-            //  </Form> 
+            </Form> 
             )}
             </Formik>
         );

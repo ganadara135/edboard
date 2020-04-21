@@ -62,6 +62,12 @@ export class CreateListingConnector extends React.PureComponent<
                 {pages[this.state.page]}
                             
                 <AntForm>
+                    <div 
+                        style={{
+                            display: "flex",
+                            justifyContent: "flex-end"
+                        }} 
+                    >
                     {this.state.page === pages.length - 1 ? (
                         // htmlType="submit"  이 onSubmit() 을 호출
                         <Button type="primary" htmlType="submit"> 
@@ -72,6 +78,7 @@ export class CreateListingConnector extends React.PureComponent<
                             next page
                         </Button>
                     )}
+                    </div>
                 </AntForm>
                 </div>
             //  </Form> 

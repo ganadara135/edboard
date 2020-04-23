@@ -1,11 +1,13 @@
 import * as React from 'react'
 import {  RouteComponentProps } from 'react-router-dom';
-import {   Formik, Form } from 'formik';
+import {   Formik, Form,  FormikHelpers, } from 'formik';
 import {   Button } from 'antd';
+import { withCreateListing, NewPropsCreateListing } from "@abb/controller";
 // import { InputField } from "../../../modules/shared/InputField";
 import { Page1 } from './ui/Page1';
 import { Page2 } from './ui/Page2';
 import { Page3 } from './ui/Page3';
+
 
 
 interface FormikValues {
@@ -26,14 +28,18 @@ interface State {
 
 const pages = [<Page1 />, <Page2 />, <Page3 />];
 
-export class CreateListingConnector extends React.PureComponent<
-    RouteComponentProps<{}>, State
+class C extends React.PureComponent<
+    RouteComponentProps<{}> & NewPropsCreateListing, State
 > {
     state = {
         page: 0
     }
-    submit = (values: any ) => {
-        console.log("values : ", values);
+    submit = (
+        values: FormikValues, 
+        {setSubmitting}: FormikHelpers<FormikValues> 
+    ) => {
+        this.props.createListing(values);
+        setSubmitting(false);
     };
 
     nextPage = () => this.setState(state => ({ page: state.page + 1 }))
@@ -55,7 +61,7 @@ export class CreateListingConnector extends React.PureComponent<
              }} 
              onSubmit={this.submit}
             >
-            {() => (
+            {({isSubmitting}) => (
             <Form style={{ display: "flex" }}> 
                 <div style={{width: 400, margin:'auto'}}>
                 
@@ -71,7 +77,7 @@ export class CreateListingConnector extends React.PureComponent<
                     {this.state.page === pages.length - 1 ? (
                         // htmlType="submit"  이 onSubmit() 을 호출
                         <div>
-                         <Button type="primary" htmlType="submit">   {/* htmlType="submit">  */}
+                         <Button type="primary" htmlType="submit" disabled={isSubmitting}>   {/* htmlType="submit">  */}
                             create listing
                         </Button>
                         </div>
@@ -89,3 +95,5 @@ export class CreateListingConnector extends React.PureComponent<
         );
     }
 }
+
+export const CreateListingConnector = withCreateListing(C);

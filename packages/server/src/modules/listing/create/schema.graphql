@@ -5,7 +5,7 @@ input CreateListingInput {
   description: String!
   price: Int!
   beds: Int!
-  quests: Int!
+  guests: Int!
   latitude: Float!
   longitude: Float!
   amenities: [String!]!

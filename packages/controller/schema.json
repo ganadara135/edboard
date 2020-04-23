@@ -665,7 +665,7 @@
             "defaultValue": null
           },
           {
-            "name": "quests",
+            "name": "guests",
             "description": null,
             "type": {
               "kind": "NON_NULL",

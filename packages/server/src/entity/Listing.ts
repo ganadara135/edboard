@@ -28,7 +28,7 @@ export class Listing extends BaseEntity {
 
   @Column("int" ) beds: number;
 
-  @Column("int" ) quests: number;
+  @Column("int" ) guests: number;
 
   @Column("double precision") latitude: number;
 

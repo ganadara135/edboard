@@ -15,7 +15,7 @@ class C extends React.PureComponent {
             }
             if (!data.me) {
                 // user not logged in
-                return React.createElement(react_router_1.Redirect, { to: "/login" });
+                return React.createElement(react_router_1.Redirect, { to: { pathname: "/login", state: { next: routeProps.location.pathname } } });
             }
             const Component = component;
             return React.createElement(Component, Object.assign({}, routeProps));

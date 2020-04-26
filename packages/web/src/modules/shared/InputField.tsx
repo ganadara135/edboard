@@ -17,6 +17,7 @@ export const InputField: React.SFC<
 
     const Comp = useNumberComponent ? InputNumber : Input;
 
+    console.log("...props in InputField : ", props)
     return (
         <Form.Item 
             label={label}
@@ -27,7 +28,7 @@ export const InputField: React.SFC<
                 {...field} 
                 // {...props}
                 {...props.meta} 
-                {...props.prefix} 
+                // {...props.prefix} 
                 {...props.children} 
                 onChange={
                     useNumberComponent 

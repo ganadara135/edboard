@@ -19,7 +19,7 @@ interface Props {
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 
     render() {
-      console.log("props in LoginView : ", this.props)
+      // console.log("props in LoginView : ", this.props)
         return (
           <Form > 
           <div style={{width: 400, margin:'auto'}}>

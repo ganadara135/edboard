@@ -28,7 +28,7 @@ exports.resolvers = {
             yield sendEmail_1.sendEmail(email, url, "reset password");
             return true;
         }),
-        forgotPasswordChange: (_, { newPassword, key }, { redis }) => __awaiter(void 0, void 0, void 0, function* () {
+        forgotPasswordChange: (_, { newPassword, key }, { redis, }) => __awaiter(void 0, void 0, void 0, function* () {
             const redisKey = `${constants_1.forgotPasswordPrefix}${key}`;
             const userId = yield redis.get(redisKey);
             if (!userId) {

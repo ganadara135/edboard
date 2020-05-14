@@ -16,20 +16,24 @@ const session = require("express-session");
 const connectRedis = require("connect-redis");
 const RateLimit = require("express-rate-limit");
 const RateLimitRedisStore = require("rate-limit-redis");
+const graphql_middleware_1 = require("graphql-middleware");
 const redis_1 = require("./redis");
 const createTypeormConn_1 = require("./utils/createTypeormConn");
 const confirmEmail_1 = require("./routes/confirmEmail");
 const genSchema_1 = require("./utils/genSchema");
 const constants_1 = require("./constants");
 const createTestConn_1 = require("./testUtils/createTestConn");
+const middlewareShield_1 = require("./middlewareShield");
 const SESSION_SECRET = "ajslkjalksjdfkl";
 const RedisStore = connectRedis(session);
 exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     if (process.env.NODE_ENV === "test") {
         yield redis_1.redis.flushall();
     }
+    const schema = genSchema_1.genSchema();
+    graphql_middleware_1.applyMiddleware(schema, middlewareShield_1.MiddlewareShield);
     const server = new graphql_yoga_1.GraphQLServer({
-        schema: genSchema_1.genSchema(),
+        schema,
         context: ({ request }) => ({
             redis: redis_1.redis,
             url: request.protocol + "://" + request.get("host"),
@@ -71,7 +75,8 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
         yield createTestConn_1.createTestConn(true);
     }
     else {
-        yield createTypeormConn_1.createTypeormConn();
+        const conn = yield createTypeormConn_1.createTypeormConn();
+        yield conn.runMigrations();
     }
     const port = process.env.PORT || 4000;
     const app = yield server.start({

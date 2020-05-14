@@ -17,7 +17,9 @@ export const InputField: React.SFC<
 
     const Comp = useNumberComponent ? InputNumber : Input;
 
-    console.log("...props in InputField : ", props)
+    console.log("...props in InputField 333: ", props)
+    const { prefix } = props;
+    console.log("prefix : ", prefix);
     return (
         <Form.Item 
             label={label}
@@ -30,6 +32,7 @@ export const InputField: React.SFC<
                 {...props.meta} 
                 // {...props.prefix} 
                 {...props.children} 
+                placeholder={"test"}
                 onChange={
                     useNumberComponent 
                     ? (newValue: any) => setFieldValue(field.name, newValue)

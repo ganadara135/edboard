@@ -20,6 +20,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = require("bcryptjs");
 const typeorm_1 = require("typeorm");
+const Listing_1 = require("./Listing");
 let User = class User extends typeorm_1.BaseEntity {
     hashPasswordBeforeInsert() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -47,6 +48,10 @@ __decorate([
     typeorm_1.Column("boolean", { default: false }),
     __metadata("design:type", Boolean)
 ], User.prototype, "forgotPasswordLocked", void 0);
+__decorate([
+    typeorm_1.OneToMany(() => Listing_1.Listing, listing => listing.user),
+    __metadata("design:type", Array)
+], User.prototype, "listings", void 0);
 __decorate([
     typeorm_1.BeforeInsert(),
     __metadata("design:type", Function),

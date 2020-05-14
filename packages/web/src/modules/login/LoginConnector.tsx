@@ -12,14 +12,15 @@ export class LoginConnector extends React.PureComponent<
       const {history, location: {state}} = this.props;
       console.log("this.props : ", this.props.location.state);
       console.log("state : ", state);
-      // console.log("state.next : ", (state as any).next);
+      // console.log("(state as any).next : ", (state as any).next);
       // if (state && (state as any).next ) {
       //   return history.push((state as any).next);
       // }
       // this.props.history.push('/');
-
-      
-      history.push('/create-listing');
+      // const mm = state
+      // if ( state && (state as any).next)
+      history.push("/create-listing");
+      // history.push((state as any).next)
       // history.push('/');
     }
 

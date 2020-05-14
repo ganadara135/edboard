@@ -5,23 +5,30 @@
 
 # 가동 절차
 
-1. Redis-server start
-    => redis-server
-2. PostgreSQL start <br/>
+1. PostgreSQL start <br/>
+   <p>Docker-compose 대치 </p>
     => postgres 설정 : https://seogenie2.tistory.com/5 <br>
      [마이컴용] <br/>
     => pg_ctl -D /Users/mac/work/mobileHomeHub/abb/db_postgre -l logfile start
+2. Redis-server start
+   <p>Docker-compose 대치 </p>
+    => redis-server
 3. Server start
-    => npm start
+   <p>Docker-compose 대치 </p>
+    => yarn start
 4. client start (web)
-    => npm start
+   <p>Docker-compose 대치 </p>
+    => yarn start
 
 5. docker 이미지 빌드 <br>
    => docker build -t kcod/abb:1.0.0 . <br>
    5.1. docker 컨테이너 실행 <br>
       => docker run -p 3001:4000 --net="host" -d kcod/abb:1.0.0 <br>
       => docker run -it -p 3001:4000 -d kcod/abb:1.0.0 /bin/bash <br>
-      => docker run -p 4000:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb:1.0.0 node dist/index.js
+      => docker run -p 4000:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb:1.0.0 node dist/index.js <br>
+      docker run -p 80:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb node dist/index.js
+
+      docker run -p 80:4000 --net host -d --name abb ganadara135/abb node dist/index.js
    5.2. docker 컨테이너 디버깅 <br>
       => docker commit 298b7344f067a4a1d96fa866ee93e1304c98d9b9c0124da616e80e5ef9d17f33 broken_container  &&={ ; } docker run -it broken_container /bin/bash <br>
       => node dist/index.js <br>
@@ -30,12 +37,16 @@
    docker push new-repo:tagname
    6.1 docker tag kcod/abb:1.0.?  ganadara135/abb:latest
    6.2 docker push ganadara135/abb:latest
+7. docker-compose
+   docker-compose 는 Dockerfile 를 같은 폴더에 있어야 build 가능
+   
 7. PostgreSQL 정보
    7.1 설치위치  /usr/lib/systemd/system/postgresql-9.6.service
    7.2 /var/lib/pgsql/9.6/data/    postgressql.conf  위치  
 8. Redis 설정
-   8.1 .env  와 .env.prod  두 개 다 사용함.  .env.prod  실제 production 환경에서 사용
-   8.2 redis 가 설정이 안되면 아무 에러 메시지 없이 ERR_EMPTY_RESPONSE  메시지 받음
+   8.1 .env  와 .env.prod  두 개 다 사용함.  .env.prod 
+   8.2 docker build 시에 .env 파일은 copy 안됨
+   8.3 redis 가 설정이 안되면 아무 에러 메시지 없이 ERR_EMPTY_RESPONSE  메시지 받음
 9. Web 설정 : deploy_web.sh  and check README.md on web folder
 10. app 설정 주의사항
    10.1. expo 는 의존관계 모듈을 실행시 다가지고 있어야 함, workspaces nohoist 설정 주의

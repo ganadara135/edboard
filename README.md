@@ -30,7 +30,7 @@
 
       docker run -p 80:4000 --net host -d --name abb ganadara135/abb node dist/index.js
    5.2. docker 컨테이너 디버깅 <br>
-      => docker commit 298b7344f067a4a1d96fa866ee93e1304c98d9b9c0124da616e80e5ef9d17f33 broken_container  &&={ ; } docker run -it broken_container /bin/bash <br>
+      => docker commit 298b7344f067a = broken_container  &&={ ; } docker run -it broken_container /bin/bash <br>
       => node dist/index.js <br>
 6. docker push on dockerhub
    docker tag local-image:tagname new-repo:tagname

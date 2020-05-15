@@ -5,7 +5,7 @@ import * as session from "express-session";
 import * as connectRedis from "connect-redis";
 import * as RateLimit from "express-rate-limit";
 import * as RateLimitRedisStore from "rate-limit-redis";
-import { applyMiddleware } from "graphql-middleware";
+// import { applyMiddleware } from "graphql-middleware";
 
 import { redis } from "./redis";
 import { createTypeormConn } from "./utils/createTypeormConn";
@@ -14,7 +14,7 @@ import { genSchema } from "./utils/genSchema";
 import { redisSessionPrefix } from "./constants";
 import { createTestConn } from "./testUtils/createTestConn";
 // import { Middleware } from "./middleware";
-import { MiddlewareShield } from "./middlewareShield";
+// import { MiddlewareShield } from "./middlewareShield";
 
 
 const SESSION_SECRET = "ajslkjalksjdfkl";
@@ -25,13 +25,13 @@ export const startServer = async () => {
     await redis.flushall();
   }
 
-  const schema = genSchema() as any;
-  applyMiddleware(schema, MiddlewareShield)
+  // const schema = genSchema() as any;
+  // // applyMiddleware(schema, MiddlewareShield)
   // applyMiddleware(schema, Middleware);
 
   const server = new GraphQLServer({
-    // schema: genSchema() as any,
-    schema,
+    schema: genSchema() as any,
+    // schema,
     context: ({ request }) => ({
       redis,
       // 10.0.2.2   
@@ -84,6 +84,10 @@ export const startServer = async () => {
     await createTestConn(true);
   } else {
     const conn = await createTypeormConn();
+    const isConnected: boolean = conn.isConnected;
+    console.log("연결 체크 : ", isConnected)
+    console.log("conn.showMigrations : ", conn.showMigrations)
+    console.log("conn : ", conn)
     await conn.runMigrations();
   }
 

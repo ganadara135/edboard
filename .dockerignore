@@ -9,3 +9,6 @@
 !./ormconfig.json
 !./packages/web/
 !./packages/web/build/
+!./wait-for-it.sh
+!./packages/server/.env.development
+!./packages/server/.env.production

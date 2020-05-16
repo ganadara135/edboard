@@ -9,9 +9,10 @@ export class LoginConnector extends React.PureComponent<
   RouteComponentProps<{}>> {
     
     onFinish = () => {
-      const {history, location: {state}} = this.props;
-      console.log("this.props : ", this.props.location.state);
-      console.log("state : ", state);
+      const {history } = this.props;
+      // const {history, location: {state}} = this.props;
+      // console.log("this.props : ", this.props.location.state);
+      // console.log("state : ", state);
       // console.log("(state as any).next : ", (state as any).next);
       // if (state && (state as any).next ) {
       //   return history.push((state as any).next);
@@ -25,8 +26,8 @@ export class LoginConnector extends React.PureComponent<
     }
 
     render() {
-      console.log("Location: ", this.props.location)
-      console.log("Next Location: ", this.props.location.state)
+      // console.log("Location: ", this.props.location)
+      // console.log("Next Location: ", this.props.location.state)
         return (
 
             // <LoginView submit={this.dummySubmit} />

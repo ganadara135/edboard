@@ -30,7 +30,8 @@
 
       docker run -p 80:4000 --net host -d --name abb ganadara135/abb node dist/index.js
    5.2. docker 컨테이너 디버깅 <br>
-      => docker commit 298b7344f067a = broken_container  &&={ ; } docker run -it broken_container /bin/bash <br>
+      => docker commit 298b7344f067a => broken_container <br>
+      => docker run -it broken_container /bin/bash <br>
       => node dist/index.js <br>
 6. docker push on dockerhub
    docker tag local-image:tagname new-repo:tagname
@@ -39,7 +40,7 @@
    6.2 docker push ganadara135/abb:latest
 7. docker-compose
    docker-compose 는 Dockerfile 를 같은 폴더에 있어야 build 가능
-   
+   > docker-compose -f ./dockerCompose/dev.yml up --build
 7. PostgreSQL 정보
    7.1 설치위치  /usr/lib/systemd/system/postgresql-9.6.service
    7.2 /var/lib/pgsql/9.6/data/    postgressql.conf  위치  

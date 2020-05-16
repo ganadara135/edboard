@@ -84,10 +84,10 @@ export const startServer = async () => {
     await createTestConn(true);
   } else {
     const conn = await createTypeormConn();
-    const isConnected: boolean = conn.isConnected;
-    console.log("연결 체크 : ", isConnected)
-    console.log("conn.showMigrations : ", conn.showMigrations)
-    console.log("conn : ", conn)
+    // const isConnected: boolean = conn.isConnected;
+    // console.log("연결 체크 : ", isConnected)
+    // console.log("conn.showMigrations : ", conn.showMigrations)
+    // console.log("conn : ", conn)
     await conn.runMigrations();
   }
 

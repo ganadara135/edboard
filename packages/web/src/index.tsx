@@ -15,7 +15,7 @@ import "./index.css";
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
     <ApolloProvider client={client}>
-   
+         
         <Routes />
         
     </ApolloProvider>,

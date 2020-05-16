@@ -72,10 +72,6 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     }
     else {
         const conn = yield createTypeormConn_1.createTypeormConn();
-        const isConnected = conn.isConnected;
-        console.log("연결 체크 : ", isConnected);
-        console.log("conn.showMigrations : ", conn.showMigrations);
-        console.log("conn : ", conn);
         yield conn.runMigrations();
     }
     const port = process.env.PORT || 4000;

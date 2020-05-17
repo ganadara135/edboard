@@ -33,6 +33,8 @@ services:
         environment:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@rdb:5432/${POSTGRES_DB}
             - REDIS_HOST=redis
+            - FRONTEND_HOST=http://localhost
+            # - REDIS_IP=redis
             - NODE_ENV=${NODE_ENV}
             - WAIT_HOSTS=rdb:5432
             - WAIT_HOSTS_TIMEOUT=300
@@ -51,18 +53,20 @@ services:
             # - sh -c "/wait "
             # && node ./packages/server/dist/index.js"
     
-    frontend:
-        container_name: frontend
-        build: 
-            context: ../
-            dockerfile: ./dockerCompose/Dockerfile.web.compose
-        image: kcod/abbfront:latest
-        ports:
-            - "80:80"
-        networks:
-            - net-abb
-        depends_on:
-            - backend 
+    # frontend:
+    #     container_name: frontend
+    #     build: 
+    #         context: ../
+    #         dockerfile: ./dockerCompose/Dockerfile.web.compose
+    #     image: kcod/abbfront:latest
+    #     ports:
+    #         - "80:80"
+    #     networks:
+    #         - net-abb
+    #     depends_on:
+    #         - backend 
+    #     volumes:
+    #         - ../packages/web/build:/usr/share/nginx/html
 
 volumes:
     rdb-data:

@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+    frontend:
+        container_name: frontend
+        build: 
+            context: ../
+            dockerfile: ./dockerCompose/Dockerfile.web.local.compose
+        image: kcod/abbfront:latest
+        ports:
+            - "80:80"
+        networks:
+            - net-abb
+        environment:
+            - CHOKIDAR_USEPOLLING=true  # hot-reloading will work
+            - REACT_APP_SERVER_URL=http://localhost:4000
+        volumes:
+            - ../:/abb/
+        command:   
+            - /bin/sh
+            - -c 
+            - "yarn start"
+
+volumes:
+    rdb-data:
+networks:
+    net-abb:

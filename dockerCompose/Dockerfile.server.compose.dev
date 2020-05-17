@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:12-alpine
 
 # we might accidentally overwrite existing folders of the base image.
 # this is a container directory

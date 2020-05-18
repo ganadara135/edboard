@@ -19,17 +19,17 @@ COPY ./packages/server/package.json ./packages/server/
 COPY ./packages/common/package.json ./packages/common/
 COPY ./packages/controller/package.json ./packages/controller/
 ARG NODE_ENV
-RUN yarn install --${NODE_ENV}
+RUN yarn install --$NODE_ENV
 
 # .env 파일은 copy 안됨
-COPY ./.env.local ./.env
-COPY ./packages/server/.env.development ./packages/server/.env
+# COPY ./.env.local ./.env
+# COPY ./packages/server/.env.development ./packages/server/.env
 COPY ./packages/common/dist/ ./packages/common/dist/
 COPY ./packages/server/dist/ ./packages/server/dist/
 COPY ./packages/controller/dist/ ./packages/controller/dist/
 # .env 파일은 copy 안됨
-COPY ./packages/server/.env.development ./packages/server/.env
-COPY ./packages/server/.env.example ./packages/server/
+# COPY ./packages/server/.env.development ./packages/server/.env
+# COPY ./packages/server/.env.example ./packages/server/
 
 # RUN ls -a
 # RUN ls -a ./packages/server/

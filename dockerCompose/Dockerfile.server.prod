@@ -1,0 +1,49 @@
+FROM node:12-alpine
+
+# we might accidentally overwrite existing folders of the base image.
+# this is a container directory
+WORKDIR /abb
+
+
+#Copy the dependencies file
+# COPY ./package.json ./
+# COPY ./packages/server/package.json ./packages/server/
+# COPY ./packages/common/package.json ./packages/common/
+
+# # RUN npm i -g yarn 999   # node 13 버전은 yarn 사전 탑재됨
+# RUN yarn install
+
+# COPY ./ ./
+COPY ./package.json ./
+COPY ./packages/server/package.json ./packages/server/
+COPY ./packages/common/package.json ./packages/common/
+COPY ./packages/controller/package.json ./packages/controller/
+ARG NODE_ENV
+RUN yarn install
+
+
+# .env 파일은 copy 안됨
+# COPY ./.env.prod ./.env      
+
+# 이건 현재 의미 있없음 루트 쪽 .env 로 다 옮김
+COPY ./packages/server/.env.production ./packages/server/.env       
+COPY ./packages/common/dist/ ./packages/common/dist/
+COPY ./packages/server/dist/ ./packages/server/dist/
+COPY ./packages/controller/dist/ ./packages/controller/dist/
+
+
+# TypeORM 설정 관련 
+COPY ./ormconfig.json ./
+
+
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
+
+# 컨테이너 위치 변경
+WORKDIR /abb/packages/server/
+
+## Launch the wait tool and then your application
+CMD /wait && node dist/index.js
+# command: sh -c "/wait && node dist/index.js"
+

@@ -22,18 +22,19 @@ services:
         container_name: backend
         build: 
             context: ../
-            dockerfile: ./dockerCompose/Dockerfile.server.compose.local.dev
+            dockerfile: ./dockerCompose/Dockerfile.server.local.compose
             args: 
                 - "NODE_ENV=${NODE_ENV}"
         image: kcod/abbback:latest
         ports:
-            - 4000:4000
+            - ${PORT}:${PORT}
         networks:
             - net-abb
         environment:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@rdb:5432/${POSTGRES_DB}
             - REDIS_HOST=redis
-            - FRONTEND_HOST=http://localhost
+            - FRONTEND_HOST=${FRONTEND_HOST}
+            - PORT=${PORT}
             # - REDIS_IP=redis
             - NODE_ENV=${NODE_ENV}
             - WAIT_HOSTS=rdb:5432

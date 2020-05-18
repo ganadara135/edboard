@@ -29,11 +29,12 @@ services:
             - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@rdb:5432/${POSTGRES_DB}
             - REDIS_HOST=redis
             - NODE_ENV=${NODE_ENV}
+            - FRONTEND_HOST=http://211.180.114.182
             - WAIT_HOSTS=rdb:5432
             - WAIT_HOSTS_TIMEOUT=300
             - WAIT_SLEEP_INTERVAL=30
             - WAIT_HOSTS_CONNECT_TIMEOUT=30
-        command: sh -c "/wait && node dist/index.js"
+        # command: sh -c "/wait && node dist/index.js"
         depends_on:
             - redis
             - rdb

@@ -12,6 +12,8 @@
 
 !./packages/server/.env.development
 !./packages/server/.env.production
+!./packages/web/.env.production
 
 !./packages/
 !./.env.local
+!./.env.prod

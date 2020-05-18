@@ -12,21 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const nodemailer = require("nodemailer");
 exports.sendEmail = (recipient, url, linkText) => __awaiter(void 0, void 0, void 0, function* () {
     const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
+        service: 'Naver',
+        host: 'smtp.naver.com',
         port: 587,
         auth: {
-            user: 'charlene.hoppe@ethereal.email',
-            pass: 'AGe9wawQV13j7U7f43'
+            user: process.env.MAIL_EMAIL,
+            pass: process.env.MAIL_PASSWORD
         }
     });
     const info = yield transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>',
+        from: process.env.MAIL_EMAIL,
         to: `recipient <${recipient}>`,
-        subject: "Hello ✔",
-        text: "Hello world?",
+        subject: "이메일 인증 요청 메일입니다. ✔",
+        text: "확인 링크를 클릭해 주세요",
         html: `<html>
         <body>
-        <p>Testing SparkPost - the world's most awesomest email service!</p>
+        <p>가입을 환영합니다!</p>
         <a href="${url}">${linkText}</a>
         </body>
         </html>`

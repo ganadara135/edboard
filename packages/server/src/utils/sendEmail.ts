@@ -3,23 +3,24 @@ import * as nodemailer from 'nodemailer';
 
 export const sendEmail = async (recipient: string, url: string, linkText: string) => {
   const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    auth: {
-        user: 'charlene.hoppe@ethereal.email',
-        pass: 'AGe9wawQV13j7U7f43'
-    }
+    service: 'Naver',
+        host: 'smtp.naver.com',
+        port: 587,
+        auth: {
+          user: process.env.MAIL_EMAIL,
+          pass: process.env.MAIL_PASSWORD
+        }
   });
 
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    from: process.env.MAIL_EMAIL, // sender address
     to: `recipient <${recipient}>`, // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
+    subject: "이메일 인증 요청 메일입니다. ✔", // Subject line
+    text: "확인 링크를 클릭해 주세요", // plain text body
     html: `<html>
         <body>
-        <p>Testing SparkPost - the world's most awesomest email service!</p>
+        <p>가입을 환영합니다!</p>
         <a href="${url}">${linkText}</a>
         </body>
         </html>`

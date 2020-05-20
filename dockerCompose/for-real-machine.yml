@@ -5,32 +5,43 @@ services:
         networks:
             - net-abb
         container_name: redis
+        ports:
+            - 6379:6379
         
     rdb:
-        image: "postgres:9.6"
+        container_name: rdb
+        image: mariadb:10.5
+        # image: mysql:8.0.20
         volumes:
-            - rdb-data:/var/lib/postgresql/data
+            - rdb-data:/var/lib/mysql
         networks:
             - net-abb
-        environment: 
-            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-            - POSTGRES_USER=${POSTGRES_USER}
-            - POSTGRES_DB=${POSTGRES_DB}
-        # command: "echo 'take a time to stand up'"
-        container_name: rdb
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - TZ=Asia/Seoul
+            # - MYSQL_INITDB_SKIP_TZINFO=1
+        # command: --default-authentication-plugin=mysql_native_password
+        
 
     backend:
+        container_name: backend
         image: ganadara135/abbback:latest
         ports:
-            - "4000:4000"
+            - 4000:4000
         networks:
             - net-abb
         environment:
-            - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@rdb:5432/${POSTGRES_DB}
+            # - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@rdb:5432/${POSTGRES_DB}
             - REDIS_HOST=redis
             - NODE_ENV=${NODE_ENV}
-            - FRONTEND_HOST=http://211.180.114.182
-            - WAIT_HOSTS=rdb:5432
+            - PORT=${PORT}
+            - FRONTEND_HOST=${FRONTEND_HOST}
+            - WAIT_HOSTS=rdb:3306       # mysql
             - WAIT_HOSTS_TIMEOUT=300
             - WAIT_SLEEP_INTERVAL=30
             - WAIT_HOSTS_CONNECT_TIMEOUT=30
@@ -38,12 +49,15 @@ services:
         depends_on:
             - redis
             - rdb
-        container_name: backend
+        # command:   
+        # - /bin/sh
+        # - -c 
+        # - "/wait && node ./packages/server/dist/index.js" 
     
     frontend:
         image: ganadara135/abbfront:latest
         ports:
-            - "80:80"
+            - 80:80
         networks:
             - net-abb
         depends_on:

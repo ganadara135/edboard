@@ -15,13 +15,16 @@ const Listing_1 = require("../entity/Listing");
 exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log("check DB NODE_ENV : ", process.env.NODE_ENV);
     console.log("check DATABASE_URL : ", process.env.DATABASE_URL);
+    console.log("MYSQL_USER", process.env.MYSQL_USER);
+    console.log("MYSQL_PASSWORD", process.env.MYSQL_PASSWORD);
+    console.log("MYSQL_DATABASE", process.env.MYSQL_DATABASE);
     return process.env.NODE_ENV === "production"
         ? typeorm_1.createConnection({
             type: 'mariadb',
             host: 'rdb',
-            username: process.env.MYSQL_USER,
-            password: process.env.MYSQL_PASSWORD,
-            database: process.env.MYSQL_DATABASE,
+            username: 'mysql',
+            password: 'mysql',
+            database: 'database',
             synchronize: true,
             logging: true,
             entities: [Listing_1.Listing, User_1.User],

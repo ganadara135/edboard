@@ -3,6 +3,7 @@
 # .env 파일에서 NODE_ENV 를  production 으로 변경
 # docker-compose -f ./dockerCompose/prod.server.yml build
 # docker-compose -f ./dockerCompose/prod.web.yml build
+yarn build:server
 
 docker build -f ./dockerCompose/Dockerfile.server.prod -t ganadara135/abbback:latest ./
 docker build -f ./dockerCompose/Dockerfile.web.prod -t ganadara135/abbfront:latest ./

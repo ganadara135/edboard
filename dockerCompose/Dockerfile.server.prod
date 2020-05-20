@@ -32,7 +32,7 @@ COPY ./packages/server/dist/ ./packages/server/dist/
 COPY ./packages/controller/dist/ ./packages/controller/dist/
 
 
-# TypeORM 설정 관련 
+# TypeORM 설정 관련 // 현재 역할 없음
 COPY ./ormconfig.json ./
 
 

@@ -11,7 +11,7 @@ services:
     rdb:
         container_name: rdb
         image: mariadb:10.5
-        # image: mysql:5.7
+        # image: mysql:8.0.20
         volumes:
             - rdb-data:/var/lib/mysql
         networks:
@@ -24,7 +24,7 @@ services:
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - TZ=Asia/Seoul
-        command: --default-authentication-plugin=mysql_native_password
+        # command: --default-authentication-plugin=mysql_native_password
         # image: "postgres:9.6"
         # volumes:
         #     - rdb-data:/var/lib/postgresql/data

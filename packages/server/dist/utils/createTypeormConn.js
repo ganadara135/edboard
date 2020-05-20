@@ -17,25 +17,25 @@ exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* ()
     console.log("check DATABASE_URL : ", process.env.DATABASE_URL);
     return process.env.NODE_ENV === "production"
         ? typeorm_1.createConnection({
-            type: 'postgres',
+            type: 'mariadb',
             host: 'rdb',
-            username: 'postgres',
-            password: 'postgres',
-            database: 'graphql-ts-server-boilerplate',
+            username: process.env.MYSQL_USER,
+            password: process.env.MYSQL_PASSWORD,
+            database: process.env.MYSQL_DATABASE,
             synchronize: true,
             logging: true,
-            entities: [User_1.User, Listing_1.Listing],
+            entities: [Listing_1.Listing, User_1.User],
             name: "default"
         })
         : typeorm_1.createConnection({
-            type: 'postgres',
+            type: 'mariadb',
             host: 'rdb',
-            username: 'postgres',
-            password: 'postgres',
-            database: 'graphql-ts-server-boilerplate',
+            username: process.env.MYSQL_USER,
+            password: process.env.MYSQL_PASSWORD,
+            database: process.env.MYSQL_DATABASE,
             synchronize: true,
             logging: true,
-            entities: [User_1.User, Listing_1.Listing],
+            entities: [Listing_1.Listing, User_1.User],
             name: "default"
         });
 });

@@ -5,13 +5,14 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  // Generated,
 } from "typeorm";
 import { User } from "./User";
 
 
 @Entity("listings")
 export class Listing extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid") id: string;
+  @PrimaryGeneratedColumn("uuid") id!: string;
 
   @Column("varchar", { length: 100 })
   name: string;
@@ -34,10 +35,20 @@ export class Listing extends BaseEntity {
 
   @Column("double precision") longitude: number;
 
-  @Column("text", { array: true})
+  // @Column("text", { array: true, nullable: true})
+  @Column("text", { nullable: true})
   amenities: string[];
 
-  @Column("uuid") userId: string;
+  // Only for postgres,  uuid type
+  @Column("uuid") userId: string;   // 작동하네??   in Mariadb
+
+  // For MySQL/MariaDB
+  // @Column()
+  // @Generated("uuid")
+  // userId: string;
+
+  // @Column("char", { length: 10, nullable: true })
+  // userId!: string;
 
   @ManyToOne(() => User, user => user.listings)
   @JoinColumn({ name: "userId" })

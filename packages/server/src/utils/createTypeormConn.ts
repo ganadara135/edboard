@@ -13,27 +13,28 @@ export const createTypeormConn = async () => {
    ? createConnection({
       // ...connectionOptions,
       // url: process.env.DATABASE_URL,
-      type: 'postgres',
+
+      type: 'mariadb',
       host: 'rdb',
-      username: 'postgres',
-      password: 'postgres',
-      database: 'graphql-ts-server-boilerplate',
+      username: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
       synchronize: true,      // 중요
       logging: true,
-      entities: [User, Listing],
+      entities: [ Listing, User],
       name: "default"
     } as any)
     // Docker 안에서 Development 버전도 돌려야하므로 직접 적어줌, ormconfig.json  안 통함
     : createConnection({
       // ...connectionOptions}
-      type: 'postgres',
+      type: 'mariadb',
       host: 'rdb',
-      username: 'postgres',
-      password: 'postgres',
-      database: 'graphql-ts-server-boilerplate',
+      username: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
       synchronize: true,      // 중요
       logging: true,
       // url: process.env.DATABASE_URL,
-      entities: [User, Listing],
+      entities: [Listing, User],
       name: "default"} as any);
 }  

@@ -54,7 +54,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Listing.prototype, "longitude", void 0);
 __decorate([
-    typeorm_1.Column("text", { array: true }),
+    typeorm_1.Column("text", { nullable: true }),
     __metadata("design:type", Array)
 ], Listing.prototype, "amenities", void 0);
 __decorate([

@@ -1,7 +1,7 @@
 # 실행 방법
    ## 로컬 환경
    1. 실행환경파일 설정
-      1.1  .env.dev   파일을 루트 폴더에 .env 로 저장
+      1.1  .env.local   파일을 루트 폴더에 .env 로 저장
    2.  ./startLocalServer.sh  실행
    3.  ./startWebServer.sh    실행 
    ## 실행 환경(세종대)
@@ -10,7 +10,15 @@
    2. ./dockerCompose/for-real-machine.yml 를  루트 폴더로 이동(.env 와 같은 위치에 놓음)
    3. sudo docker-compose -f for-real-machine.yml up -d
 
-
+# 사용 포트 정리
+1. backend
+   80 : nginx 용
+   4000 : graphQL
+   587 : SMTP
+   3306 : mariadb
+   6379 : redis
+2. frontend
+   80 : nginx 용
 
 ## 개인 메모
 

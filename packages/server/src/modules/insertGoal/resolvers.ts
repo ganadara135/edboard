@@ -8,26 +8,37 @@ import { ResolverMap } from "../../types/graphql-utils";
 // // import { createConfirmEmailLink } from "./createConfirmEmailLink";
 // import { sendEmail } from "../../utils/sendEmail";
 import { EDboard } from "../../entity/EDboard";
+import { YearGoal } from "../../entity/YearGoal";
+
 
 export const resolvers: ResolverMap = {
   Mutation: {
     insertGoal: async ( 
       parent,
       args,
-      context,
-      info
+      _,      // context,
+      // info
 
     ) => {
       console.log("call inserGoal() hot reloading test")
       // EDboard.
       console.log("EDboard: ", EDboard.name)
+      console.log("YearGoal: ", YearGoal.name)
       console.log('parent: ', parent)
+      
       console.log('args: ', args)
-      console.log('context: ', context)
-  
-      console.log('info: ', info)
+
+      // console.log('context: ', context)
+      
+
+
+      // console.log('info: ', info )
+      const { name, description } = args;
+
+      console.log(name, description )
       
       return null
+
     }
       // _,
     //   // args: GQL.IRegisterOnMutationArguments,

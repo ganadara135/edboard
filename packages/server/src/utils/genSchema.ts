@@ -10,9 +10,14 @@ export const genSchema = () => {
     .sync(`${pathToModules}/**/*.graphql`)
     .map(x => fs.readFileSync(x, { encoding: "utf8" }));
 
+  
   const resolvers = glob
     .sync(`${pathToModules}/**/resolvers.?s`)
     .map(resolver => require(resolver).resolvers);
+
+  console.log("graphqlTypes:", graphqlTypes)
+  console.log("resolvers : ", resolvers);
+  
 
   return makeExecutableSchema({
     typeDefs: mergeTypes(graphqlTypes),

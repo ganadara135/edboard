@@ -28,6 +28,7 @@ RUN yarn install --$NODE_ENV
 # COPY ./packages/server/.env.development ./packages/server/.env
 
 
+
 # COPY ./packages/common/dist/ ./packages/common/dist/
 # COPY ./packages/controller/dist/ ./packages/controller/dist/
 # COPY ./packages/server/dist/ ./packages/server/dist/

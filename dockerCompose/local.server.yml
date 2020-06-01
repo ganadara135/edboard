@@ -54,10 +54,11 @@ services:
             - PORT=${PORT}
             - NODE_ENV=${NODE_ENV}
             # - WAIT_HOSTS=rdb:5432     # postgres
-            - WAIT_HOSTS=rdb:3306       # mysql
+            - WAIT_HOSTS=rdb:3306       # mysql     # wait program 설정
             - WAIT_HOSTS_TIMEOUT=300
             - WAIT_SLEEP_INTERVAL=30
             - WAIT_HOSTS_CONNECT_TIMEOUT=30
+            
             - MYSQL_USER=${MYSQL_USER}          # .env 파일과 server 파일의 위치가 달라서 직접 넣어줌()
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - MYSQL_DATABASE=${MYSQL_DATABASE}

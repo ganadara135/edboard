@@ -1,5 +1,32 @@
-
-
 type Mutation {
-  insertGoal(name: String!, description: String!): [Error!]
+  insertGoal(
+    name: String, 
+    description: String,
+    yearGoal: [YearGoalInput],
+  ): [Error!]
 }
+
+input YearGoalInput {
+  goal: String!,
+  description: String
+}
+
+
+  # ymmns: YearToMonthMN,
+# }
+
+# type YearGoal {
+#   goal: String!,
+#   description: String,
+#   ymmns: [YearToMonthMN],
+# }
+
+# type YearToMonthMN {
+#   description: String,
+# }
+
+# type MonthGoal {
+#   month: String!,
+#   goal: String!,
+#   ymmns: [YearToMonthMN]
+# }

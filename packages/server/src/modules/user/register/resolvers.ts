@@ -21,6 +21,7 @@ export const resolvers: ResolverMap = {
       } catch (err) {
         return formatYupError(err);
       }
+      
 
       const { email, password } = args;
       console.log("test 222222")

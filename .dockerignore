@@ -1,4 +1,6 @@
 X*
+X.*
+X_*
 testnodemailer/
 app/
 dockerCompose/

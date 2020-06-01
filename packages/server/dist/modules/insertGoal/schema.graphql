@@ -1,0 +1,5 @@
+
+
+type Mutation {
+  insertGoal(name: String!, description: String!): [Error!]
+}

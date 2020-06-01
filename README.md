@@ -3,7 +3,7 @@
    1. 실행환경파일 설정
       1.1  .env.local   파일을 루트 폴더에 .env 로 저장
    2.  ./startLocalServer.sh  실행
-   3.  ./startWebServer.sh    실행 
+   3.  ./startLocalWeb.sh    실행 
    ## 실행 환경(세종대)
    1. 실행환경파일 설정
       1.1  .env.prod  파일을 루트 폴더에 .env 로 저장
@@ -53,7 +53,7 @@
       docker run -p 80:4000 --net host -d --name abb ganadara135/abb node dist/index.js
    5.2. docker 컨테이너 디버깅 <br>
       => docker commit 298b7344f067a => broken_container <br>
-      => docker run -it broken_container /bin/bash <br>
+      => docker run -it broken_container /bin/bash  or /bin/sh <br>
       => node dist/index.js <br>
 6. docker push on dockerhub
    docker tag local-image:tagname new-repo:tagname

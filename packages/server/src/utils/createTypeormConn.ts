@@ -2,6 +2,10 @@
 import { createConnection } from "typeorm";
 import { User } from "../entity/User";
 import { Listing } from "../entity/Listing";
+import { EDboard } from "../entity/EDboard";
+import { YearGoal } from "../entity/YearGoal";
+import { YearToMonthMN } from "../entity/YearToMonthMN";
+import { MonthGoal } from "../entity/MonthGoal";
 
 export const createTypeormConn = async () => {
   console.log("check DB NODE_ENV : ", process.env.NODE_ENV)
@@ -29,7 +33,7 @@ export const createTypeormConn = async () => {
 
       synchronize: true,      // 중요
       logging: true,
-      entities: [ Listing, User],
+      entities: [Listing, User, EDboard, YearGoal, YearToMonthMN, MonthGoal],
       name: "default"
     } as any)
     // Docker 안에서 Development 버전도 돌려야하므로 직접 적어줌, ormconfig.json  안 통함
@@ -43,6 +47,6 @@ export const createTypeormConn = async () => {
       synchronize: true,      // 중요
       logging: true,
       // url: process.env.DATABASE_URL,
-      entities: [Listing, User],
+      entities: [Listing, User, EDboard, YearGoal, YearToMonthMN, MonthGoal],
       name: "default"} as any);
 }  

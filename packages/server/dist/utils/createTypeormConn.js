@@ -12,6 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const User_1 = require("../entity/User");
 const Listing_1 = require("../entity/Listing");
+const EDboard_1 = require("../entity/EDboard");
+const YearGoal_1 = require("../entity/YearGoal");
+const YearToMonthMN_1 = require("../entity/YearToMonthMN");
+const MonthGoal_1 = require("../entity/MonthGoal");
 exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log("check DB NODE_ENV : ", process.env.NODE_ENV);
     console.log("check DATABASE_URL : ", process.env.DATABASE_URL);
@@ -27,7 +31,7 @@ exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* ()
             database: 'database',
             synchronize: true,
             logging: true,
-            entities: [Listing_1.Listing, User_1.User],
+            entities: [Listing_1.Listing, User_1.User, EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],
             name: "default"
         })
         : typeorm_1.createConnection({
@@ -38,7 +42,7 @@ exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* ()
             database: process.env.MYSQL_DATABASE,
             synchronize: true,
             logging: true,
-            entities: [Listing_1.Listing, User_1.User],
+            entities: [Listing_1.Listing, User_1.User, EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],
             name: "default"
         });
 });

@@ -13,20 +13,27 @@ WORKDIR /abb
 # # RUN npm i -g yarn 999   # node 13 버전은 yarn 사전 탑재됨
 # RUN yarn install
 
-# COPY ./ ./
-COPY ./package.json ./
-COPY ./packages/server/package.json ./packages/server/
-COPY ./packages/common/package.json ./packages/common/
-COPY ./packages/controller/package.json ./packages/controller/
+COPY ./ ./
+# COPY ./package.json ./
+# COPY ./packages/server/package.json ./packages/server/
+# COPY ./packages/common/package.json ./packages/common/
+# COPY ./packages/controller/package.json ./packages/controller/
+
+## 내 로컬 PC 의 설치 파일들을 리눅스 alpine 로 맞춰줌 
 ARG NODE_ENV
 RUN yarn install --$NODE_ENV
 
 # .env 파일은 copy 안됨
 # COPY ./.env.local ./.env
 # COPY ./packages/server/.env.development ./packages/server/.env
-COPY ./packages/common/dist/ ./packages/common/dist/
-COPY ./packages/server/dist/ ./packages/server/dist/
-COPY ./packages/controller/dist/ ./packages/controller/dist/
+
+
+# COPY ./packages/common/dist/ ./packages/common/dist/
+# COPY ./packages/controller/dist/ ./packages/controller/dist/
+# COPY ./packages/server/dist/ ./packages/server/dist/
+
+
+
 # .env 파일은 copy 안됨
 # COPY ./packages/server/.env.development ./packages/server/.env
 # COPY ./packages/server/.env.example ./packages/server/
@@ -40,11 +47,12 @@ COPY ./packages/controller/dist/ ./packages/controller/dist/
 # COPY ./ormconfig.json ./
 
 
+
 ENV WAIT_VERSION 2.7.2
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
 RUN chmod +x /wait
 
 # 컨테이너 위치 변경
-# WORKDIR /app/packages/server/
+WORKDIR /abb/packages/server/
 
 

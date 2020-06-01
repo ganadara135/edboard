@@ -9,12 +9,15 @@ import { TextPage } from "../modules/TestPage";
 import { AuthRoute } from "@abb/controller";
 import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
 import { DemoDelete } from "../modules/listing/delete/DemoDelete";
+import { InsertDataConnector } from "../modules/InsertData/InsertDataConnector";
+
 
 export const Routes = () => (
     <BrowserRouter>
         <Switch>
         {/* <div> <h1>Hello</h1></div>; */}
-            {/* <Route   path="/" componet={<div><h1 color="blue">Hello</h1></div>} /> */}
+            <Route   path="/"  component={InsertDataConnector} />
+            {/* // componet={<div><h1 >Hello</h1></div>} /> */}
             <Route exact={true} path="/register" component={RegisterConnector} />
             <Route exact={true} path="/login" component={LoginConnector} />
             <Route exact={true} path="/forgot-password" component={ForgotPasswordConnector} />

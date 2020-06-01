@@ -58,6 +58,9 @@ services:
             - WAIT_HOSTS_TIMEOUT=300
             - WAIT_SLEEP_INTERVAL=30
             - WAIT_HOSTS_CONNECT_TIMEOUT=30
+            - MYSQL_USER=${MYSQL_USER}          # .env 파일과 server 파일의 위치가 달라서 직접 넣어줌()
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
         depends_on:
             - redis
             - rdb
@@ -67,7 +70,8 @@ services:
             - /bin/sh
             - -c 
             # - "/wait && exec ls ./packages/server/dist     # 2개 이상은 안됨
-            - "/wait && node ./packages/server/dist/index.js"      
+            - "/wait && yarn start"                        # 내부에 yarn 설치 안돼있음
+            # - "/wait && nodemon --exec ts-node --files=true src/index.ts"
             # - sh -c "/wait "
             # && node ./packages/server/dist/index.js"
     

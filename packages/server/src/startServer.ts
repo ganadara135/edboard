@@ -55,6 +55,7 @@ export const startServer = async () => {
       session: req.session,
       req
     }),
+    playground: true
     // playground: {
     //   endpoint: '/dev/graphql'
     // }
@@ -73,7 +74,7 @@ export const startServer = async () => {
   app.use(
     new RateLimit({
       store: new RateLimitRedisStore({
-        client: redis
+        client: redis as any
       }),
       windowMs: 15 * 60 * 1000, // 15 minutes
       max: 100, // limit each IP to 100 requests per windowMs
@@ -81,6 +82,7 @@ export const startServer = async () => {
     })
   );
 
+  
   app.use(
     session({
       store: new RedisStore({

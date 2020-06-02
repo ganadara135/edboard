@@ -19,8 +19,8 @@
 !./.env.prod
 
 # for development
-!./packages
-!./node_modules
+!./packages/
+!./node_modules/
 !./.env
 !./tslint.json
 !./yarn.lock

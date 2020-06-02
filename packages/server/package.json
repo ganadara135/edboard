@@ -23,11 +23,11 @@
     "@types/yup": "^0.26.36",
     "copyfiles": "^2.2.0",
     "gql2ts": "^1.10.1",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.4",
     "rimraf": "^3.0.2",
     "ts-jest": "^25.3.1",
-    "ts-node": "8.8.2",
-    "tslint": "^6.1.1",
+    "ts-node": "8.10.2",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.15.0",
     "typescript": "~3.6.3"
   },
@@ -65,8 +65,9 @@
     "yup": "^0.28.3"
   },
   "scripts": {
-    "start": "NODE_ENV=development nodemon --exec ts-node --files=true src/index.ts",
+    "start_test": "NODE_ENV=development nodemon --exec ts-node file=true src/index.ts",
     "start_old": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "start": "NODE_ENV=development nodemon",
     "test": "NODE_ENV=test jest --watch",
     "build": "rimraf ./dist && tsc && copyfiles -u 1 src/**/*.graphql dist",
     "gen-schema-types": "ts-node src/scripts/createTypes.ts",

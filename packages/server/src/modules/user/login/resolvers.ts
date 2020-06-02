@@ -22,7 +22,7 @@ export const resolvers: ResolverMap = {
   Mutation: {
     login: async (
       _,
-      { email, password }: GQL.ILoginOnMutationArguments,
+      { email, password }, // : GQL.ILoginOnMutationArguments,
       { session, redis, req }
     ) => {
       const user = await User.findOne({ where: { email } });

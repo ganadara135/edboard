@@ -10,12 +10,13 @@ import { sendEmail } from "../../../utils/sendEmail";
 
 export const resolvers: ResolverMap = {
   Mutation: {
+    
     register: async (
       _,
-      args: GQL.IRegisterOnMutationArguments,
+      args, // : GQL.IRegisterOnMutationArguments,
       { redis, url }
     ) => {
-      console.log("test 11111")
+      // console.log("test 11111")
       try {
         await validUserSchema.validate(args, { abortEarly: false });
       } catch (err) {
@@ -24,13 +25,13 @@ export const resolvers: ResolverMap = {
       
 
       const { email, password } = args;
-      console.log("test 222222")
+      // console.log("test 222222")
       console.log("email : ", email)
       const userAlreadyExists = await User.findOne({
         where: { email },
         select: ["id"]
       });
-      console.log("test 33333")
+      // console.log("test 33333")
       if (userAlreadyExists) {
         return [
           {

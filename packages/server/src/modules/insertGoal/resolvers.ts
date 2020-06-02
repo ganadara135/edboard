@@ -24,9 +24,9 @@ export const resolvers: ResolverMap = {
       // EDboard.
       console.log("EDboard: ", EDboard.name)
       console.log("YearGoal: ", YearGoal.name)
-      console.log('parent: ', parent)
-      
-      console.log('args: ', args)
+      console.log('parent: ', parent)   
+         
+      console.log('aaa rgs: ', args)
 
       // console.log('context: ', context)
       

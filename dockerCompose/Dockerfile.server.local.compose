@@ -4,49 +4,27 @@ FROM node:12-alpine
 # this is a container directory
 WORKDIR /abb
 
-
-#Copy the dependencies file
-# COPY ./package.json ./
-# COPY ./packages/server/package.json ./packages/server/
-# COPY ./packages/common/package.json ./packages/common/
-
-# # RUN npm i -g yarn 999   # node 13 버전은 yarn 사전 탑재됨
-# RUN yarn install
-
-COPY ./ ./
+# 이것은 dockerignore 영향 안 받음 # docker-compose 에서 Volume 연결
+COPY ./ ./   
 # COPY ./package.json ./
 # COPY ./packages/server/package.json ./packages/server/
 # COPY ./packages/common/package.json ./packages/common/
 # COPY ./packages/controller/package.json ./packages/controller/
+# # COPY ./packages/server/ ./packages/server/
+# # COPY ./packages/common/ ./packages/common/
+# # COPY ./packages/controller/ ./packages/controller/
+# # COPY ./db-data/ ./
+# # COPY ./.env ./
+# COPY ./packages/common/tsconfig.json ./packages/common/
+# COPY ./packages/controller/tsconfig.json ./packages/controller/
+# COPY ./packages/server/tslint.json ./packages/server/
+# COPY ./packages/server/tsconfig.json ./packages/server/
+# COPY ./tslint.json ./
+# COPY ./yarn.lock ./
 
 ## 내 로컬 PC 의 설치 파일들을 리눅스 alpine 로 맞춰줌 
 ARG NODE_ENV
-RUN yarn install --$NODE_ENV
-
-# .env 파일은 copy 안됨
-# COPY ./.env.local ./.env
-# COPY ./packages/server/.env.development ./packages/server/.env
-
-
-
-# COPY ./packages/common/dist/ ./packages/common/dist/
-# COPY ./packages/controller/dist/ ./packages/controller/dist/
-# COPY ./packages/server/dist/ ./packages/server/dist/
-
-
-
-# .env 파일은 copy 안됨
-# COPY ./packages/server/.env.development ./packages/server/.env
-# COPY ./packages/server/.env.example ./packages/server/
-
-# RUN ls -a
-# RUN ls -a ./packages/server/
-
-
-
-# TypeORM 설정 관련 
-# COPY ./ormconfig.json ./
-
+RUN yarn install
 
 
 ENV WAIT_VERSION 2.7.2
@@ -55,5 +33,3 @@ RUN chmod +x /wait
 
 # 컨테이너 위치 변경
 WORKDIR /abb/packages/server/
-
-

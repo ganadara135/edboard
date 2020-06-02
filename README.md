@@ -10,6 +10,9 @@
    2. ./dockerCompose/for-real-machine.yml 를  루트 폴더로 이동(.env 와 같은 위치에 놓음)
    3. sudo docker-compose -f for-real-machine.yml up -d
 
+# 개발환경 설정
+   1. tslint 설정확인
+
 # 사용 포트 정리
 1. backend
    80 : nginx 용

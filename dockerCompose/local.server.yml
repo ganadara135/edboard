@@ -42,7 +42,7 @@ services:
             dockerfile: ./dockerCompose/Dockerfile.server.local.compose
             args: 
                 - "NODE_ENV=${NODE_ENV}"
-        image: kcod/abbback:latest
+        image: kcod/edbackend:latest
         ports:
             - ${PORT}:${PORT}
         networks:

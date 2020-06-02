@@ -15,9 +15,8 @@ export const genSchema = () => {
     .sync(`${pathToModules}/**/resolvers.?s`)
     .map(resolver => require(resolver).resolvers);
 
-  console.log("graphqlTypes:", graphqlTypes)
-  console.log("resolvers : ", resolvers);
-  
+  // console.log("graphqlTypes:", graphqlTypes)
+  // console.log("resolvers : ", resolvers);
 
   return makeExecutableSchema({
     typeDefs: mergeTypes(graphqlTypes),

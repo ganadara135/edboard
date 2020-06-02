@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 require("dotenv/config");
 const apollo_server_express_1 = require("apollo-server-express");
-const express = require('express');
+const cors = require("cors");
+const express = require("express");
 const session = require("express-session");
 const connectRedis = require("connect-redis");
 const RateLimit = require("express-rate-limit");
@@ -30,16 +31,28 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
         yield redis_1.redis.flushall();
     }
     const app = express();
+    const corsOptions = {
+        origin: process.env.FRONTEND_HOST,
+        credentials: true
+    };
+    app.use(cors(corsOptions));
     const server = new apollo_server_express_1.ApolloServer({
         schema: genSchema_1.genSchema(),
-        context: ({ req }) => ({
-            redis: redis_1.redis,
-            url: req.protocol + "://" + req.get("host"),
-            session: req.session,
-            req
-        })
+        context: ({ req }) => __awaiter(void 0, void 0, void 0, function* () {
+            return ({
+                redis: redis_1.redis,
+                url: req.protocol + "://" + req.get("host"),
+                session: req.session,
+                req
+            });
+        }),
+        playground: true
     });
-    server.applyMiddleware({ app });
+    server.applyMiddleware({
+        app,
+        path: '/',
+        cors: false,
+    });
     app.use(new RateLimit({
         store: new RateLimitRedisStore({
             client: redis_1.redis
@@ -63,13 +76,6 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
             maxAge: 1000 * 60 * 60 * 24 * 7
         }
     }));
-    const cors = {
-        credentials: true,
-        origin: process.env.NODE_ENV === "test"
-            ? "*"
-            : process.env.FRONTEND_HOST
-    };
-    console.log("FRONTEND_HOST: ", process.env.FRONTEND_HOST);
     app.get("/confirm/:id", confirmEmail_1.confirmEmail);
     if (process.env.NODE_ENV === "test") {
         yield createTestConn_1.createTestConn(true);
@@ -80,9 +86,9 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     }
     const port = process.env.PORT || 4000;
     const app2 = yield app.listen({
-        cors,
         port: process.env.NODE_ENV === "test" ? 0 : port
     });
+    console.log("FRONTEND_HOST: ", process.env.FRONTEND_HOST);
     console.log("Server is running on localhost:" + port);
     return app2;
 });

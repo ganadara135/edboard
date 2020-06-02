@@ -1,6 +1,7 @@
 type LoginResponse {
   errors: [Error!]
-  sessionId: String
+  sessionId: String,
+  
 }
 
 type Mutation {

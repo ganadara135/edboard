@@ -3,9 +3,8 @@ import "dotenv/config";
 // import { GraphQLServer } from "graphql-yoga";
 import { ApolloServer } from "apollo-server-express";
 // import {graphiqlExpress, graphqlExpress} from 'apollo-server-express';
-// import express from 'express';
-// tslint:disable-next-line: no-var-requires
-const express = require('express');
+import * as cors from 'cors';
+import * as express from "express";
 // const bodyParser = require('body-parser');
 import * as session from "express-session";
 import * as connectRedis from "connect-redis";
@@ -19,6 +18,7 @@ import { confirmEmail } from "./routes/confirmEmail";
 import { genSchema } from "./utils/genSchema";
 import { redisSessionPrefix } from "./constants";
 import { createTestConn } from "./testUtils/createTestConn";
+// import { graphql } from "graphql";
 // import { Middleware } from "./middleware";
 // import { MiddlewareShield } from "./middlewareShield";
 
@@ -38,33 +38,37 @@ export const startServer = async () => {
   const app = express();
   // app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: myGraphQLSchema }));
 
-  // const server = new GraphQLServer({
+  const corsOptions = {
+		origin: process.env.FRONTEND_HOST,
+		credentials: true
+	};
+
+	app.use(cors(corsOptions));
 
   const server = new ApolloServer({
     schema: genSchema() as any,
 
-    context: ( {req} ) => ({
+    context: async ( {req} ) => ({
       redis,
-      // 10.0.2.2   
+      // 10.0.2.2   for android
       url: req.protocol + "://" + req.get("host"),
       session: req.session,
       req
-    })
+    }),
+    // playground: {
+    //   endpoint: '/dev/graphql'
+    // }
     // typeDefs,
     // resolvers,
+
   });
   
-  server.applyMiddleware({ app });
-  //   schema: genSchema() as any,
-  //   // schema,
-  //   context: ({ request }) => ({
-  //     redis,
-  //     // 10.0.2.2   
-  //     url: request.protocol + "://" + request.get("host"),
-  //     session: request.session,
-  //     req: request
-  //   })
-  // });
+  server.applyMiddleware({ 
+    app,
+    path: '/',
+    cors: false, // disables the apollo-server-express cors to allow the cors middleware use
+  });
+
 
   app.use(
     new RateLimit({
@@ -95,14 +99,6 @@ export const startServer = async () => {
     } as any)
   );
 
-  const cors = {
-    credentials: true,
-    origin:
-      process.env.NODE_ENV === "test"
-        ? "*"
-        : (process.env.FRONTEND_HOST as string)
-  };
-
  app.get("/confirm/:id", confirmEmail);
 
   if (process.env.NODE_ENV === "test") {
@@ -118,9 +114,10 @@ export const startServer = async () => {
 
   const port = process.env.PORT || 4000;
   const app2 = await app.listen({ // .start({
-    cors,
+    // cors,
     port: process.env.NODE_ENV === "test" ? 0 : port
   });
+  console.log("FRONTEND_HOST: ", process.env.FRONTEND_HOST)
   console.log("Server is running on localhost:"+port);
 
   return app2;

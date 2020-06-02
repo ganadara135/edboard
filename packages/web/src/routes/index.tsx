@@ -16,7 +16,7 @@ export const Routes = () => (
     <BrowserRouter>
         <Switch>
         {/* <div> <h1>Hello</h1></div>; */}
-            <Route   path="/"  component={InsertDataConnector} />
+            <Route exact={true} path="/"  component={InsertDataConnector} />
             {/* // componet={<div><h1 >Hello</h1></div>} /> */}
             <Route exact={true} path="/register" component={RegisterConnector} />
             <Route exact={true} path="/login" component={LoginConnector} />

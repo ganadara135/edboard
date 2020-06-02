@@ -10,15 +10,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const EDboard_1 = require("../../entity/EDboard");
+const YearGoal_1 = require("../../entity/YearGoal");
 exports.resolvers = {
     Mutation: {
-        insertGoal: (parent, args, context, info) => __awaiter(void 0, void 0, void 0, function* () {
-            console.log("call inserGoal()");
+        insertGoal: (parent, args, _) => __awaiter(void 0, void 0, void 0, function* () {
+            console.log("call inserGoal() hot reloading test");
             console.log("EDboard: ", EDboard_1.EDboard.name);
+            console.log("YearGoal: ", YearGoal_1.YearGoal.name);
             console.log('parent: ', parent);
             console.log('args: ', args);
-            console.log('context: ', context);
-            console.log('info: ', info);
+            const { name, description } = args;
+            console.log(name, description);
             return null;
         })
     }

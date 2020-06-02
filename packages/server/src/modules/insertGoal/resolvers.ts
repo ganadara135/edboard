@@ -9,83 +9,61 @@ import { ResolverMap } from "../../types/graphql-utils";
 // import { sendEmail } from "../../utils/sendEmail";
 import { EDboard } from "../../entity/EDboard";
 import { YearGoal } from "../../entity/YearGoal";
+import { MonthGoal } from "../../entity/MonthGoal";
+// import { Query } from "typeorm/driver/Query";
+/// <reference path="../../types/schema.d.ts />
+// import * as GQL from "schema.d.ts"    // "../../types/schema";
 
 
 export const resolvers: ResolverMap = {
   Mutation: {
     insertGoal: async ( 
       parent,
-      args,
+      args,    // { name, description }  : IInsertGoalOnMutationArguments,
       _,      // context,
       // info
 
     ) => {
-      console.log("call inserGoal() hot reloading test")
+      console.log("call insertGoal() hot reloading test")
       // EDboard.
       console.log("EDboard: ", EDboard.name)
       console.log("YearGoal: ", YearGoal.name)
       console.log('parent: ', parent)   
-         
-      console.log('aaa rgs: ', args)
-
       // console.log('context: ', context)
       
-
-
       // console.log('info: ', info )
-      const { name, description } = args;
+      const { name, description, yearGoal } = args;
+      console.log(name, description, yearGoal )
 
-      console.log(name, description )
-      
-      return null
+      const edboard = EDboard.create({
+        name,
+        description,
+        // confirmed: true,
+      });
+      await edboard.save();
+
+      return null;
 
     }
-      // _,
-    //   // args: GQL.IRegisterOnMutationArguments,
-    //   // { redis, url }
-    // ) => {
-    //   console.log("test 11111")
-    //   try {
-    //     await validUserSchema.validate(args, { abortEarly: false });
-    //   } catch (err) {
-    //     return formatYupError(err);
-    //   }
-
-    //   const { email, password } = args;
-    //   console.log("test 222222")
-    //   console.log("email : ", email)
-    //   const userAlreadyExists = await User.findOne({
-    //     where: { email },
-    //     select: ["id"]
-    //   });
-    //   console.log("test 33333")
-    //   if (userAlreadyExists) {
-    //     return [
-    //       {
-    //         path: "email",
-    //         message: duplicateEmail
-    //       }
-    //     ];
-    //   }
-
-    //   const user = User.create({
-    //     email,
-    //     password,
-    //     // confirmed: true,
-    //   });
-
-    //   await user.save();
-
-    //   if (process.env.NODE_ENV !== "test") {
-    //     await sendEmail(
-    //       email,
-    //       "remove this part",
-    //       // await createConfirmEmailLink(url, user.id, redis),
-    //       "confirm email"
-    //     );
-    //   }
-
-      // return null;
-    // }
+  },
+  
+  Query: {
+    edboardQuery: async () => {
+      // EDboard.find();
+      const returnVal = await EDboard.find();
+      console.log("chk : ", returnVal)
+      return returnVal;
+    },
+    yeargoalQuery: async () => {
+      const returnVal = await YearGoal.find();
+      console.log("chk : ", returnVal)
+      return returnVal;
+    },
+    monthgoalQuery: async () => {
+      const returnVal = await MonthGoal.find();
+      console.log("chk : ", returnVal)
+      return returnVal;
+    }
   }
+  
 };

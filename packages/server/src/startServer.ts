@@ -2,7 +2,6 @@ import "reflect-metadata";
 import "dotenv/config";
 // import { GraphQLServer } from "graphql-yoga";
 import { ApolloServer } from "apollo-server-express";
-// import {graphiqlExpress, graphqlExpress} from 'apollo-server-express';
 import * as cors from 'cors';
 import * as express from "express";
 // const bodyParser = require('body-parser');

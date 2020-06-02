@@ -1,3 +1,8 @@
+# 차후 진행 사항
+  1. graphql-typescript-definitions  본  npm 모듈로, genSchema() 대체 함
+     기존 건 암묵적으로 namespaces를 가져오는 방식이라서 현재 Typescript 와 안 맞는 거 같음
+     export 를 자동으로 생성해 주는 최신 버전으로 교체 
+
 # 실행 방법
    ## 로컬 환경
    1. 실행환경파일 설정

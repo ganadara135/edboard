@@ -20,7 +20,7 @@ export class EDboard extends BaseEntity {
   description: string;
 
   @OneToMany(_type => YearGoal, yeargoal => yeargoal.edboard)
-  yeargoals!: YearGoal[];
+  yeargoals: YearGoal[];
 
   // @BeforeInsert()
   // async hashPasswordBeforeInsert() {

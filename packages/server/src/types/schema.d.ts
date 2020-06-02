@@ -22,16 +22,23 @@ column: number;
 
 interface IQuery {
 __typename: "Query";
-dummy2: string | null;
-bye2: string | null;
-dummy: string | null;
+findListings: Array<IListing>;
 me: IUser | null;
-bye: string | null;
-hello: string;
 }
 
-interface IHelloOnQueryArguments {
-name?: string | null;
+interface IListing {
+__typename: "Listing";
+id: string;
+name: string;
+category: string;
+description: string;
+price: number;
+beds: number;
+quests: number;
+latitude: number;
+longitude: number;
+amenities: Array<string>;
+pictureUrl: string;
 }
 
 interface IUser {
@@ -42,11 +49,28 @@ email: string;
 
 interface IMutation {
 __typename: "Mutation";
+insertGoal: Array<IError> | null;
+createListing: boolean;
+deleteListing: boolean;
 sendForgotPasswordEmail: boolean | null;
-forgotPasswordChange: Array<IError>;
-login: Array<IError>;
+forgotPasswordChange: Array<IError> | null;
+login: ILoginResponse;
 logout: boolean | null;
-register: Array<IError>;
+register: Array<IError> | null;
+}
+
+interface IInsertGoalOnMutationArguments {
+name?: string | null;
+description?: string | null;
+yearGoal?: Array<IYearGoalInput | null> | null;
+}
+
+interface ICreateListingOnMutationArguments {
+input: ICreateListingInput;
+}
+
+interface IDeleteListingOnMutationArguments {
+id: string;
 }
 
 interface ISendForgotPasswordEmailOnMutationArguments {
@@ -68,10 +92,33 @@ email: string;
 password: string;
 }
 
+interface IYearGoalInput {
+goal: string;
+description?: string | null;
+}
+
 interface IError {
 __typename: "Error";
 path: string;
 message: string;
+}
+
+interface ICreateListingInput {
+name: string;
+category: string;
+description: string;
+price: number;
+beds: number;
+guests: number;
+latitude: number;
+longitude: number;
+amenities: Array<string>;
+}
+
+interface ILoginResponse {
+__typename: "LoginResponse";
+errors: Array<IError> | null;
+sessionId: string | null;
 }
 }
 

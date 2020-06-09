@@ -1,0 +1,91 @@
+type Mutation {
+  insertGoal(name: String, description: String, yearGoal: [YearGoalInput]): [Error!]
+  createListing(input: CreateListingInput!): Boolean!
+  deleteListing(id: String!): Boolean!
+  sendForgotPasswordEmail(email: String!): Boolean
+  forgotPasswordChange(newPassword: String!, key: String!): [Error!]
+  login(email: String!, password: String!): LoginResponse!
+  logout: Boolean
+  register(email: String!, password: String!): [Error!]
+}
+
+input YearGoalInput {
+  goal: String!
+  description: String
+}
+
+type YearGoal {
+  id: String!
+  goal: String!
+  description: String
+  ymmns: [YearToMonthMN]
+}
+
+type YearToMonthMN {
+  ygid: YearGoal
+  mgid: MonthGoal
+  description: String
+}
+
+type MonthGoal {
+  id: String!
+  month: String!
+  goal: String!
+  ymmns: [YearToMonthMN]
+}
+
+type EDBoard {
+  id: String!
+  name: String
+  description: String
+  yeargoals: [YearGoal]
+}
+
+type Query {
+  edboardQuery: [EDBoard]
+  yeargoalQuery: [YearGoal]
+  monthgoalQuery: [MonthGoal]
+  findListings: [Listing!]!
+  me: User
+}
+
+input CreateListingInput {
+  name: String!
+  category: String!
+  description: String!
+  price: Int!
+  beds: Int!
+  guests: Int!
+  latitude: Float!
+  longitude: Float!
+  amenities: [String!]!
+}
+
+type Listing {
+  id: ID!
+  name: String!
+  category: String!
+  description: String!
+  price: Int!
+  beds: Int!
+  quests: Int!
+  latitude: Float!
+  longitude: Float!
+  amenities: [String!]!
+  pictureUrl: String!
+}
+
+type LoginResponse {
+  errors: [Error!]
+  sessionId: String
+}
+
+type Error {
+  path: String!
+  message: String!
+}
+
+type User {
+  id: ID!
+  email: String!
+}

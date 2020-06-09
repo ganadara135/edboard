@@ -12,14 +12,13 @@
         "rimraf": "^3.0.2",
         "tslint": "^6.1.1",
         "tslint-config-prettier": "^1.18.0",
-        "typescript": "~3.6.3"
+        "typescript": "^3.9.5"
     },
     "dependencies": {
         "yup": "^0.28.1"
     },
     "private": true,
     "workspaces": {
-
         "nohoist": [
             "**/yup",
             "**/yup/**",

@@ -11,39 +11,48 @@ import { EDboard } from "../../entity/EDboard";
 import { YearGoal } from "../../entity/YearGoal";
 import { MonthGoal } from "../../entity/MonthGoal";
 // import { Query } from "typeorm/driver/Query";
-/// <reference path="../../types/schema.d.ts />
-// import * as GQL from "schema.d.ts"    // "../../types/schema";
+
+import {InsertGoalMutationArgs} from "../../myTypes";
 
 
 export const resolvers: ResolverMap = {
   Mutation: {
     insertGoal: async ( 
-      parent,
-      args,    // { name, description }  : IInsertGoalOnMutationArguments,
-      _,      // context,
-      // info
+      _,// parent,
+      args : InsertGoalMutationArgs,
+      // { name, description }  : 
+      __, // context,
+      ___, // info
 
     ) => {
       console.log("call insertGoal() hot reloading test")
       // EDboard.
       console.log("EDboard: ", EDboard.name)
       console.log("YearGoal: ", YearGoal.name)
-      console.log('parent: ', parent)   
+      // console.log('parent: ', parent)   
       // console.log('context: ', context)
-      
       // console.log('info: ', info )
-      const { name, description, yearGoal } = args;
-      console.log(name, description, yearGoal )
+      const { name, description  } = args;
+      console.log(name, description) // , yearGoal )
 
+      // const edboard = EDboard.create({
+      //   name,
+      //   description
+      // } as any) // .save();
       const edboard = EDboard.create({
         name,
         description,
         // confirmed: true,
-      });
+      } as any);
+
+      console.log(edboard);
+      console.log("isArray: "+ Array.isArray(edboard))
+      // console.log(edboard.length)
+
+      
       await edboard.save();
 
       return null;
-
     }
   },
   

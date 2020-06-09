@@ -9,19 +9,20 @@ import {
 } from "typeorm";
 import { YearGoal } from "./YearGoal";
 
-@Entity("DBboard")
+@Entity("edboards")
 export class EDboard extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid") id!: string;
+  @PrimaryGeneratedColumn() id!: string;
 
   @Column("varchar", { length: 55 })
-  name: string;
+  name?: string;
 
   @Column("text") 
-  description: string;
+  description?: string;
 
   @OneToMany(_type => YearGoal, yeargoal => yeargoal.edboard)
-  yeargoals: YearGoal[];
+  yeargoals?: YearGoal[];
 
+  
   // @BeforeInsert()
   // async hashPasswordBeforeInsert() {
   //   this.password = await bcrypt.hash(this.password, 10);

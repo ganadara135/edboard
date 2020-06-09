@@ -1,3 +1,9 @@
+# 이슈 정리
+1. typeorm 의  BaseEntity.d.ts  에서  create<T>  인터페이스의 entityLikeArray 처리하는 것 비활성화 시킴 <br>
+   save() 가 작동 안되어서 조치함 <br>
+
+
+
 # graphql-ts-server-boilerplate
 
 A GraphQL Server boilerplate made with Typescript, PostgreSQL, and Redis

@@ -8,7 +8,7 @@ import { ResolverMap } from "../../types/graphql-utils";
 // // import { createConfirmEmailLink } from "./createConfirmEmailLink";
 // import { sendEmail } from "../../utils/sendEmail";
 import { EDboard } from "../../entity/EDboard";
-import { YearGoal } from "../../entity/YearGoal";
+import { YearGoal}  from "../../entity/YearGoal";
 import { MonthGoal } from "../../entity/MonthGoal";
 // import { Query } from "typeorm/driver/Query";
 
@@ -25,32 +25,52 @@ export const resolvers: ResolverMap = {
       ___, // info
 
     ) => {
-      console.log("call insertGoal() hot reloading test")
-      // EDboard.
-      console.log("EDboard: ", EDboard.name)
-      console.log("YearGoal: ", YearGoal.name)
+      // console.log("call insertGoal() hot reloading test")
+      // // EDboard.
+      // console.log("EDboard: ", EDboard.name)
+      // console.log("YearGoal: ", YearGoal.name)
       // console.log('parent: ', parent)   
       // console.log('context: ', context)
       // console.log('info: ', info )
-      const { name, description  } = args;
-      console.log(name, description) // , yearGoal )
+      const { name, description, yearGoal  } = args;
+      console.log("체크: ", name, description, yearGoal )
+      console.log('yearGoal: ', yearGoal);
+      console.log('args: ', args);
+      // console.log('yearGoal.pop(): ', yearGoal?.pop());
+      // console.log('yearGoal.pop().goal: ', yearGoal?.pop()?.goal);
+      // const goalYear = yearGoal?.pop()?.goal;
+      // const descriptionYear = yearGoal?.pop()?.description;
 
-      // const edboard = EDboard.create({
-      //   name,
-      //   description
-      // } as any) // .save();
+      const yearGoalVal = yearGoal?.pop();
+  
+
+      // console.log(yearGoalVal?.goal,  yearGoalVal?.description)
+
+      const returnVal = await YearGoal.create({
+        goal: yearGoalVal?.goal, 
+        description: yearGoalVal?.description,
+        // edboard: this
+      } as any ).save()
+
+      // tslint:disable-next-line: no-shadowed-variable
+      // const { YearGoal }: any = returnVal;
+      // console.log("YearGoal: ", YearGoal)
+      console.log("returnVal:", returnVal);
+      console.log("returnVal.goal:", returnVal.goal);
+      
+
+
       const edboard = EDboard.create({
         name,
         description,
-        // confirmed: true,
-      } as any);
+        yeargoals: returnVal
+        // yeargoals: YearGoal as YearGoal
+        // yeargoals: yearGoal // as any // as any
+      } as any) // .save();
+ // .save();
 
       console.log(edboard);
       console.log("isArray: "+ Array.isArray(edboard))
-      // console.log(edboard.length)
-
-      
-      await edboard.save();
 
       return null;
     }

@@ -27,11 +27,11 @@
     "graphql-to-typescript": "^0.1.2",
     "nodemon": "^2.0.4",
     "rimraf": "^3.0.2",
-    "ts-jest": "^25.3.1",
+    "ts-jest": "^26.1.0",
     "ts-node": "8.10.2",
     "tslint": "^6.1.2",
-    "tslint-config-prettier": "^1.15.0",
-    "typescript": "~3.6.3"
+    "tslint-config-prettier": "~1.18.0",
+    "typescript": "^3.9.5"
   },
   "dependencies": {
     "@abb/common": "1.0.0",
@@ -61,10 +61,7 @@
     "rate-limit-redis": "^1.7.0",
     "reflect-metadata": "^0.1.13",
     "request-promise": "^4.2.5",
-    "ts-jest": "^26.1.0",
-    "tslint-config-prettier": "^1.18.0",
     "typeorm": "^0.2.25",
-    "typescript": "^3.9.5",
     "uuid": "^8.1.0",
     "yup": "^0.28.3"
   },
@@ -76,6 +73,7 @@
     "build": "rimraf ./dist && tsc && copyfiles -u 1 src/**/*.graphql dist",
     "merge:types": "gql-merge --out-file ./src/schema.graphql  src/modules/**/*.graphql src/modules/**/**/*.graphql",
     "gen:schema": "graphql-to-typescript ./src/schema.graphql ./src/myTypes.d.ts",
+    "merge:gen": "yarn merge:types && yarn gen:schema",
     "X_gen-schema-types": "ts-node src/scripts/createTypes.ts",
     "migrate:gen": "npx ts-node ./node_modules/.bin/typeorm migration:generate -n ListingTable -c development"
   },

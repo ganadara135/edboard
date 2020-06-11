@@ -1,5 +1,5 @@
 type Mutation {
-  insertGoal(name: String, description: String, yearGoal: [YearGoalInput]): [Error!]
+  insertGoal(name: String, description: String, yeargoals: [YearGoalInput]): [Error!]
   createListing(input: CreateListingInput!): Boolean!
   deleteListing(id: String!): Boolean!
   sendForgotPasswordEmail(email: String!): Boolean

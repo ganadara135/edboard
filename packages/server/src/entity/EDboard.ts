@@ -19,8 +19,9 @@ export class EDboard extends BaseEntity {
   @Column("text") 
   description?: string;
 
+  // OneToMany 는 테이블에 칼럼은 생성 안 됨  
   @OneToMany(_type => YearGoal, yeargoal => yeargoal.edboard)
-  yeargoals?: YearGoal[];
+  yeargoals: YearGoal[];
 
   
   // @BeforeInsert()

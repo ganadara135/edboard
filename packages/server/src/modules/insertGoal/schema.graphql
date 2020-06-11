@@ -16,6 +16,7 @@ type YearGoal {
   goal: String!,
   description: String,
   ymmns: [YearToMonthMN],
+  edboard: EDBoard
 }
 
 type YearToMonthMN {

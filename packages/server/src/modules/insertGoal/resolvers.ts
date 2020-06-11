@@ -91,13 +91,15 @@ export const resolvers: ResolverMap = {
       // EDboard.find();
       // const returnVal = await EDboard.find();
       const returnVal = await EDboard.find({
-        relations:['yeargoals'],
+        relations:['yeargoals'], // defaults is left join
       })
-      console.log("chk : ", returnVal)
+      // console.log("chk : ", returnVal)
       return returnVal;
     },
     yeargoalQuery: async () => {
-      const returnVal = await YearGoal.find();
+      const returnVal = await YearGoal.find({
+        relations:['edboard', 'ymmns']
+      });
       console.log("chk : ", returnVal)
       return returnVal;
     },

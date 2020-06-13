@@ -84,7 +84,7 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
         const conn = yield createTypeormConn_1.createTypeormConn();
         yield conn.runMigrations();
     }
-    const port = process.env.PORT || 4000;
+    const port = process.env.SERVER_PORT || 4000;
     const app2 = yield app.listen({
         port: process.env.NODE_ENV === "test" ? 0 : port
     });

@@ -28,11 +28,11 @@ export const InputField: React.SFC<
         >
             <Comp 
                 {...field} 
-                // {...props}
+                // {...props.}
                 {...props.meta} 
                 // {...props.prefix} 
-                {...props.children} 
-                placeholder={"test"}
+                // {...props.children} 
+                placeholder={field.name}
                 onChange={
                     useNumberComponent 
                     ? (newValue: any) => setFieldValue(field.name, newValue)

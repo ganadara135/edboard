@@ -37,6 +37,19 @@ export interface SendForgotPasswordEmailMutation {
 export interface SendForgotPasswordEmailMutationVariables {
     email: string;
 }
+export interface InsertGoalMutation_insertGoal {
+    __typename: "Error";
+    path: string;
+    message: string;
+}
+export interface InsertGoalMutation {
+    insertGoal: InsertGoalMutation_insertGoal[] | null;
+}
+export interface InsertGoalMutationVariables {
+    name?: string | null;
+    description?: string | null;
+    yeargoals?: YearGoalInput | null;
+}
 export interface LoginMutation_login_errors {
     __typename: "Error";
     path: string;
@@ -65,4 +78,8 @@ export interface RegisterMutation {
 export interface RegisterMutationVariables {
     email: string;
     password: string;
+}
+export interface YearGoalInput {
+    goal: string;
+    description?: string | null;
 }

@@ -15,7 +15,7 @@ const YearToMonthMN_1 = require("./YearToMonthMN");
 let YearGoal = class YearGoal extends typeorm_1.BaseEntity {
 };
 __decorate([
-    typeorm_1.PrimaryGeneratedColumn("uuid"),
+    typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", String)
 ], YearGoal.prototype, "id", void 0);
 __decorate([

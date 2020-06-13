@@ -44,14 +44,14 @@ services:
                 - "NODE_ENV=${NODE_ENV}"
         image: kcod/edbackend:latest
         ports:
-            - ${PORT}:${PORT}
+            - ${SERVER_PORT}:${SERVER_PORT}
         networks:
             - net-abb
         environment:
             # - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@rdb:5432/${POSTGRES_DB}
             - REDIS_HOST=redis
             - FRONTEND_HOST=${FRONTEND_HOST}
-            - PORT=${PORT}
+            - PORT=${SERVER_PORT}
             - NODE_ENV=${NODE_ENV}
             # - WAIT_HOSTS=rdb:5432     # postgres
             - WAIT_HOSTS=rdb:3306       # mysql     # wait program 설정
@@ -67,7 +67,7 @@ services:
             - rdb
         volumes:
             - ../:/abb/
-        command:   
+        command:
             - /bin/sh
             - -c 
             # - "/wait && exec ls ./packages/server/dist     # 2개 이상은 안됨

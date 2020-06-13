@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AuthRoute = exports.C = void 0;
 const React = require("react");
 const react_apollo_1 = require("react-apollo");
 const react_router_1 = require("react-router");

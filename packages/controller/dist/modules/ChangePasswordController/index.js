@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ChangePasswordController = void 0;
 const React = require("react");
 const react_apollo_1 = require("react-apollo");
 const graphql_tag_1 = require("graphql-tag");

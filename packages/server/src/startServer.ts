@@ -113,7 +113,7 @@ export const startServer = async () => {
     await conn.runMigrations();
   }
 
-  const port = process.env.PORT || 4000;
+  const port = process.env.SERVER_PORT || 4000;
   const app2 = await app.listen({ // .start({
     // cors,
     port: process.env.NODE_ENV === "test" ? 0 : port

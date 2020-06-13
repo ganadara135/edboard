@@ -14,7 +14,7 @@ const YearGoal_1 = require("./YearGoal");
 let EDboard = class EDboard extends typeorm_1.BaseEntity {
 };
 __decorate([
-    typeorm_1.PrimaryGeneratedColumn("uuid"),
+    typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", String)
 ], EDboard.prototype, "id", void 0);
 __decorate([
@@ -30,7 +30,7 @@ __decorate([
     __metadata("design:type", Array)
 ], EDboard.prototype, "yeargoals", void 0);
 EDboard = __decorate([
-    typeorm_1.Entity("DBboard")
+    typeorm_1.Entity("edboards")
 ], EDboard);
 exports.EDboard = EDboard;
 //# sourceMappingURL=EDboard.js.map

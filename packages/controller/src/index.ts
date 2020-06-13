@@ -1,6 +1,6 @@
 export * from "./modules/RegisterController";
 export * from "./modules/LoginController";
-export * from "./modules/InsertDataController";
+export * from "./modules/InsertGoalController";
 export * from "./modules/ForgotPasswordController";
 export * from "./modules/ChangePasswordController";
 export * from "./schemaTypes";

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ChildProps } from 'react-apollo';
-import { RouteProps } from 'react-router';
+import { RouteProps, RouteComponentProps } from 'react-router';
 import { MeQuery } from '../../schemaTypes';
 declare type Props = RouteProps;
 export declare class C extends React.PureComponent<ChildProps<Props, MeQuery>> {
-    renderRoute: (routeProps: any) => any;
-    render(): any;
+    renderRoute: (routeProps: RouteComponentProps<{}>) => JSX.Element | null;
+    render(): JSX.Element;
 }
-export declare const AuthRoute: any;
+export declare const AuthRoute: React.ComponentClass<RouteProps, any>;
 export {};

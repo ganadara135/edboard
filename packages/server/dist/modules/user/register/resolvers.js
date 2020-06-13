@@ -18,7 +18,6 @@ const sendEmail_1 = require("../../../utils/sendEmail");
 exports.resolvers = {
     Mutation: {
         register: (_, args, { redis, url }) => __awaiter(void 0, void 0, void 0, function* () {
-            console.log("test 11111");
             try {
                 yield common_1.validUserSchema.validate(args, { abortEarly: false });
             }
@@ -26,13 +25,11 @@ exports.resolvers = {
                 return formatYupError_1.formatYupError(err);
             }
             const { email, password } = args;
-            console.log("test 222222");
             console.log("email : ", email);
             const userAlreadyExists = yield User_1.User.findOne({
                 where: { email },
                 select: ["id"]
             });
-            console.log("test 33333");
             if (userAlreadyExists) {
                 return [
                     {

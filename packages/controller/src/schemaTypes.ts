@@ -88,6 +88,31 @@ export interface SendForgotPasswordEmailMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: InsertGoalMutation
+// ====================================================
+
+export interface InsertGoalMutation_insertGoal {
+  __typename: "Error";
+  path: string;
+  message: string;
+}
+
+export interface InsertGoalMutation {
+  insertGoal: InsertGoalMutation_insertGoal[] | null;
+}
+
+export interface InsertGoalMutationVariables {
+  name?: string | null;
+  description?: string | null;
+  yeargoals?: YearGoalInput | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: LoginMutation
 // ====================================================
 
@@ -144,6 +169,11 @@ export interface RegisterMutationVariables {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+export interface YearGoalInput {
+  goal: string;
+  description?: string | null;
+}
 
 //==============================================================
 // END Enums and Input Objects

@@ -1,18 +1,15 @@
 {
     "private": true,
     "scripts": {
-        "build:server": "lerna run build --scope={@abb/server,@abb/controller,@abb/common}",
+        "build:server": "lerna run build --scope={@abb/server,@abb/common}",
         "build:web": "lerna run build --scope={@abb/web,@abb/controller,@abb/common}",
         "cleanPackages": "rm -rf node_modules yarn.lock ./packages/common/node_modules ./packages/controller/node_modules ./packages/server/node_modules ./packages/web/node_modules && yarn cache clean"
     },
-
     "workspaces": {
         "packages": [
             "packages/*"  
         ]   
-
     },
-
     "name": "abb",
     "devDependencies": {
         "lerna": "^3.20.2",

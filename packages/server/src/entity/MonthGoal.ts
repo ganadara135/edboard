@@ -13,17 +13,20 @@ import {
 import { YearToMonthMN } from "./YearToMonthMN";
 
 
-@Entity("MonthGoal")
+@Entity("MonthGoals")
 export class MonthGoal extends BaseEntity {
   @PrimaryGeneratedColumn("uuid") 
-  public id!: string;
+  public id!: number;
 
-  @Column("varchar", { length: 13 })
-  month!: string;
+  @Column("int")
+  month!: number;
 
-  @Column("varchar", { length: 100 })
-  goal: string;
+  @Column("int",)
+  goal?: number;
 
   @OneToMany(_type => YearToMonthMN, ymnn => ymnn.monthgoal)
   ymmns: YearToMonthMN[];
+
+  //  @JoinColumn decorator, which indicates that this side of the relationship will own the relationship. 
+  // Relations can be unidirectional or bidirectional
 }

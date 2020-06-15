@@ -12,16 +12,16 @@ import { YearGoal } from "./YearGoal";
 import { MonthGoal } from "./MonthGoal";
 
 
-@Entity("YearToMonthMN")
+@Entity("YearToMonthMNs")
 export class YearToMonthMN extends BaseEntity {
   @PrimaryGeneratedColumn() 
-  public id!: string;
+  public id!: number;
 
   @Column()
-  yearid!: string;
+  yearid!: number;
 
   @Column()
-  monthid!: string;
+  monthid!: number;
 
   @Column("char", { length: 100, nullable: true })
   description: string;

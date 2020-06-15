@@ -24,7 +24,6 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
         return (
           <Form style={{ display: "flex" }}> 
           <div style={{width: 400, margin:'auto'}}>
-          {/* <Form onSubmit={this.handleSubmit} className="login-form"> */}
             <Field  
               name="name"
               prefix={
@@ -55,7 +54,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             />
             <div>
               <Button type="primary" htmlType="submit" className="">
-                연간 목표값 입력
+                연간 목표값 등록
               </Button>
             </div>
           </div>

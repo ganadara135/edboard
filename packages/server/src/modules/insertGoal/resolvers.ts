@@ -12,77 +12,81 @@ import { YearGoal}  from "../../entity/YearGoal";
 import { MonthGoal } from "../../entity/MonthGoal";
 // import { Query } from "typeorm/driver/Query";
 
-import {InsertGoalMutationArgs} from "../../myTypes";
+import {InsertYearMutationArgs, InsertMonthMutationArgs, ErrorReponse} from "../../myTypes";
 
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    insertGoal: async ( 
+    insertYear: async ( 
       _,// parent,
-      args : InsertGoalMutationArgs,
-      // { name, description }  : 
+      args :  InsertYearMutationArgs,
       __, // context,
       ___, // info
 
-    ) => {
+    ): Promise<ErrorReponse> => {
+      const { edboardName, yeargoals  } = args;
+      console.log("args: ", args)
+      
+      const edboard = await EDboard.findOne({name: edboardName});
+      console.log("chk edboard: ", edboard);
+      if(!edboard){  // null or undefined
+        return {
+          message: "fail: No edboard.id",
+          path: "edboard.id"
+        }
+      }
+      if(!yeargoals){  // null or undefined
+        return {
+          message: "fail",
+          path: "yeargoals args"
+        }
+      }
 
-      // console.log("EDboard: ", EDboard.name)
-      // console.log("YearGoal: ", YearGoal.name)
-      // console.log('parent: ', parent)   
-      // console.log('context: ', context)
-      // console.log('info: ', info )
-      const { name, description, yeargoals  } = args;
-      console.log("체크: ", name, description, yeargoals )
-      console.log('yeargoals: ', yeargoals);
-      console.log('args: ', args);
-
-      const yearGoalVal = yeargoals?.pop();
-  
-      // const returnVal = await YearGoal.create({
-      //   goal: yearGoalVal?.goal, 
-      //   description: yearGoalVal?.description,
-      //   // edboard: this
-      // } as any ).save()
-
-      // console.log("returnVal:", returnVal);
-      // console.log("returnVal.goal:", returnVal.goal);
+      // const yearGoalVal = yeargoals?.pop();
+      const yearGoalVal = yeargoals;
+      
       const yr = new YearGoal();
-      yr.goal = yearGoalVal?.goal;
-      yr.description = yearGoalVal?.description as string;
+      yr.goal = yearGoalVal?.goal as number;
+      yr.year = yearGoalVal?.year as number;
+      // yr.description = yearGoalVal?.description as string; 
+      yr.edboard = edboard?.id as any;
       await yr.save();
 
-      
-      const ed = new EDboard();
-      ed.name = name as string;
-      ed.description = description as string;
-      // OneToMany 는 테이블에 칼럼은 생성 안 됨  
-      ed.yeargoals = [yr]   // 이걸해야 YearGoal edboardid 필드에 값이 생성됨
+      // const ed = new EDboard();
+      // ed.name = name as string;
+      // ed.description = description as string;
+      // // OneToMany 은 테이블에 칼럼은 생성 안 됨  
+      // ed.yeargoals = [yr]   // 이걸해야 YearGoal edboardid 필드에 값이 생성됨
 
-      await ed.save();
-      console.log('ed: ', ed)
-      console.log('ed.yeargoals: ', ed.yeargoals)
+      // await ed.save();
+      // console.log('ed: ', ed)
+      // console.log('ed.yeargoals: ', ed.yeargoals)
 
-  
+      return {
+        message: 'succeed',
+        path: 'insertYear Mutation'
+      };
+    },
+    insertMonth: async (
+      _, // parent,
+      args : InsertMonthMutationArgs,
+      __, // context,
+      ___, // info
+    ): Promise<ErrorReponse> => {
+      // const {   } = args;
+      console.log("args : ", args)
+      const returnVal = await YearGoal.findOne(
+        {year: args.yearName }
+        // {relations:['yeargoals'],} // defaults is left join
+      )
+      console.log('returnVal :', returnVal)
 
-      // const edboard = await EDboard.create({
-      //   ...args,
-      //   // include: [{yeargoals: YearGoal}]
-      //   yeargoals: [
-      //     yr
-      //   ]
-      //   // name,
-      //   // description,
-      //   // returnVal
-      //   // yeargoals: returnVal
-      //   // yeargoals: YearGoal as YearGoal
-      //   // yeargoals: yearGoal // as any // as any
-      // } as any).save();
- // .save();
-
-      // console.log(edboard);
-      // console.log("isArray: "+ Array.isArray(edboard))
-
-      // return null;
+      // const monthGoal = new MonthGoal();
+      // monthGoal.goal = args?.goal as number;
+      return {
+        message: 'succeed',
+        path: 'insertMonth Mutation'
+      };
     }
   },
   
@@ -96,16 +100,18 @@ export const resolvers: ResolverMap = {
       // console.log("chk : ", returnVal)
       return returnVal;
     },
-    yeargoalQuery: async () => {
+    yearGoalQuery: async () => {
       const returnVal = await YearGoal.find({
         relations:['edboard', 'ymmns']
       });
-      console.log("chk : ", returnVal)
+      // console.log("chk : ", returnVal)
       return returnVal;
     },
-    monthgoalQuery: async () => {
-      const returnVal = await MonthGoal.find();
-      console.log("chk : ", returnVal)
+    monthGoalQuery: async () => {
+      const returnVal = await MonthGoal.find({
+        relations:['ymmns']
+      });
+      // console.log("chk : ", returnVal)
       return returnVal;
     }
   }

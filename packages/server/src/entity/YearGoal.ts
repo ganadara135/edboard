@@ -13,22 +13,21 @@ import { EDboard } from "./EDboard";
 import { YearToMonthMN } from "./YearToMonthMN";
 
 
-@Entity("YearGoal")
+@Entity("YearGoals")
 export class YearGoal extends BaseEntity {
-  @PrimaryGeneratedColumn() id!: string;
+  @PrimaryGeneratedColumn() id!: number;
 
-  @Column("varchar", { length: 100 })
-  goal?: string;
+  @Column("int", { nullable: true })
+  year?: number;
 
-  @Column("varchar", { length: 255 })
+  @Column("int", { nullable: true })
+  goal?: number;
+
+  @Column("varchar", { length: 255, nullable: true })
   description?: string;
 
-
-  // @Column("char", { length: 10, nullable: true })
-  // userId!: string;
-
   @ManyToOne(_type => EDboard, edboard => edboard.yeargoals)
-  edboard?: EDboard;
+  edboard: EDboard;
 
   @OneToMany(_type => YearToMonthMN, ymnn => ymnn.yeargoal)
   ymmns?: YearToMonthMN[];

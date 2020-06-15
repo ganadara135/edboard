@@ -11,12 +11,12 @@ import { YearGoal } from "./YearGoal";
 
 @Entity("edboards")
 export class EDboard extends BaseEntity {
-  @PrimaryGeneratedColumn() id!: string;
+  @PrimaryGeneratedColumn() id!: number;
 
   @Column("varchar", { length: 55 })
   name?: string;
 
-  @Column("text") 
+  @Column("text",{nullable: true}) 
   description?: string;
 
   // OneToMany 는 테이블에 칼럼은 생성 안 됨  

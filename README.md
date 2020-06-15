@@ -90,6 +90,17 @@
    12.1 환경설정 파일은 하나만 처리한다. 복수개 있으면 .env 만 처리
 
 
+# mysql 사용법
+1. db 접속
+   1.1 로컬 : mysql -u 계정명 -p
+   1.2 원격 : mysql -h 호스트주소 -P 포트번호 -u 계정명 -p 
+   1.3 원격지 특정DB : mysql -h 호스트주소 -P 포트번호 -u 계정명 -p 디비이름
+2. show databases;
+3. use 사용할 db 명;
+4. show tables;
+5. 필드별 상세내역 : show fields from 테이블명;
+
+
 # postgre  사용법
 1. db 접속 방법:  psql graphql-ts-server-boilerplate (db명)
 2. 테이블 조회  : \d

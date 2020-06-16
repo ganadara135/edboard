@@ -4,6 +4,7 @@
 2. myTypes.d.ts 의  "export const typeDefs"  이 부분에 에러 발생,  const -> type 으로 수기 변경, <br>
    에러메시지: A 'const' initializer in an ambient context must be a string or numeric literal or literal enum reference. <br>
 3. graphq type 명과 TypeORM 속성 명을 일치하게 작성( if there are relations)
+4. ormconfig.json 파일은 TypeORM migration 을 위한 설정 파일 역할만 함, host 항목 제거 필요
 
 
 # graphql-ts-server-boilerplate

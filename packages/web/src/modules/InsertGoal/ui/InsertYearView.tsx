@@ -4,11 +4,11 @@ import { withFormik,     FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
 // import { Link } from "react-router-dom";
-import { NormalizedErrorMap, InsertGoalMutationVariables, YearGoalInput } from "@abb/controller";
+import { NormalizedErrorMap, InsertYearMutationVariables, YearGoalInput } from "@abb/controller";
 
-interface FormValues extends InsertGoalMutationVariables{
-  name: string;
-  description: string;
+interface FormValues extends InsertYearMutationVariables{
+  edboardName: string;
+  // description: string;
   yeargoals: YearGoalInput;
 }
 interface Props {
@@ -25,16 +25,9 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           <Form style={{ display: "flex" }}> 
           <div style={{width: 400, margin:'auto'}}>
             <Field  
-              name="name"
+              name="edboardName"
               prefix={
                 <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-              }
-              component={InputField}
-            />
-            <Field  
-              name="description"
-              prefix={
-                <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
               }
               component={InputField}
             />
@@ -64,12 +57,12 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 }
 
 
-export const InsertGoalView = withFormik<Props, FormValues>({
+export const InsertYearView = withFormik<Props, FormValues>({
     // validationSchema: validUserSchema,
     // validateOnChange : false,
     // validateOnBlur: false,
-    mapPropsToValues: () =>  ({ name: "", description: "", yeargoals: {
-      goal: "", description: ""}
+    mapPropsToValues: () =>  ({ edboardName: "", yeargoals: {
+      goal: 0, description: ""}
     }),
     handleSubmit: async (values, {props, setErrors}) => {
         console.log("handleSubmit: ", values)

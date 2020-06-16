@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InsertGoalController = void 0;
+exports.CreateEDBoardController = void 0;
 const React = require("react");
 const react_apollo_1 = require("react-apollo");
 const graphql_tag_1 = require("graphql-tag");
@@ -10,13 +10,13 @@ class C extends React.PureComponent {
         super(...arguments);
         this.submit = async (values) => {
             console.log("cont: ", values);
-            const { data: { insertGoal } } = await this.props.mutate({
+            const { data: { createEDBoard } } = await this.props.mutate({
                 variables: values
                 // variables: {insertGoal: values} as any 
             });
-            console.log('response : ', insertGoal);
-            if (insertGoal) {
-                return normalizeErrors_1.normalizeErrors(insertGoal);
+            console.log('response : ', createEDBoard);
+            if (createEDBoard) {
+                return normalizeErrors_1.normalizeErrors(createEDBoard);
             }
             return null;
         };
@@ -25,14 +25,13 @@ class C extends React.PureComponent {
         return this.props.children({ submit: this.submit });
     }
 }
-const INSERTGOAL_MUTATION = graphql_tag_1.default `
-    mutation InsertGoalMutation($name: String, $description: String, $yeargoals: YearGoalInput
-    ){
-        insertGoal(name: $name ,description: $description , yeargoals: [$yeargoals]){
-            path
+const CREATEEDBOARD_MUTATION = graphql_tag_1.default `
+    mutation CreateEDBoardMutation($name: String, $description: String) {
+        createEDBoard(name: $name, description: $description){
             message
+            path
         }
     }
 `;
-exports.InsertGoalController = react_apollo_1.graphql(INSERTGOAL_MUTATION)(C);
+exports.CreateEDBoardController = react_apollo_1.graphql(CREATEEDBOARD_MUTATION)(C);
 //# sourceMappingURL=index.js.map

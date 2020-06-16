@@ -75,7 +75,8 @@
     "gen:schema": "graphql-to-typescript ./src/schema.graphql ./src/myTypes.d.ts",
     "merge:gen": "yarn merge:types && yarn gen:schema",
     "X_gen-schema-types": "ts-node src/scripts/createTypes.ts",
-    "migrate:gen": "npx ts-node ./node_modules/.bin/typeorm migration:generate -n ListingTable -c development"
+    "migrate:gen": "npx ts-node ./node_modules/.bin/typeorm migration:generate -n migrateEDboard",
+    "migrate:run": "npx ts-node ./node_modules/.bin/typeorm migration:run"
   },
   "jest": {
     "rootDir": "./src",

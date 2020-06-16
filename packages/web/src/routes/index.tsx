@@ -9,14 +9,16 @@ import { TextPage } from "../modules/TestPage";
 import { AuthRoute } from "@abb/controller";
 import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
 import { DemoDelete } from "../modules/listing/delete/DemoDelete";
-import { InsertGoalConnector } from "../modules/InsertGoal/InsertGoalConnector";
+// import { InsertYearConnector } from "../modules/InsertYear/InsertYearConnector";
+import { CreateEDBoardConnector } from "../modules/CreateEDBoard/CreateEDBoardConnector"
 
 
 export const Routes = () => (
     <BrowserRouter>
         <Switch>
         {/* <div> <h1>Hello</h1></div>; */}
-            <Route exact={true} path="/"  component={InsertGoalConnector} />
+            {/* <Route exact={true} path="/InsertYear"  component={InsertYearConnector} /> */}
+            <Route exact={true} path="/createedb" component={CreateEDBoardConnector} />
             {/* // componet={<div><h1 >Hello</h1></div>} /> */}
             <Route exact={true} path="/register" component={RegisterConnector} />
             <Route exact={true} path="/login" component={LoginConnector} />

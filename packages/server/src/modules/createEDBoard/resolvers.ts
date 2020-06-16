@@ -16,7 +16,8 @@ export const resolvers: ResolverMap = {
             console.log('args : ', args);
             if(!args.name){  // null or undefined
                 return {
-                    message: "fail: edboard.name is null or undefined",
+                    ok: false,
+                    message: "edboard.name is null or undefined",
                     path: "args.name"
                 }
             }
@@ -31,6 +32,7 @@ export const resolvers: ResolverMap = {
             console.log('ed.yeargoals: ', ed.yeargoals)
 
             return {
+                ok: true,
                 message: "Succeed",
                 path: "createEDBoard Mutation"
             }
@@ -38,12 +40,9 @@ export const resolvers: ResolverMap = {
     },
     Query: {
         edboardQuery: async () => {
-            // EDboard.find();
-            // const returnVal = await EDboard.find();
             const returnVal = await EDboard.find({
                 relations:['yeargoals'], // defaults is left join
             })
-            // console.log("chk : ", returnVal)
             return returnVal;
         },
     }

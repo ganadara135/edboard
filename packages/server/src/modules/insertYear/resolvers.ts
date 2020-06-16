@@ -31,13 +31,15 @@ export const resolvers: ResolverMap = {
       console.log("chk edboard: ", edboard);
       if(!edboard){  // null or undefined
         return {
-          message: "fail: edboard is null or undefined",
+          ok: false,
+          message: "edboard is null or undefined",
           path: "edboard.id"
         }
       }
       if(!yeargoals){  // null or undefined
         return {
-          message: "fail: yeargoals is null or undefined",
+          ok: false,
+          message: "yeargoals is null or undefined",
           path: "yeargoals args"
         }
       }
@@ -63,6 +65,7 @@ export const resolvers: ResolverMap = {
       // console.log('ed.yeargoals: ', ed.yeargoals)
 
       return {
+        ok: true,
         message: 'succeed',
         path: 'insertYear Mutation'
       };

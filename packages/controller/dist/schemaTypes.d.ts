@@ -17,6 +17,18 @@ export interface ForgotPasswordChangeMutationVariables {
     newPassword: string;
     key: string;
 }
+export interface CreateEDBoardMutation_createEDBoard {
+    __typename: "ErrorReponse";
+    message: string | null;
+    path: string | null;
+}
+export interface CreateEDBoardMutation {
+    createEDBoard: CreateEDBoardMutation_createEDBoard | null;
+}
+export interface CreateEDBoardMutationVariables {
+    name?: string | null;
+    description?: string | null;
+}
 export interface CreateListingMutation {
     createListing: boolean;
 }
@@ -37,17 +49,16 @@ export interface SendForgotPasswordEmailMutation {
 export interface SendForgotPasswordEmailMutationVariables {
     email: string;
 }
-export interface InsertGoalMutation_insertGoal {
-    __typename: "Error";
-    path: string;
-    message: string;
+export interface InsertYearMutation_insertYear {
+    __typename: "ErrorReponse";
+    path: string | null;
+    message: string | null;
 }
-export interface InsertGoalMutation {
-    insertGoal: InsertGoalMutation_insertGoal[] | null;
+export interface InsertYearMutation {
+    insertYear: InsertYearMutation_insertYear | null;
 }
-export interface InsertGoalMutationVariables {
-    name?: string | null;
-    description?: string | null;
+export interface InsertYearMutationVariables {
+    edboardName: string;
     yeargoals?: YearGoalInput | null;
 }
 export interface LoginMutation_login_errors {
@@ -80,6 +91,7 @@ export interface RegisterMutationVariables {
     password: string;
 }
 export interface YearGoalInput {
-    goal: string;
+    year?: number | null;
+    goal?: number | null;
     description?: string | null;
 }

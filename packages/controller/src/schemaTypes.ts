@@ -46,6 +46,30 @@ export interface ForgotPasswordChangeMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CreateEDBoardMutation
+// ====================================================
+
+export interface CreateEDBoardMutation_createEDBoard {
+  __typename: "ErrorReponse";
+  message: string | null;
+  path: string | null;
+}
+
+export interface CreateEDBoardMutation {
+  createEDBoard: CreateEDBoardMutation_createEDBoard | null;
+}
+
+export interface CreateEDBoardMutationVariables {
+  name?: string | null;
+  description?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: CreateListingMutation
 // ====================================================
 
@@ -88,22 +112,21 @@ export interface SendForgotPasswordEmailMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: InsertGoalMutation
+// GraphQL mutation operation: InsertYearMutation
 // ====================================================
 
-export interface InsertGoalMutation_insertGoal {
-  __typename: "Error";
-  path: string;
-  message: string;
+export interface InsertYearMutation_insertYear {
+  __typename: "ErrorReponse";
+  path: string | null;
+  message: string | null;
 }
 
-export interface InsertGoalMutation {
-  insertGoal: InsertGoalMutation_insertGoal[] | null;
+export interface InsertYearMutation {
+  insertYear: InsertYearMutation_insertYear | null;
 }
 
-export interface InsertGoalMutationVariables {
-  name?: string | null;
-  description?: string | null;
+export interface InsertYearMutationVariables {
+  edboardName: string;
   yeargoals?: YearGoalInput | null;
 }
 
@@ -171,7 +194,8 @@ export interface RegisterMutationVariables {
 //==============================================================
 
 export interface YearGoalInput {
-  goal: string;
+  year?: number | null;
+  goal?: number | null;
   description?: string | null;
 }
 

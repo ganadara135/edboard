@@ -1,21 +1,21 @@
 import * as React from 'react';
 import {graphql, ChildMutateProps} from 'react-apollo';
 import gql from 'graphql-tag';
-import { InsertGoalMutation, InsertGoalMutationVariables } from '../../schemaTypes';
+import { InsertYearMutation, InsertYearMutationVariables } from '../../schemaTypes';
 import { normalizeErrors } from '../../utils/normalizeErrors';
 import { NormalizedErrorMap } from '../../types/NormalizedErrorMap';
 
 interface Props {
     children: 
-        (data: {submit: (values: InsertGoalMutationVariables) => Promise<NormalizedErrorMap | null>})
+        (data: {submit: (values: InsertYearMutationVariables) => Promise<NormalizedErrorMap | null>})
      => JSX.Element | null;
 }
 
 class C extends React.PureComponent<
- ChildMutateProps<Props, any, InsertGoalMutationVariables>
+ ChildMutateProps<Props, any, InsertYearMutationVariables>
 > {
 
-    submit = async (values: InsertGoalMutationVariables) => {
+    submit = async (values: InsertYearMutationVariables) => {
         console.log("cont: ", values);
         const {data: {insertGoal}} = await this.props.mutate({
             variables: values
@@ -34,18 +34,18 @@ class C extends React.PureComponent<
     }
 }
 
-const INSERTGOAL_MUTATION = gql`
-    mutation InsertGoalMutation($name: String, $description: String, $yeargoals: YearGoalInput
+const INSERTYEAR_MUTATION = gql`
+    mutation InsertYearMutation($edboardName: String!, $yeargoals: YearGoalInput
     ){
-        insertGoal(name: $name ,description: $description , yeargoals: [$yeargoals]){
+        insertYear(edboardName: $edboardName, yeargoals: $yeargoals){
             path
             message
         }
     }
 `;
 
-export const InsertGoalController = graphql<
+export const InsertYearController = graphql<
     Props,
-    InsertGoalMutation,
-    InsertGoalMutationVariables
->(INSERTGOAL_MUTATION)(C);
+    InsertYearMutation,
+    InsertYearMutationVariables
+>(INSERTYEAR_MUTATION)(C);

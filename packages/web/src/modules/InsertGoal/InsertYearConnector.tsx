@@ -1,14 +1,14 @@
 import * as React from "react";
-import {InsertGoalController} from '@abb/controller';
+import {InsertYearController} from '@abb/controller';
 
 
-import { InsertGoalView } from "./ui/InsertGoalView";
+import { InsertYearView } from "./ui/InsertYearView";
 import { RouteComponentProps } from "react-router-dom";
 
 
 // export const RegisterConnector = () => <RegisterView/>;
 
-export class InsertGoalConnector extends React.PureComponent
+export class InsertYearConnector extends React.PureComponent
 <
     RouteComponentProps<{}>
 > 
@@ -28,9 +28,9 @@ export class InsertGoalConnector extends React.PureComponent
         // return  <div><h1 style={{color: 'red'}}>이부분이 맞나?</h1></div>
                 
         return (
-            <InsertGoalController >
-            {({ submit }) => <InsertGoalView onFinish={this.onFinish} submit={submit} />} 
-            </InsertGoalController>
+            <InsertYearController >
+            {({ submit }) => <InsertYearView onFinish={this.onFinish} submit={submit} />} 
+            </InsertYearController>
         );
         
     }

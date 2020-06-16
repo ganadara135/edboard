@@ -22,7 +22,8 @@ export const resolvers: ResolverMap = {
             console.log('yearVal :', yearVal)
             if(!yearVal){  // null or undefined
                 return {
-                  message: "fail: yearName is null or undefined",
+                  ok: false,
+                  message: "yearName is null or undefined",
                   path: "args.yearName"
                 }
             }
@@ -46,6 +47,7 @@ export const resolvers: ResolverMap = {
             console.log("monthGoal: ", monthGoal);
 
             return {
+              ok: true,
               message: 'succeed',
               path: 'insertMonth Mutation'
             };

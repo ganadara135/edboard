@@ -1,4 +1,5 @@
 type ErrorReponse {
+  ok: Boolean
   path: String
   message: String
 }

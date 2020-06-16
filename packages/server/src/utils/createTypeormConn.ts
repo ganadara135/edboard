@@ -20,7 +20,6 @@ export const createTypeormConn = async () => {
    ? createConnection({
       // ...connectionOptions,
       // url: process.env.DATABASE_URL,
-      // url: 
       type: 'mariadb',
       host: 'rdb',
       // username: process.env.MYSQL_USER,
@@ -31,8 +30,9 @@ export const createTypeormConn = async () => {
       password: 'mysql',
       database: 'database',
 
-      synchronize: true,      // 중요
+      synchronize: false,      // 중요
       logging: true,
+      charset: "utf8mb4_unicode_ci",
       entities: [Listing, User, EDboard, YearGoal, YearToMonthMN, MonthGoal],
       name: "default"
     } as any)
@@ -44,8 +44,9 @@ export const createTypeormConn = async () => {
       username: process.env.MYSQL_USER,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      synchronize: true,      // 중요
+      synchronize: false,      // 중요, 테이블 변경할 내역이 없다면, false 로 변경후 migration 으로 처리
       logging: true,
+      charset: "utf8mb4_unicode_ci",
       // url: process.env.DATABASE_URL,
       entities: [Listing, User, EDboard, YearGoal, YearToMonthMN, MonthGoal],
       name: "default"} as any);

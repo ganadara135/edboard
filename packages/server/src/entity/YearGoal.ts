@@ -5,12 +5,16 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
-  // ManyToMany
+  // ManyToMany,
+  // JoinTable,
+
   // JoinColumn,
   // Generated,
 } from "typeorm";
 import { EDboard } from "./EDboard";
 import { YearToMonthMN } from "./YearToMonthMN";
+import { __Type } from "graphql";
+// import { MonthGoal } from "./MonthGoal";
 
 
 @Entity("YearGoals")
@@ -29,6 +33,11 @@ export class YearGoal extends BaseEntity {
   @ManyToOne(_type => EDboard, edboard => edboard.yeargoals)
   edboard: EDboard;
 
-  @OneToMany(_type => YearToMonthMN, ymnn => ymnn.yeargoal)
-  ymmns?: YearToMonthMN[];
+  @OneToMany(_type => YearToMonthMN, ymnn => ymnn.ygid)
+  ymmns?: YearToMonthMN[];    // 테이블엔 속성 생성 안됨
+
+
+  // @ManyToMany(_type => MonthGoal, monthgoal => monthgoal.yeargoals)
+  // @JoinTable()
+  // monthgoals: MonthGoal[]
 }

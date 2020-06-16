@@ -9,10 +9,10 @@ import { ResolverMap } from "../../types/graphql-utils";
 // import { sendEmail } from "../../utils/sendEmail";
 import { EDboard } from "../../entity/EDboard";
 import { YearGoal}  from "../../entity/YearGoal";
-import { MonthGoal } from "../../entity/MonthGoal";
-// import { Query } from "typeorm/driver/Query";
+import { YearToMonthMN }  from "../../entity/YearToMonthMN";
+// import { createQueryBuilder } from 'typeorm';
 
-import {InsertYearMutationArgs, InsertMonthMutationArgs, ErrorReponse} from "../../myTypes";
+import {InsertYearMutationArgs,  ErrorReponse} from "../../myTypes";
 
 
 export const resolvers: ResolverMap = {
@@ -31,13 +31,13 @@ export const resolvers: ResolverMap = {
       console.log("chk edboard: ", edboard);
       if(!edboard){  // null or undefined
         return {
-          message: "fail: No edboard.id",
+          message: "fail: edboard is null or undefined",
           path: "edboard.id"
         }
       }
       if(!yeargoals){  // null or undefined
         return {
-          message: "fail",
+          message: "fail: yeargoals is null or undefined",
           path: "yeargoals args"
         }
       }
@@ -67,53 +67,30 @@ export const resolvers: ResolverMap = {
         path: 'insertYear Mutation'
       };
     },
-    insertMonth: async (
-      _, // parent,
-      args : InsertMonthMutationArgs,
-      __, // context,
-      ___, // info
-    ): Promise<ErrorReponse> => {
-      // const {   } = args;
-      console.log("args : ", args)
-      const returnVal = await YearGoal.findOne(
-        {year: args.yearName }
-        // {relations:['yeargoals'],} // defaults is left join
-      )
-      console.log('returnVal :', returnVal)
-
-      // const monthGoal = new MonthGoal();
-      // monthGoal.goal = args?.goal as number;
-      return {
-        message: 'succeed',
-        path: 'insertMonth Mutation'
-      };
-    }
   },
   
+  
   Query: {
-    edboardQuery: async () => {
-      // EDboard.find();
-      // const returnVal = await EDboard.find();
-      const returnVal = await EDboard.find({
-        relations:['yeargoals'], // defaults is left join
-      })
-      // console.log("chk : ", returnVal)
-      return returnVal;
-    },
-    yearGoalQuery: async () => {
+    yearGoalQuery: async () =>{
       const returnVal = await YearGoal.find({
-        relations:['edboard', 'ymmns']
+        relations:['edboard','ymmns','ymmns.ygid']
       });
-      // console.log("chk : ", returnVal)
+      console.log("chk : ", returnVal)
+      return returnVal
+    },
+    
+    yearGoalDeepQuery: async () => {
+
+      const returnVal = await YearToMonthMN.find({        
+        relations:['ygid','mgid',],    // ManyToOne 쪽에서 leftJoin 한다
+        
+        // relations:['monthgoals','ymmns','ymmns.yeargoal','edboard']
+      })
+
+      console.log("chk : ", returnVal)
       return returnVal;
     },
-    monthGoalQuery: async () => {
-      const returnVal = await MonthGoal.find({
-        relations:['ymmns']
-      });
-      // console.log("chk : ", returnVal)
-      return returnVal;
-    }
+    
   }
   
 };

@@ -1,10 +1,11 @@
-export const typeDefs = ["type Mutation {\n  insertYear(edboardName: String!, yeargoals: YearGoalInput): [ErrorReponse]\n  insertMonth(month: Int!, goal: Int!, yearName: Int!, description: String): [ErrorReponse]\n  createListing(input: CreateListingInput!): Boolean!\n  deleteListing(id: String!): Boolean!\n  sendForgotPasswordEmail(email: String!): Boolean\n  forgotPasswordChange(newPassword: String!, key: String!): [Error!]\n  login(email: String!, password: String!): LoginResponse!\n  logout: Boolean\n  register(email: String!, password: String!): [Error!]\n}\n\ntype ErrorReponse {\n  path: String\n  message: String\n}\n\ninput YearGoalInput {\n  year: Int\n  goal: Int\n  description: String\n}\n\ntype YearGoal {\n  id: ID!\n  year: Int!\n  goal: Int!\n  description: String\n  ymmns: [YearToMonthMN]\n  edboard: EDBoard\n}\n\ntype YearToMonthMN {\n  ygid: YearGoal\n  mgid: MonthGoal\n  description: String\n}\n\ntype MonthGoal {\n  id: ID!\n  month: Int!\n  goal: Int!\n  description: String\n  ymmns: [YearToMonthMN!]\n}\n\ntype EDBoard {\n  id: ID!\n  name: String\n  description: String\n  yeargoals: [YearGoal]\n}\n\ntype Query {\n  edboardQuery: [EDBoard]\n  yearGoalQuery: [YearGoal]\n  monthGoalQuery: [MonthGoal]\n  findListings: [Listing!]!\n  me: User\n}\n\ninput CreateListingInput {\n  name: String!\n  category: String!\n  description: String!\n  price: Int!\n  beds: Int!\n  guests: Int!\n  latitude: Float!\n  longitude: Float!\n  amenities: [String!]!\n}\n\ntype Listing {\n  id: ID!\n  name: String!\n  category: String!\n  description: String!\n  price: Int!\n  beds: Int!\n  quests: Int!\n  latitude: Float!\n  longitude: Float!\n  amenities: [String!]!\n  pictureUrl: String!\n}\n\ntype LoginResponse {\n  errors: [Error!]\n  sessionId: String\n}\n\ntype Error {\n  path: String!\n  message: String!\n}\n\ntype User {\n  id: ID!\n  email: String!\n}\n"];
+export const typeDefs = ["type Mutation {\n  createEDBoard(name: String, description: String): ErrorReponse\n  insertMonth(month: Int!, goal: Int!, yearName: Int!, description: String): ErrorReponse\n  insertYear(edboardName: String!, yeargoals: YearGoalInput): ErrorReponse\n  createListing(input: CreateListingInput!): Boolean!\n  deleteListing(id: String!): Boolean!\n  sendForgotPasswordEmail(email: String!): Boolean\n  forgotPasswordChange(newPassword: String!, key: String!): [Error!]\n  login(email: String!, password: String!): LoginResponse!\n  logout: Boolean\n  register(email: String!, password: String!): [Error!]\n}\n\ntype EDBoard {\n  id: ID!\n  name: String\n  description: String\n  yeargoals: [YearGoal]\n}\n\ntype Query {\n  edboardQuery: [EDBoard]\n  monthGoalQuery: [MonthGoal]\n  yearGoalQuery: [YearGoal]\n  yearGoalDeepQuery: [YearToMonthMN]\n  findListings: [Listing!]!\n  me: User\n}\n\ntype MonthGoal {\n  id: ID!\n  month: Int!\n  goal: Int!\n  description: String\n  ymmns: [YearToMonthMN!]\n}\n\ninput YearGoalInput {\n  year: Int\n  goal: Int\n  description: String\n}\n\ntype YearGoal {\n  id: ID!\n  year: Int!\n  goal: Int!\n  description: String\n  ymmns: [YearToMonthMN]\n  edboard: EDBoard\n}\n\ntype YearToMonthMN {\n  ygid: YearGoal\n  mgid: MonthGoal\n  description: String\n}\n\ntype ErrorReponse {\n  path: String\n  message: String\n}\n\ninput CreateListingInput {\n  name: String!\n  category: String!\n  description: String!\n  price: Int!\n  beds: Int!\n  guests: Int!\n  latitude: Float!\n  longitude: Float!\n  amenities: [String!]!\n}\n\ntype Listing {\n  id: ID!\n  name: String!\n  category: String!\n  description: String!\n  price: Int!\n  beds: Int!\n  quests: Int!\n  latitude: Float!\n  longitude: Float!\n  amenities: [String!]!\n  pictureUrl: String!\n}\n\ntype LoginResponse {\n  errors: [Error!]\n  sessionId: String\n}\n\ntype Error {\n  path: String!\n  message: String!\n}\n\ntype User {\n  id: ID!\n  email: String!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
   edboardQuery: Array<EDBoard> | null;
-  yearGoalQuery: Array<YearGoal> | null;
   monthGoalQuery: Array<MonthGoal> | null;
+  yearGoalQuery: Array<YearGoal> | null;
+  yearGoalDeepQuery: Array<YearToMonthMN> | null;
   findListings: Array<Listing>;
   me: User | null;
 }
@@ -59,8 +60,9 @@ export interface User {
 }
 
 export interface Mutation {
-  insertYear: Array<ErrorReponse> | null;
-  insertMonth: Array<ErrorReponse> | null;
+  createEDBoard: ErrorReponse | null;
+  insertMonth: ErrorReponse | null;
+  insertYear: ErrorReponse | null;
   createListing: boolean;
   deleteListing: boolean;
   sendForgotPasswordEmail: boolean | null;
@@ -70,9 +72,9 @@ export interface Mutation {
   register: Array<Error>;
 }
 
-export interface InsertYearMutationArgs {
-  edboardName: string;
-  yeargoals: YearGoalInput | null;
+export interface CreateEdBoardMutationArgs {
+  name: string | null;
+  description: string | null;
 }
 
 export interface InsertMonthMutationArgs {
@@ -80,6 +82,11 @@ export interface InsertMonthMutationArgs {
   goal: number;
   yearName: number;
   description: string | null;
+}
+
+export interface InsertYearMutationArgs {
+  edboardName: string;
+  yeargoals: YearGoalInput | null;
 }
 
 export interface CreateListingMutationArgs {
@@ -109,15 +116,15 @@ export interface RegisterMutationArgs {
   password: string;
 }
 
+export interface ErrorReponse {
+  path: string | null;
+  message: string | null;
+}
+
 export interface YearGoalInput {
   year: number | null;
   goal: number | null;
   description: string | null;
-}
-
-export interface ErrorReponse {
-  path: string | null;
-  message: string | null;
 }
 
 export interface CreateListingInput {

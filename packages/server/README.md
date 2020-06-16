@@ -3,6 +3,8 @@
    save() 가 작동 안되어서 조치함 <br>
 2. myTypes.d.ts 의  "export const typeDefs"  이 부분에 에러 발생,  const -> type 으로 수기 변경, <br>
    에러메시지: A 'const' initializer in an ambient context must be a string or numeric literal or literal enum reference. <br>
+3. graphq type 명과 TypeORM 속성 명을 일치하게 작성( if there are relations)
+
 
 # graphql-ts-server-boilerplate
 

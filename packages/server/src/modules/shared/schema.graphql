@@ -1,0 +1,4 @@
+type ErrorReponse {
+  path: String
+  message: String
+}

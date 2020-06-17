@@ -1,8 +1,9 @@
 interface Error {
-    path: string;
+    ok: boolean;
     message: string;
+    path: string;
 }
-export declare const normalizeErrors: (errors: Error[]) => {
-    [key: string]: string;
+export declare const normalizeErrors: (errors: Error) => {
+    message: string;
 };
 export {};

@@ -1,5 +1,7 @@
 type Mutation {
-  insertGoal(name: String, description: String, yeargoals: [YearGoalInput]): [Error!]
+  createEDBoard(name: String, description: String): ErrorReponse
+  insertMonth(month: Int!, goal: Int!, yearName: Int!, description: String): ErrorReponse
+  insertYear(edboardName: String!, yeargoals: YearGoalInput): ErrorReponse
   createListing(input: CreateListingInput!): Boolean!
   deleteListing(id: String!): Boolean!
   sendForgotPasswordEmail(email: String!): Boolean
@@ -9,14 +11,40 @@ type Mutation {
   register(email: String!, password: String!): [Error!]
 }
 
+type EDBoard {
+  id: ID!
+  name: String
+  description: String
+  yeargoals: [YearGoal]
+}
+
+type Query {
+  edboardQuery: [EDBoard]
+  monthGoalQuery: [MonthGoal]
+  yearGoalQuery: [YearGoal]
+  yearGoalDeepQuery: [YearToMonthMN]
+  findListings: [Listing!]!
+  me: User
+}
+
+type MonthGoal {
+  id: ID!
+  month: Int!
+  goal: Int!
+  description: String
+  ymmns: [YearToMonthMN!]
+}
+
 input YearGoalInput {
-  goal: String!
+  year: Int
+  goal: Int
   description: String
 }
 
 type YearGoal {
-  id: String!
-  goal: String!
+  id: ID!
+  year: Int!
+  goal: Int!
   description: String
   ymmns: [YearToMonthMN]
   edboard: EDBoard
@@ -28,26 +56,10 @@ type YearToMonthMN {
   description: String
 }
 
-type MonthGoal {
-  id: String!
-  month: String!
-  goal: String!
-  ymmns: [YearToMonthMN]
-}
-
-type EDBoard {
-  id: String!
-  name: String
-  description: String
-  yeargoals: [YearGoal]
-}
-
-type Query {
-  edboardQuery: [EDBoard]
-  yeargoalQuery: [YearGoal]
-  monthgoalQuery: [MonthGoal]
-  findListings: [Listing!]!
-  me: User
+type ErrorReponse {
+  ok: Boolean
+  path: String
+  message: String
 }
 
 input CreateListingInput {

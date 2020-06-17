@@ -1,0 +1,32 @@
+type Mutation {
+  insertYear(
+    edboardName: String!,             # EDBoard.name
+    yeargoals: YearGoalInput,
+  ): ErrorReponse,
+}
+
+input YearGoalInput {
+  year: Int
+  goal: Int,
+  description: String
+}
+
+type YearGoal {
+  id: ID!,
+  year: Int!
+  goal: Int!,
+  description: String,
+  ymmns: [YearToMonthMN],
+  edboard: EDBoard
+}
+
+type YearToMonthMN {
+  ygid: YearGoal,
+  mgid: MonthGoal,
+  description: String,
+}
+
+type Query {
+  yearGoalQuery: [YearGoal],
+  yearGoalDeepQuery: [YearToMonthMN],
+}

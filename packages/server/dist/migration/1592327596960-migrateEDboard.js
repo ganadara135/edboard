@@ -9,20 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-class ListingTable1587303495946 {
+class migrateEDboard1592327596960 {
     constructor() {
-        this.name = 'ListingTable1587303495946';
+        this.name = 'migrateEDboard1592327596960';
     }
     up(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.query(`ALTER TABLE "listings" ADD "category" character varying(100) NOT NULL`, undefined);
+            yield queryRunner.query("ALTER TABLE `listings` CHANGE `latitude` `latitude` double NOT NULL");
+            yield queryRunner.query("ALTER TABLE `listings` CHANGE `longitude` `longitude` double NOT NULL");
         });
     }
     down(queryRunner) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield queryRunner.query(`ALTER TABLE "listings" DROP COLUMN "category"`, undefined);
+            yield queryRunner.query("ALTER TABLE `listings` CHANGE `longitude` `longitude` double(22) NOT NULL");
+            yield queryRunner.query("ALTER TABLE `listings` CHANGE `latitude` `latitude` double(22) NOT NULL");
         });
     }
 }
-exports.ListingTable1587303495946 = ListingTable1587303495946;
-//# sourceMappingURL=1587303495946-ListingTable.js.map
+exports.migrateEDboard1592327596960 = migrateEDboard1592327596960;
+//# sourceMappingURL=1592327596960-migrateEDboard.js.map

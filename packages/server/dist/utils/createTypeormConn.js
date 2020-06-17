@@ -17,11 +17,6 @@ const YearGoal_1 = require("../entity/YearGoal");
 const YearToMonthMN_1 = require("../entity/YearToMonthMN");
 const MonthGoal_1 = require("../entity/MonthGoal");
 exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("check DB NODE_ENV : ", process.env.NODE_ENV);
-    console.log("check DATABASE_URL : ", process.env.DATABASE_URL);
-    console.log("MYSQL_USER", process.env.MYSQL_USER);
-    console.log("MYSQL_PASSWORD", process.env.MYSQL_PASSWORD);
-    console.log("MYSQL_DATABASE", process.env.MYSQL_DATABASE);
     return process.env.NODE_ENV === "production"
         ? typeorm_1.createConnection({
             type: 'mariadb',
@@ -29,8 +24,9 @@ exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* ()
             username: 'mysql',
             password: 'mysql',
             database: 'database',
-            synchronize: true,
+            synchronize: false,
             logging: true,
+            charset: "utf8mb4_unicode_ci",
             entities: [Listing_1.Listing, User_1.User, EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],
             name: "default"
         })

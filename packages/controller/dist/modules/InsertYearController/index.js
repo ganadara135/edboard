@@ -10,14 +10,15 @@ class C extends React.PureComponent {
         super(...arguments);
         this.submit = async (values) => {
             console.log("cont: ", values);
-            const { data: { insertGoal } } = await this.props.mutate({
+            const { data: { insertYear } } = await this.props.mutate({
                 variables: values
                 // variables: {insertGoal: values} as any 
             });
-            console.log('response : ', insertGoal);
-            if (insertGoal) {
-                return normalizeErrors_1.normalizeErrors(insertGoal);
+            console.log('response : ', insertYear);
+            if (!insertYear.ok) {
+                return normalizeErrors_1.normalizeErrors(insertYear);
             }
+            console.log('response2222 : ', insertYear.ok);
             return null;
         };
     }
@@ -29,8 +30,9 @@ const INSERTYEAR_MUTATION = graphql_tag_1.default `
     mutation InsertYearMutation($edboardName: String!, $yeargoals: YearGoalInput
     ){
         insertYear(edboardName: $edboardName, yeargoals: $yeargoals){
-            path
+            ok
             message
+            path
         }
     }
 `;

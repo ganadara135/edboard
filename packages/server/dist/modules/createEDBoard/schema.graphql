@@ -1,0 +1,17 @@
+type Mutation {
+  createEDBoard(
+    name: String,
+    description: String
+  ): ErrorReponse
+}
+
+type EDBoard {
+  id: ID!,
+  name: String,
+  description: String,
+  yeargoals: [YearGoal],
+}
+
+type Query {
+  edboardQuery: [EDBoard],
+}

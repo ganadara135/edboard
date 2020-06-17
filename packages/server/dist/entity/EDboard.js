@@ -15,14 +15,14 @@ let EDboard = class EDboard extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], EDboard.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column("varchar", { length: 55 }),
+    typeorm_1.Column({ type: "varchar", length: 55, charset: "utf8mb4", collation: "utf8mb4_unicode_ci" }),
     __metadata("design:type", String)
 ], EDboard.prototype, "name", void 0);
 __decorate([
-    typeorm_1.Column("text"),
+    typeorm_1.Column({ type: "text", nullable: true, charset: "utf8mb4", collation: "utf8mb4_unicode_ci" }),
     __metadata("design:type", String)
 ], EDboard.prototype, "description", void 0);
 __decorate([

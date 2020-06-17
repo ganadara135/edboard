@@ -16,14 +16,18 @@ let YearGoal = class YearGoal extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], YearGoal.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column("varchar", { length: 100 }),
-    __metadata("design:type", String)
+    typeorm_1.Column("int", { nullable: true }),
+    __metadata("design:type", Number)
+], YearGoal.prototype, "year", void 0);
+__decorate([
+    typeorm_1.Column("int", { nullable: true }),
+    __metadata("design:type", Number)
 ], YearGoal.prototype, "goal", void 0);
 __decorate([
-    typeorm_1.Column("varchar", { length: 255 }),
+    typeorm_1.Column("varchar", { length: 255, nullable: true }),
     __metadata("design:type", String)
 ], YearGoal.prototype, "description", void 0);
 __decorate([
@@ -31,11 +35,11 @@ __decorate([
     __metadata("design:type", EDboard_1.EDboard)
 ], YearGoal.prototype, "edboard", void 0);
 __decorate([
-    typeorm_1.OneToMany(_type => YearToMonthMN_1.YearToMonthMN, ymnn => ymnn.yeargoal),
+    typeorm_1.OneToMany(_type => YearToMonthMN_1.YearToMonthMN, ymnn => ymnn.ygid),
     __metadata("design:type", Array)
 ], YearGoal.prototype, "ymmns", void 0);
 YearGoal = __decorate([
-    typeorm_1.Entity("YearGoal")
+    typeorm_1.Entity("YearGoals")
 ], YearGoal);
 exports.YearGoal = YearGoal;
 //# sourceMappingURL=YearGoal.js.map

@@ -17,15 +17,16 @@ class C extends React.PureComponent<
 
     submit = async (values: InsertYearMutationVariables) => {
         console.log("cont: ", values);
-        const {data: {insertGoal}} = await this.props.mutate({
+        const {data: {insertYear}} = await this.props.mutate({
             variables: values
             // variables: {insertGoal: values} as any 
         })
-        console.log('response : ', insertGoal);
+        console.log('response : ', insertYear);
 
-        if (insertGoal) {
-            return normalizeErrors(insertGoal );
-        }
+        if (!insertYear.ok) {
+            return normalizeErrors(insertYear );
+        } 
+        console.log('response2222 : ', insertYear.ok);
         return null;
     };
 
@@ -38,8 +39,9 @@ const INSERTYEAR_MUTATION = gql`
     mutation InsertYearMutation($edboardName: String!, $yeargoals: YearGoalInput
     ){
         insertYear(edboardName: $edboardName, yeargoals: $yeargoals){
-            path
+            ok
             message
+            path
         }
     }
 `;

@@ -14,23 +14,23 @@ const YearToMonthMN_1 = require("./YearToMonthMN");
 let MonthGoal = class MonthGoal extends typeorm_1.BaseEntity {
 };
 __decorate([
-    typeorm_1.PrimaryGeneratedColumn("uuid"),
-    __metadata("design:type", String)
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", Number)
 ], MonthGoal.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column("varchar", { length: 13 }),
-    __metadata("design:type", String)
+    typeorm_1.Column("int"),
+    __metadata("design:type", Number)
 ], MonthGoal.prototype, "month", void 0);
 __decorate([
-    typeorm_1.Column("varchar", { length: 100 }),
-    __metadata("design:type", String)
+    typeorm_1.Column("int"),
+    __metadata("design:type", Number)
 ], MonthGoal.prototype, "goal", void 0);
 __decorate([
-    typeorm_1.OneToMany(_type => YearToMonthMN_1.YearToMonthMN, ymnn => ymnn.monthgoal),
+    typeorm_1.OneToMany(_type => YearToMonthMN_1.YearToMonthMN, ymnn => ymnn.mgid),
     __metadata("design:type", Array)
 ], MonthGoal.prototype, "ymmns", void 0);
 MonthGoal = __decorate([
-    typeorm_1.Entity("MonthGoal")
+    typeorm_1.Entity("MonthGoals")
 ], MonthGoal);
 exports.MonthGoal = MonthGoal;
 //# sourceMappingURL=MonthGoal.js.map

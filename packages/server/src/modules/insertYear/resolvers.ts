@@ -26,23 +26,24 @@ export const resolvers: ResolverMap = {
     ): Promise<ErrorReponse> => {
       const { edboardName, yeargoals  } = args;
       console.log("args: ", args)
+      if(!yeargoals || !edboardName){  // null or undefined
+        return {
+          ok: false,
+          message: "input value is null or undefined",
+          path: "yeargoals edboardName"
+        }
+      }
       
       const edboard = await EDboard.findOne({name: edboardName});
       console.log("chk edboard: ", edboard);
-      if(!edboard){  // null or undefined
+      if(!edboard){  
         return {
           ok: false,
-          message: "edboard is null or undefined",
+          message: "EDBoard name is empty",
           path: "edboard.id"
         }
       }
-      if(!yeargoals){  // null or undefined
-        return {
-          ok: false,
-          message: "yeargoals is null or undefined",
-          path: "yeargoals args"
-        }
-      }
+      
 
       // const yearGoalVal = yeargoals?.pop();
       const yearGoalVal = yeargoals;
@@ -51,7 +52,7 @@ export const resolvers: ResolverMap = {
       yr.goal = yearGoalVal?.goal as number;
       yr.year = yearGoalVal?.year as number;
       // yr.description = yearGoalVal?.description as string; 
-      yr.edboard = edboard?.id as any;
+      yr.edboard = edboard as unknown as EDboard;
       await yr.save();
 
       // const ed = new EDboard();

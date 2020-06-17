@@ -16,16 +16,8 @@ let YearToMonthMN = class YearToMonthMN extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], YearToMonthMN.prototype, "id", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], YearToMonthMN.prototype, "yearid", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], YearToMonthMN.prototype, "monthid", void 0);
 __decorate([
     typeorm_1.Column("char", { length: 100, nullable: true }),
     __metadata("design:type", String)
@@ -33,13 +25,13 @@ __decorate([
 __decorate([
     typeorm_1.ManyToOne(_type => YearGoal_1.YearGoal, yeargoal => yeargoal.ymmns),
     __metadata("design:type", YearGoal_1.YearGoal)
-], YearToMonthMN.prototype, "yeargoal", void 0);
+], YearToMonthMN.prototype, "ygid", void 0);
 __decorate([
     typeorm_1.ManyToOne(_type => MonthGoal_1.MonthGoal, monthgoal => monthgoal.ymmns),
     __metadata("design:type", MonthGoal_1.MonthGoal)
-], YearToMonthMN.prototype, "monthgoal", void 0);
+], YearToMonthMN.prototype, "mgid", void 0);
 YearToMonthMN = __decorate([
-    typeorm_1.Entity("YearToMonthMN")
+    typeorm_1.Entity("YearToMonthMNs")
 ], YearToMonthMN);
 exports.YearToMonthMN = YearToMonthMN;
 //# sourceMappingURL=YearToMonthMN.js.map

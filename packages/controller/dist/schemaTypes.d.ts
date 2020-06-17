@@ -19,6 +19,7 @@ export interface ForgotPasswordChangeMutationVariables {
 }
 export interface CreateEDBoardMutation_createEDBoard {
     __typename: "ErrorReponse";
+    ok: boolean | null;
     message: string | null;
     path: string | null;
 }
@@ -51,8 +52,9 @@ export interface SendForgotPasswordEmailMutationVariables {
 }
 export interface InsertYearMutation_insertYear {
     __typename: "ErrorReponse";
-    path: string | null;
+    ok: boolean | null;
     message: string | null;
+    path: string | null;
 }
 export interface InsertYearMutation {
     insertYear: InsertYearMutation_insertYear | null;

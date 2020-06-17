@@ -10,7 +10,7 @@
     "schema:downloadFromEx": "npx apollo client:download-schema --endpoint=http://49.50.163.26:4000 schema.graphql",
     "codegen:generate": "npx apollo client:codegen --localSchemaFile=./schema.json --target=typescript --includes=src/**/*.tsx --addTypename --outputFlat=./src/schemaTypes.ts",
     "gen:types": "yarn schema:download && yarn codegen:generate",
-    "refresh:types": "yarn gen:types && yarn build",
+    "refresh": "yarn gen:types && yarn build",
     "cleanController": "rm -rf node_modules ../../node_modules ../../yarn.lock"
   },
   "dependencies": {

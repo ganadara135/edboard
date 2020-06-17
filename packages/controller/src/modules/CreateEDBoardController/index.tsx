@@ -2,7 +2,7 @@ import * as React from 'react';
 import {graphql, ChildMutateProps} from 'react-apollo';
 import gql from 'graphql-tag';
 import { CreateEDBoardMutation, CreateEDBoardMutationVariables } from '../../schemaTypes';
-import { normalizeErrors } from '../../utils/normalizeErrors';
+// import { normalizeErrors } from '../../utils/normalizeErrors';
 import { NormalizedErrorMap } from '../../types/NormalizedErrorMap';
 
 interface Props {
@@ -17,15 +17,17 @@ class C extends React.PureComponent<
 
     submit = async (values: CreateEDBoardMutationVariables) => {
         console.log("cont: ", values);
-        const {data: {createEDBoard}} = await this.props.mutate({
+        // const {data: {createEDBoard}} = await this.props.mutate({
+        const data  = await this.props.mutate({
             variables: values
             // variables: {insertGoal: values} as any 
-        })
-        console.log('response : ', createEDBoard);
+        })        
+        // console.log('data : ', data)
+        console.log('response : ', data);
 
-        if (!createEDBoard.ok) {
-            return normalizeErrors(createEDBoard );
-        }
+        // if (!createEDBoard?.ok) {
+        //     return normalizeErrors(createEDBoard );
+        // }
         return null;
     };
 

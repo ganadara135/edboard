@@ -20,10 +20,11 @@ services:
             - 3306:3306
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - MYSQL_USER=${MYSQL_USER}
-            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${TYPEORM_USERNAME}
+            - MYSQL_PASSWORD=${TYPEORM_PASSWORD}
+            - MYSQL_DATABASE=${TYPEORM_DATABASE}
             - TZ=Asia/Seoul
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
         # command: --default-authentication-plugin=mysql_native_password
         # image: "postgres:9.6"
         # volumes:
@@ -59,9 +60,9 @@ services:
             - WAIT_SLEEP_INTERVAL=30
             - WAIT_HOSTS_CONNECT_TIMEOUT=30
             
-            - MYSQL_USER=${MYSQL_USER}          # .env 파일과 server 파일의 위치가 달라서 직접 넣어줌()
-            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - MYSQL_USER=${TYPEORM_USERNAME}          # .env 파일과 server 파일의 위치가 달라서 직접 넣어줌()
+            - MYSQL_PASSWORD=${TYPEORM_PASSWORD}
+            - MYSQL_DATABASE=${TYPEORM_DATABASE}
         depends_on:
             - redis
             - rdb

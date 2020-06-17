@@ -99,6 +99,7 @@
 3. use 사용할 db 명;
 4. show tables;
 5. 필드별 상세내역 : show fields from 테이블명;
+6. 필드 collations : show full columns from 테이블명;
 
 
 # postgre  사용법

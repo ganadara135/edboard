@@ -24,8 +24,9 @@ services:
             - MYSQL_PASSWORD=${TYPEORM_PASSWORD}
             - MYSQL_DATABASE=${TYPEORM_DATABASE}
             - TZ=Asia/Seoul
+            - FOR_EMPTY_STR='SET NAMES UTF8mb4'
         # command: mysqld --init-connect=SET NAMES UTF8; --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci 
-        command: ["mysqld", "--init-connect=SET NAMES UTF8mb4;", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+        command: ["mysqld", "--init-connect=SET NAMES UTF8mb4", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
         # command: --default-authentication-plugin=mysql_native_password
         # image: "postgres:9.6"
         # volumes:
@@ -61,9 +62,11 @@ services:
             - WAIT_SLEEP_INTERVAL=30
             - WAIT_HOSTS_CONNECT_TIMEOUT=30
             
-            - MYSQL_USER=${TYPEORM_USERNAME}          # .env 파일과 server 파일의 위치가 달라서 직접 넣어줌()
-            - MYSQL_PASSWORD=${TYPEORM_PASSWORD}
-            - MYSQL_DATABASE=${TYPEORM_DATABASE}
+            - TYPEORM_USERNAME=${TYPEORM_USERNAME}          # .env 파일과 server 파일의 위치가 달라서 직접 넣어줌()
+            - TYPEORM_PASSWORD=${TYPEORM_PASSWORD}          # 여기에 입력해 줘야 rdb 로 넘겨줌
+            - TYPEORM_DATABASE=${TYPEORM_DATABASE}
+            - TYPEORM_CONNECTION=${TYPEORM_CONNECTION}
+            - TYPEORM_HOST=${TYPEORM_HOST}
         depends_on:
             - redis
             - rdb

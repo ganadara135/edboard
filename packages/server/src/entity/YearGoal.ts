@@ -33,8 +33,10 @@ export class YearGoal extends BaseEntity {
   @ManyToOne(_type => EDboard, edboard => edboard.yeargoals)
   edboard: EDboard;
 
+  // OneToMany 는 테이블에 칼럼은 생성 안 됨  
   @OneToMany(_type => YearToMonthMN, ymnn => ymnn.ygid)
   ymmns?: YearToMonthMN[];    // 테이블엔 속성 생성 안됨
+  
 
 
   // @ManyToMany(_type => MonthGoal, monthgoal => monthgoal.yeargoals)

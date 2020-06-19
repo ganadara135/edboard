@@ -39,7 +39,7 @@ export const resolvers: ResolverMap = {
       if(!edboard){  
         return {
           ok: false,
-          message: "EDBoard name is empty",
+          message: "EDBoard name is empty or duplicated",
           path: "edboard.id"
         }
       }

@@ -13,7 +13,7 @@ import * as RateLimitRedisStore from "rate-limit-redis";
 
 import { redis } from "./redis";
 import { createTypeormConn } from "./utils/createTypeormConn";
-import { confirmEmail } from "./routes/confirmEmail";
+// import { confirmEmail } from "./routes/confirmEmail";
 import { genSchema } from "./utils/genSchema";
 import { redisSessionPrefix } from "./constants";
 import { createTestConn } from "./testUtils/createTestConn";
@@ -100,7 +100,7 @@ export const startServer = async () => {
     } as any)
   );
 
- app.get("/confirm/:id", confirmEmail);
+//  app.get("/confirm/:id", confirmEmail);
 
   if (process.env.NODE_ENV === "test") {
     await createTestConn(true);

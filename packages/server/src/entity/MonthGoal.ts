@@ -28,6 +28,9 @@ export class MonthGoal extends BaseEntity {
   @Column("int",)
   goal?: number;
 
+  @Column("varchar", { length: 255, nullable: true })
+  description?: string;
+
   // OneToMany 는 테이블에 칼럼은 생성 안 됨  
   @OneToMany(_type => YearToMonthMN, ymnn => ymnn.mgid)
   ymmns: YearToMonthMN[];

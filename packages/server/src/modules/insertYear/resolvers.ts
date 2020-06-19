@@ -51,7 +51,7 @@ export const resolvers: ResolverMap = {
       const yr = new YearGoal();
       yr.goal = yearGoalVal?.goal as number;
       yr.year = yearGoalVal?.year as number;
-      // yr.description = yearGoalVal?.description as string; 
+      yr.description = yearGoalVal?.description as string;
       yr.edboard = edboard as unknown as EDboard;
       await yr.save();
 

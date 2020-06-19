@@ -40,7 +40,7 @@ export const createTypeormConn = async () => {
       username: process.env.TYPEORM_USERNAME,
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
-      synchronize: true,      // 중요, 테이블 변경할 안정화되면, false 로 변경후 migration 으로 처리
+      synchronize: false,      // 중요, 테이블 변경할 안정화되면, false 로 변경후 migration 으로 처리
       logging: true,
       // charset: "utf8mb4_unicode_ci",
       // charset: "utf8",    // 원하는 대로 안됨

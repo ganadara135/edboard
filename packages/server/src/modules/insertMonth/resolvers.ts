@@ -41,6 +41,7 @@ export const resolvers: ResolverMap = {
             // ymMN.monthid = monthGoal.id;
             ymMN.ygid = yearVal as YearGoal;
             ymMN.mgid = monthGoal as MonthGoal;
+            // ymMN.description = monthGoal?.description as string;
             await ymMN.save();
 
             console.log("ymMN: ", ymMN);

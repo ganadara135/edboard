@@ -1,5 +1,5 @@
 import * as React from "react";
-import {    Icon, Button } from 'antd';
+import {    Button } from 'antd';
 import { withFormik,     FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
@@ -23,25 +23,18 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
         <div style={{width: 400, margin:'auto'}}>
           <Field  
             name="name"
-            prefix={
-              <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-            }
+            // prefix={
+            //   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
+            // }
             component={InputField}
           />
           <Field  
             name="description"
-            prefix={
-              <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-            }
+            // prefix={
+            //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+            // }
             component={InputField}
           />
-          {/* <Field  
-            name="yeargoals.goal"
-            prefix={
-              <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-            }
-            component={InputField}
-          /> */}
           <div>
             <Button type="primary" htmlType="submit" className="">
               게시판 생성

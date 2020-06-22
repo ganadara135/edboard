@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Icon, Button } from 'antd';
+import {  Button } from 'antd';
 import { withFormik, ErrorMessage,  FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
@@ -29,18 +29,18 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             <Field  
               name="edboardName"
               label="게시판명"
-              prefix={
-                <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-              }
+              // prefix={
+              //   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
+              // }
               component={InputField}
             />
             <Field  
               name="yeargoals.year"
               label="목표연도"
               useNumberComponent={true}
-              prefix={
-                <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-              }
+              // prefix={
+              //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+              // }
               component={InputField}
             />
             <ErrorMessage name="yeargoals.year" render={msg => <div style={{ color:'red'}}>{msg}</div>} />
@@ -49,18 +49,18 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
               label="목표전력"
               useNumberComponent={true}
               // as: object
-              prefix={
-                <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-              }
+              // prefix={
+              //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+              // }
               component={InputField}
             />
             <ErrorMessage name="yeargoals.goal" render={msg => <div style={{ color:'red'}}>{msg}</div>} />
             <Field  
               name="yeargoals.description"
               label="설명"
-              prefix={
-                <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-              }
+              // prefix={
+              //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+              // }
               component={InputField}
             />
             {/* <ErrorMessage name="message" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}

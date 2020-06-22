@@ -5,6 +5,7 @@ import { RouteComponentProps } from "react-router-dom";
 
 // export const RegisterConnector = () => <RegisterView/>;
 
+
 export class CreateEDBoardConnector extends React.PureComponent
 <
     RouteComponentProps<{}>

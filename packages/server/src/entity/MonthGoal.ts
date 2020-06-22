@@ -22,10 +22,10 @@ export class MonthGoal extends BaseEntity {
   @PrimaryGeneratedColumn() 
   public id!: number;
 
-  @Column("int")
+  @Column({type:'int'})
   month!: number;
 
-  @Column("int",)
+  @Column("float",)
   goal?: number;
 
   @Column("varchar", { length: 255, nullable: true })

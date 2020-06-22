@@ -2,7 +2,7 @@
   "name": "@abb/web",
   "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start ",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -26,7 +26,9 @@
   "dependencies": {
     "@abb/common": "1.0.0",
     "@abb/controller": "1.0.0",
-    "antd": "^3.26.11",
+    "@ant-design/icons": "^4.2.1",
+    "@craco/craco": "^5.6.4",
+    "antd": "^4.3.4",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "2.6.8",
     "apollo-link-http": "^1.5.16",
@@ -35,6 +37,7 @@
     "graphql-tag": "^2.10.3",
     "react": "16.9.0",
     "react-apollo": "3.1.1",
+    "react-datepicker": "^3.0.0",
     "react-dom": "16.9.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
@@ -47,9 +50,11 @@
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.34",
+    "@types/react-datepicker": "^3.0.1",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.3",
     "@types/yup": "^0.26.31",
+    "craco-alias": "^2.1.1",
     "tslint": "^6.1.2",
     "typescript": "3.8.3"
   },
@@ -64,7 +69,6 @@
     "nohoist": [
       "**/rimraf",
       "**/rimraf/**",
-      "**/react-scripts",
       "**/tslint"
     ]
   },

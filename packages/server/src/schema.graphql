@@ -1,14 +1,7 @@
 type Mutation {
   createEDBoard(name: String, description: String): ErrorReponse
-  insertMonth(month: Int!, goal: Int!, yearName: Int!, description: String): ErrorReponse
+  insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): ErrorReponse
   insertYear(edboardName: String!, yeargoals: YearGoalInput): ErrorReponse
-  createListing(input: CreateListingInput!): Boolean!
-  deleteListing(id: String!): Boolean!
-  sendForgotPasswordEmail(email: String!): Boolean
-  forgotPasswordChange(newPassword: String!, key: String!): [Error!]
-  login(email: String!, password: String!): LoginResponse!
-  logout: Boolean
-  register(email: String!, password: String!): [Error!]
 }
 
 type EDBoard {
@@ -23,14 +16,12 @@ type Query {
   monthGoalQuery: [MonthGoal]
   yearGoalQuery: [YearGoal]
   yearGoalDeepQuery: [YearToMonthMN]
-  findListings: [Listing!]!
-  me: User
 }
 
 type MonthGoal {
   id: ID!
   month: Int!
-  goal: Int!
+  goal: Float!
   description: String
   ymmns: [YearToMonthMN!]
 }
@@ -62,43 +53,7 @@ type ErrorReponse {
   message: String
 }
 
-input CreateListingInput {
-  name: String!
-  category: String!
-  description: String!
-  price: Int!
-  beds: Int!
-  guests: Int!
-  latitude: Float!
-  longitude: Float!
-  amenities: [String!]!
-}
-
-type Listing {
-  id: ID!
-  name: String!
-  category: String!
-  description: String!
-  price: Int!
-  beds: Int!
-  quests: Int!
-  latitude: Float!
-  longitude: Float!
-  amenities: [String!]!
-  pictureUrl: String!
-}
-
-type LoginResponse {
-  errors: [Error!]
-  sessionId: String
-}
-
 type Error {
   path: String!
   message: String!
-}
-
-type User {
-  id: ID!
-  email: String!
 }

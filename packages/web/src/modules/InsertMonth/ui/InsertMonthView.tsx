@@ -1,16 +1,19 @@
 import * as React from "react";
-import { Icon, Button } from 'antd';
+import {  Button } from 'antd';
+// import { Icon } from '@ant-design/icons';
 import { withFormik,   FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
+import { InputMonthField } from "../../shared/InputMonthField";
 import { InputField } from "../../shared/InputField";
-import { NormalizedErrorMap, InsertMonthMutationVariables } from "@abb/controller";
+import { NormalizedErrorMap  } from '../../../../../controller/dist/types/NormalizedErrorMap';
 import * as Yup from "yup";
 
-interface FormValues extends InsertMonthMutationVariables{
-  month: number;
+
+interface FormValues {  // extends InsertMonthMutationVariables{
+  month?: number;
   goal: number;
   yearName: number;
-  description: string;
+  description?: string;
 }
 interface Props {
     onFinish: () => void;
@@ -26,23 +29,24 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 
     return (
       <Form style={{ display: "flex" }}> 
-      <div style={{width: 400, margin:'auto'}}>
+      <div style={{width: 700, margin:'auto'}}>
         <Field  
           name="month"
           label="월"
-          useNumberComponent={true}
-          prefix={
-            <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-          }
-          component={InputField}
+          // useNumberComponent={true}
+          // prefix={
+          //   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
+          // }
+          style={{width: 700, height:'100%', }}
+          component={InputMonthField}
         />
         <Field  
           name="goal"
           label="목표전력"
           useNumberComponent={true}
-          prefix={
-            <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-          }
+          // prefix={
+          //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+          // }
           component={InputField}
         />
         {/* <ErrorMessage name="yeargoals.year" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
@@ -51,18 +55,18 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           label="해당년도"
           useNumberComponent={true}
           // as: object
-          prefix={
-            <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-          }
+          // prefix={
+          //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+          // }
           component={InputField}
         />
         {/* <ErrorMessage name="yeargoals.goal" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
         <Field  
           name="description"
           label="설명"
-          prefix={
-            <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-          }
+          // prefix={
+          //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
+          // }
           component={InputField}
         />
         {/* <ErrorMessage name="message" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
@@ -89,7 +93,7 @@ export const InsertMonthView = withFormik<Props, FormValues>({
     // validateOnChange : false,
     // validateOnBlur: false,
     validationSchema : InsertMonthSchema,
-    mapPropsToValues: () =>  ({month: 0, goal: 0, yearName: 0, description: ""}),
+    mapPropsToValues: () =>  ({ goal: 0, yearName: 0, }),
     handleSubmit: async (values, {props, setErrors}) => {
         console.log("handleSubmit: ", values)
  

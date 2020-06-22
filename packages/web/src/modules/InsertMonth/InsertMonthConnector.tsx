@@ -1,7 +1,8 @@
 import * as React from "react";
 import { InsertMonthController } from '@abb/controller';
+// import { InsertMonthController } from '../../../../controller/dist/modules/InsertMonthController';  // '../  /controller/src/index';
 // import {InsertYearController} from '@abb/controller';
-import { InsertMonthView } from "./ui/InsertMonthView";
+// import { InsertMonthView } from "./ui/InsertMonthView";
 import { RouteComponentProps } from "react-router-dom";
 
 export class InsertMonthConnector extends React.PureComponent<
@@ -16,7 +17,7 @@ export class InsertMonthConnector extends React.PureComponent<
     render() {      
         return (
             <InsertMonthController >
-            {({ submit }) => <InsertMonthView onFinish={this.onFinish} submit={submit} />} 
+            {/* {({ submit }) => <InsertMonthView onFinish={this.onFinish} submit={submit} />}  */}
             </InsertMonthController>
         );
     }

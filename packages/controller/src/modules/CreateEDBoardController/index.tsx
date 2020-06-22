@@ -25,7 +25,7 @@ class C extends React.PureComponent<
         // console.log('data : ', data)
         console.log('response : ', createEDBoard);
 
-        if (!createEDBoard?.ok) {
+        if (!createEDBoard.ok) {
             return normalizeErrors(createEDBoard );
         }
         return null;

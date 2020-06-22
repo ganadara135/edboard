@@ -12,7 +12,6 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -26,14 +25,14 @@
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "removeComments": true
   },
   "include": [
     "src"
   ],
   "exclude": [
-    "node_modules",
-    "build",
+    "node_moduels",
     "scripts",
     "acceptance-tests",
     "webpack",

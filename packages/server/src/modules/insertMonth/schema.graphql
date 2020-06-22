@@ -1,16 +1,18 @@
 type Mutation {
   insertMonth(
     month: Int!,
-    goal: Int!,
+    goal: Float!,
     yearName: Int!,
     description: String,
   ): ErrorReponse
 }
 
+# scalar Date
+
 type MonthGoal {
   id: ID!,
   month: Int!,
-  goal: Int!,
+  goal: Float!,
   description: String,
   ymmns: [YearToMonthMN!]
 }

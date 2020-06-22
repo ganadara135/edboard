@@ -1,3 +1,10 @@
+# issue
+1. create-react-app 이 현 시점까지는 외부 소스 링크 지원이 안됨
+  ex) Currently create-react-app does not support more then one src dir in root directory
+2. 위 문제는 controller 의 tsconfig.js  "outDir": "./dist/"   처럼 잘못 입력해서 발생,  
+3. 현재 docker 버전은 "react-scripts": "3.2.0",  버전까지만 됨,  상위 버전 안 됨
+
+
 # 설치과정
 
 1. docker 이미지 빌드 <br>

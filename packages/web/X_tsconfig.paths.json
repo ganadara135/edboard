@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "baseUrl": "../../",
+      "paths": {
+        "@abb/controller": ["./node_modules/@abb/controller"]
+
+      }
+    }
+  }

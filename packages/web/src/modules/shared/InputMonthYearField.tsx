@@ -6,21 +6,25 @@ import DatePicker from 'react-datepicker'
 // import { CalendarContainer} from 'react-datepicker';
 
 
-
-
-export const InputMonthField: React.SFC<
-    FieldProps<any> & { prefix: React.ReactNode, label?: string, pickerVal?: string }
+export const InputMonthYearField: React.SFC<
+    FieldProps<any> & { prefix: React.ReactNode, label?: string, pickerVal?: string, yearName?: number }
 > = ({
     field: {onChange, ...field},
     form: { touched, errors, setFieldValue },
     label,
-    // pickerVal = false,
+    pickerVal = 'month',
+    yearName,
     ...props
 }) => {
 
     const errorMsg = touched[field.name] && errors[field.name];
 
-    const Comp = DatePicker;
+    // const Comp = DatePicker;
+    console.log("yearName : ", yearName);
+    console.log("field : ", field)
+    console.log("props : ", props)
+    // const {yearName} = props;
+
 
     // const myContainer = ( className: any, children: any ) : any => {
     //     return (
@@ -42,27 +46,27 @@ export const InputMonthField: React.SFC<
             validateStatus={errorMsg ? "error" : undefined } 
             noStyle={false}
         >
-            <Comp 
+            <DatePicker 
                 {...field}
                 {...props}  
                 // {...props.meta}
-                dateFormat="MM/yyyy"
-                // showMonthYearPicker={true}
-                showMonthYearPicker
-                showMonthYearDropdown
+                dateFormat={pickerVal==='month' ? "MM" : "yyyy"}
+                showMonthYearPicker={pickerVal==='month' ? true : false}
+                showYearPicker={pickerVal==='year' ? true : false}
+                // showMonthYearDropdown
                 
-                // showTwoColumnMonthYearPicker={true}
-                // showPopperArrow={true}
-                calendarClassName="rasta-stripes"
+
                 // {...props.prefix} 
                 // {...props.children} 
                 // placeholder={field.name}
                 // onChange={(newValue) => console.log(field.value=newValue?.getMonth())} // setFieldValue(field.name, newValue)}
-                selected={typeof field.value !== 'number' ? field.value : new Date(2020,field.value)}
+                selected={typeof field.value !== 'number' ? field.value : new Date(
+                    pickerVal === 'month' ? yearName as number : (field.value === 0 ? yearName : field.value) as number,
+                    pickerVal === 'month' ? field.value : 0)}
                 onChange={(newValue) => {
-                    setFieldValue(field.name, newValue?.getMonth());
-                    console.log(newValue, " / ", newValue?.getMonth());
-                    console.log(newValue, " / ", field.value);
+                    pickerVal === 'month' ? 
+                    setFieldValue(field.name, newValue?.getMonth()) : 
+                    setFieldValue(field.name, newValue?.getFullYear())
                 }}
             />  
         </Form.Item>

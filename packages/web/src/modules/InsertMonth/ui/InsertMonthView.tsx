@@ -3,7 +3,7 @@ import {  Button } from 'antd';
 // import { Icon } from '@ant-design/icons';
 import { withFormik,   FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
-import { InputMonthField } from "../../shared/InputMonthField";
+import { InputMonthYearField } from "../../shared/InputMonthYearField";
 import { InputField } from "../../shared/InputField";
 import { NormalizedErrorMap } from '@abb/controller';
 import * as Yup from "yup";
@@ -37,8 +37,10 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           // prefix={
           //   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
           // }
-          style={{width: 700, height:'100%', }}
-          component={InputMonthField}
+          // style={{width: 700, height:'100%', }}
+          yearName={new Date().getFullYear()}
+          pickerVal="month"
+          component={InputMonthYearField}
         />
         <Field  
           name="goal"
@@ -53,12 +55,10 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
         <Field  
           name="yearName"
           label="해당년도"
-          useNumberComponent={true}
-          // as: object
-          // prefix={
-          //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-          // }
-          component={InputField}
+          yearName={new Date().getFullYear()}
+          pickerVal="year"
+          
+          component={InputMonthYearField}
         />
         {/* <ErrorMessage name="yeargoals.goal" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
         <Field  

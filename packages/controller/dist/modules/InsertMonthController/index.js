@@ -14,11 +14,10 @@ class C extends React.PureComponent {
                 variables: values
                 // variables: {insertGoal: values} as any 
             });
-            console.log('response : ', insertMonth);
+            // console.log('response : ', insertMonth);
             if (!insertMonth.ok) {
                 return normalizeErrors_1.normalizeErrors(insertMonth);
             }
-            console.log('response2222 : ', insertMonth.ok);
             return null;
         };
     }
@@ -27,7 +26,7 @@ class C extends React.PureComponent {
     }
 }
 const INSERTMONTH_MUTATION = graphql_tag_1.default `
-    mutation InsertMonthMutation($month: Int!, $goal: Int!, $yearName: Int!, $description: String
+    mutation InsertMonthMutation($month: Int!, $goal: Float!, $yearName: Int!, $description: String
     ){
         insertMonth(month: $month, goal: $goal, yearName: $yearName, description: $description){
             ok

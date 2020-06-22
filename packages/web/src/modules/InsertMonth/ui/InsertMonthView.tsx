@@ -5,7 +5,7 @@ import { withFormik,   FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
 import { InputMonthField } from "../../shared/InputMonthField";
 import { InputField } from "../../shared/InputField";
-import { NormalizedErrorMap  } from '../../../../../controller/dist/types/NormalizedErrorMap';
+import { NormalizedErrorMap } from '@abb/controller';
 import * as Yup from "yup";
 
 
@@ -84,7 +84,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 }
 
 const InsertMonthSchema = Yup.object().shape({
-  month: Yup.number().min(1, 'Too Short!').max(12, 'Too Long!').required('Required'),
+  month: Yup.number().min(0, 'Too Short!').max(12, 'Too Long!').required('Required'),
   goal: Yup.number().min(1, 'Too Short!').max(9999, 'Too Long!').required('Required'),
   yearName: Yup.number().min(2020, 'Too Short!').max(2030, 'Too Long!').required('Required'),
 });

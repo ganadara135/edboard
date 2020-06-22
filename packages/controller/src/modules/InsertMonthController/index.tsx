@@ -7,7 +7,8 @@ import { NormalizedErrorMap } from '../../types/NormalizedErrorMap';
 
 interface Props {
     children: 
-        (data: {submit: (values: InsertMonthMutationVariables) => Promise<NormalizedErrorMap | null>})
+    // (submit: (values: InsertMonthMutationVariables) => Promise<NormalizedErrorMap | null>)
+       (data: {submit: (values: InsertMonthMutationVariables) => Promise<NormalizedErrorMap | null>})
      => JSX.Element | null;
 }
 
@@ -21,14 +22,12 @@ class C extends React.PureComponent<
             variables: values
             // variables: {insertGoal: values} as any 
         })
-        console.log('response : ', insertMonth);
-
+        // console.log('response : ', insertMonth);
         if (!insertMonth.ok) {
-            return normalizeErrors(insertMonth );
+            return normalizeErrors(insertMonth);
         } 
-        console.log('response2222 : ', insertMonth.ok);
         return null;
-    };
+    }
 
     render() {
         return this.props.children({ submit: this.submit });
@@ -36,7 +35,7 @@ class C extends React.PureComponent<
 }
 
 const INSERTMONTH_MUTATION = gql`
-    mutation InsertMonthMutation($month: Int!, $goal: Int!, $yearName: Int!, $description: String
+    mutation InsertMonthMutation($month: Int!, $goal: Float!, $yearName: Int!, $description: String
     ){
         insertMonth(month: $month, goal: $goal, yearName: $yearName, description: $description){
             ok

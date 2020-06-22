@@ -1,6 +1,6 @@
 import * as React from "react";
-// import {InsertYearController} from '@abb/controller';
-// import { InsertYearView } from "./ui/InsertYearView";
+import {InsertYearController} from '@abb/controller';
+import { InsertYearView } from "./ui/InsertYearView";
 import { RouteComponentProps } from "react-router-dom";
 
 export class InsertYearConnector extends React.PureComponent<
@@ -18,10 +18,10 @@ export class InsertYearConnector extends React.PureComponent<
     };
 
     render() {      
-        return (<div></div>
-            // <InsertYearController >
-            // {({ submit }) => <InsertYearView onFinish={this.onFinish} submit={submit} />} 
-            // </InsertYearController>
+        return (
+            <InsertYearController >
+            {({ submit } : any) => <InsertYearView onFinish={this.onFinish} submit={submit} />} 
+            </InsertYearController>
         );
     }
 }

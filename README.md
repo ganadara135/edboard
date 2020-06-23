@@ -37,9 +37,9 @@
 
 1. PostgreSQL start <br/>
    <p>Docker-compose 대치 </p>
-    => postgres 설정 : https://seogenie2.tistory.com/5 <br>
+    > postgres 설정 : https://seogenie2.tistory.com/5 <br>
      [마이컴용] <br/>
-    => pg_ctl -D /Users/mac/work/mobileHomeHub/abb/db_postgre -l logfile start
+    > pg_ctl -D /Users/mac/work/mobileHomeHub/abb/db_postgre -l logfile start
 2. Redis-server start
    <p>Docker-compose 대치 </p>
     => redis-server
@@ -53,12 +53,12 @@
 5. docker 이미지 빌드 <br>
    > docker build -t kcod/abb:1.0.0 . <br>
    5.1. docker 컨테이너 실행 <br>
-      >> docker run -p 3001:4000 --net="host" -d kcod/abb:1.0.0 <br>
-      => docker run -it -p 3001:4000 -d kcod/abb:1.0.0 /bin/bash <br>
-      => docker run -p 4000:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb:1.0.0 node dist/index.js <br>
-      docker run -p 80:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb node dist/index.js
+      > docker run -p 3001:4000 --net="host" -d kcod/abb:1.0.0 <br>
+      > docker run -it -p 3001:4000 -d kcod/abb:1.0.0 /bin/bash <br>
+      > docker run -p 4000:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb:1.0.0 node dist/index.js <br>
+      > docker run -p 80:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb node dist/index.js
 
-      docker run -p 80:4000 --net host -d --name abb ganadara135/abb node dist/index.js
+      > docker run -p 80:4000 --net host -d --name abb ganadara135/abb node dist/index.js
    5.2. docker 컨테이너 디버깅 <br>
       => docker commit 298b7344f067a => broken_container <br>
       => docker run -it broken_container /bin/bash  or /bin/sh <br>

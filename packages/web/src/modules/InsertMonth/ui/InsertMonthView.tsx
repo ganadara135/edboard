@@ -86,7 +86,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 const InsertMonthSchema = Yup.object().shape({
   month: Yup.number().min(0, 'Too Short!').max(12, 'Too Long!').required('Required'),
   goal: Yup.number().min(1, 'Too Short!').max(9999, 'Too Long!').required('Required'),
-  yearName: Yup.number().min(2020, 'Too Short!').max(2030, 'Too Long!').required('Required'),
+  yearName: Yup.number().min(2018, 'Too Short!').max(2030, 'Too Long!').required('Required'),
 });
 
 export const InsertMonthView = withFormik<Props, FormValues>({

@@ -17,7 +17,7 @@ export class TextPage extends React.PureComponent<
             location: {state: {message}} 
         } = this.props as unknown as DestructureMessage; // or as any;
 
-       console.log("message : ", message)
+        console.log("message : ", message)
 
         return <h2>{message ? message : "hello"}</h2>;
     }

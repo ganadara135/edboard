@@ -51,9 +51,9 @@
     => yarn start
 
 5. docker 이미지 빌드 <br>
-   => docker build -t kcod/abb:1.0.0 . <br>
+   > docker build -t kcod/abb:1.0.0 . <br>
    5.1. docker 컨테이너 실행 <br>
-      => docker run -p 3001:4000 --net="host" -d kcod/abb:1.0.0 <br>
+      >> docker run -p 3001:4000 --net="host" -d kcod/abb:1.0.0 <br>
       => docker run -it -p 3001:4000 -d kcod/abb:1.0.0 /bin/bash <br>
       => docker run -p 4000:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb:1.0.0 node dist/index.js <br>
       docker run -p 80:4000 -p 5432:5432 -p 6379:6379 -d --name abb ganadara135/abb node dist/index.js

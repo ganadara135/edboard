@@ -37,18 +37,18 @@
 
 1. PostgreSQL start <br/>
    <p>Docker-compose 대치 </p>
-    > postgres 설정 : https://seogenie2.tistory.com/5 <br>
-     [마이컴용] <br/>
-    > pg_ctl -D /Users/mac/work/mobileHomeHub/abb/db_postgre -l logfile start
+   > postgres 설정 : https://seogenie2.tistory.com/5 <br>
+   [마이컴용] <br/>
+   > pg_ctl -D /Users/mac/work/mobileHomeHub/abb/db_postgre -l logfile start
 2. Redis-server start
    <p>Docker-compose 대치 </p>
-    => redis-server
+   > redis-server
 3. Server start
    <p>Docker-compose 대치 </p>
-    => yarn start
+   > yarn start
 4. client start (web)
    <p>Docker-compose 대치 </p>
-    => yarn start
+   > yarn start
 
 5. docker 이미지 빌드 <br>
    > docker build -t kcod/abb:1.0.0 . <br>
@@ -65,12 +65,13 @@
         docker run -it broken_container /bin/bash  or /bin/sh <br>
         node dist/index.js <br>
 6. docker push on dockerhub
-   docker tag local-image:tagname new-repo:tagname
-   docker push new-repo:tagname
+   > docker tag local-image:tagname new-repo:tagname
+     docker push new-repo:tagname
+
    6.1 docker tag kcod/abb:1.0.?  ganadara135/abb:latest
+
    6.2 docker push ganadara135/abb:latest
-7. docker-compose
-   docker-compose 는 Dockerfile 를 같은 폴더에 있어야 build 가능
+7. docker-compose 는 Dockerfile 를 같은 폴더에 있어야 build 가능
    > docker-compose -f ./dockerCompose/dev.yml up --build
 7. PostgreSQL 정보
    7.1 설치위치  /usr/lib/systemd/system/postgresql-9.6.service

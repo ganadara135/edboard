@@ -1,4 +1,4 @@
-type ErrorReponse {
+type IErrorReponse {
   ok: Boolean
   path: String
   message: String

@@ -12,7 +12,7 @@ import { YearGoal}  from "../../entity/YearGoal";
 import { YearToMonthMN }  from "../../entity/YearToMonthMN";
 // import { createQueryBuilder } from 'typeorm';
 
-import {InsertYearMutationArgs,  ErrorReponse} from "../../myTypes";
+import {InsertYearMutationArgs,  IErrorReponse} from "../../myTypes";
 
 
 export const resolvers: ResolverMap = {
@@ -23,7 +23,7 @@ export const resolvers: ResolverMap = {
       __, // context,
       ___, // info
 
-    ): Promise<ErrorReponse> => {
+    ): Promise<IErrorReponse> => {
       const { edboardName, yeargoals  } = args;
       console.log("args: ", args)
       if(!yeargoals || !edboardName){  // null or undefined

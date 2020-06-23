@@ -1,7 +1,7 @@
 import { ResolverMap } from "../../types/graphql-utils";
 
 import { EDboard } from "../../entity/EDboard";
-import {CreateEdBoardMutationArgs,  ErrorReponse} from "../../myTypes";
+import {CreateEdBoardMutationArgs,  IErrorReponse} from "../../myTypes";
 
 export const resolvers: ResolverMap = {
     Mutation: {
@@ -11,7 +11,7 @@ export const resolvers: ResolverMap = {
           __, // context,
           ___, // info
     
-        ): Promise<ErrorReponse> => {
+        ): Promise<IErrorReponse> => {
 
             console.log('args : ', args);
             if(!args.name){  // null or undefined

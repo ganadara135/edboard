@@ -3,7 +3,7 @@ import { MonthGoal } from "../../entity/MonthGoal";
 import { YearGoal}  from "../../entity/YearGoal";
 import { YearToMonthMN} from "../../entity/YearToMonthMN";
 
-import { InsertMonthMutationArgs, ErrorReponse} from "../../myTypes";
+import { InsertMonthMutationArgs, IErrorReponse} from "../../myTypes";
 
 export const resolvers: ResolverMap = {
     Mutation: {
@@ -12,7 +12,7 @@ export const resolvers: ResolverMap = {
             args : InsertMonthMutationArgs,
             __, // context,
             ___, // info
-        ): Promise<ErrorReponse> => {
+        ): Promise<IErrorReponse> => {
             // const {   } = args;
             console.log("args : ", args)
             const yearVal = await YearGoal.findOne(
@@ -36,6 +36,7 @@ export const resolvers: ResolverMap = {
             const monthGoal = new MonthGoal();
             monthGoal.goal = args?.goal as number;
             monthGoal.month = args?.month as number;
+            monthGoal.description = args?.description as string;
             monthGoal.ymmns = [ymMN];
             await monthGoal.save();
             // ymMN.monthid = monthGoal.id;

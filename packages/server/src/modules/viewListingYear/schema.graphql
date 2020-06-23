@@ -1,0 +1,29 @@
+type Query {
+  viewListingYear(yearName: Int!): IListingYear
+}
+
+type IListingYear {
+  mnInfo: [IYearToMonthMN],
+  monthInfo: [IMonthGoal],
+  yearInfo: [IYearGoal]
+}
+
+# type YearGoal {
+#   id: ID!,
+#   year: Int!
+#   goal: Int!,
+#   description: String,
+#   ymmns: [YearToMonthMN],
+#   edboard: EDBoard
+# }
+
+# type YearToMonthMN {
+#   ygid: YearGoal,
+#   mgid: MonthGoal,
+#   description: String,
+# }
+
+# type Query {
+#   yearGoalQuery: [YearGoal],
+#   yearGoalDeepQuery: [YearToMonthMN],
+# }

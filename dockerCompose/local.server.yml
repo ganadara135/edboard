@@ -24,7 +24,8 @@ services:
             - MYSQL_PASSWORD=${TYPEORM_PASSWORD}
             - MYSQL_DATABASE=${TYPEORM_DATABASE}
             - TZ=Asia/Seoul
-            - FOR_EMPTY_STR=SET NAMES UTF8mb4   # No operation on this position
+            - init-connect=SET NAMES UTF8mb4
+            # - FOR_EMPTY_STR='SET NAMES UTF8mb4'   # No operation on this position
         command: mysqld --init-connect=${FOR_EMPTY_STR} --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         # command: ["mysqld", "--init-connect=SET NAMES UTF8mb4;", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
         # command: --default-authentication-plugin=mysql_native_password
@@ -68,7 +69,7 @@ services:
             - TYPEORM_CONNECTION=${TYPEORM_CONNECTION}
             - TYPEORM_HOST=${TYPEORM_HOST}
 
-            - FOR_EMPTY_STR=SET NAMES UTF8mb4               # 중요
+            # - FOR_EMPTY_STR='SET NAMES UTF8mb4'               
         depends_on:
             - redis
             - rdb

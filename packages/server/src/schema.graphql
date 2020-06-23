@@ -1,29 +1,30 @@
 type Mutation {
-  createEDBoard(name: String, description: String): ErrorReponse
-  insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): ErrorReponse
-  insertYear(edboardName: String!, yeargoals: YearGoalInput): ErrorReponse
+  createEDBoard(name: String, description: String): IErrorReponse
+  insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): IErrorReponse
+  insertYear(edboardName: String!, yeargoals: YearGoalInput): IErrorReponse
 }
 
-type EDBoard {
+type IEDBoard {
   id: ID!
   name: String
   description: String
-  yeargoals: [YearGoal]
+  yeargoals: [IYearGoal]
 }
 
 type Query {
-  edboardQuery: [EDBoard]
-  monthGoalQuery: [MonthGoal]
-  yearGoalQuery: [YearGoal]
-  yearGoalDeepQuery: [YearToMonthMN]
+  edboardQuery: [IEDBoard]
+  monthGoalQuery: [IMonthGoal]
+  yearGoalQuery: [IYearGoal]
+  yearGoalDeepQuery: [IYearToMonthMN]
+  viewListingYear(yearName: Int!): IListingYear
 }
 
-type MonthGoal {
+type IMonthGoal {
   id: ID!
   month: Int!
   goal: Float!
   description: String
-  ymmns: [YearToMonthMN!]
+  ymmns: [IYearToMonthMN!]
 }
 
 input YearGoalInput {
@@ -32,25 +33,32 @@ input YearGoalInput {
   description: String
 }
 
-type YearGoal {
+type IYearGoal {
   id: ID!
   year: Int!
   goal: Int!
   description: String
-  ymmns: [YearToMonthMN]
-  edboard: EDBoard
+  ymmns: [IYearToMonthMN]
+  edboard: IEDBoard
 }
 
-type YearToMonthMN {
-  ygid: YearGoal
-  mgid: MonthGoal
+type IYearToMonthMN {
+  id: ID
+  ygid: IYearGoal
+  mgid: IMonthGoal
   description: String
 }
 
-type ErrorReponse {
+type IErrorReponse {
   ok: Boolean
   path: String
   message: String
+}
+
+type IListingYear {
+  mnInfo: [IYearToMonthMN]
+  monthInfo: [IMonthGoal]
+  yearInfo: [IYearGoal]
 }
 
 type Error {

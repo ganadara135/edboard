@@ -2,7 +2,7 @@ type Mutation {
   insertYear(
     edboardName: String!,             # EDBoard.name
     yeargoals: YearGoalInput,
-  ): ErrorReponse,
+  ): IErrorReponse,
 }
 
 input YearGoalInput {
@@ -11,22 +11,23 @@ input YearGoalInput {
   description: String
 }
 
-type YearGoal {
-  id: ID!,
+type IYearGoal {
+  id: ID!
   year: Int!
-  goal: Int!,
-  description: String,
-  ymmns: [YearToMonthMN],
-  edboard: EDBoard
+  goal: Int!
+  description: String
+  ymmns: [IYearToMonthMN],
+  edboard: IEDBoard
 }
 
-type YearToMonthMN {
-  ygid: YearGoal,
-  mgid: MonthGoal,
+type IYearToMonthMN {
+  id: ID,
+  ygid: IYearGoal,
+  mgid: IMonthGoal,
   description: String,
 }
 
 type Query {
-  yearGoalQuery: [YearGoal],
-  yearGoalDeepQuery: [YearToMonthMN],
+  yearGoalQuery: [IYearGoal],
+  yearGoalDeepQuery: [IYearToMonthMN],
 }

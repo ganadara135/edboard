@@ -2,16 +2,16 @@ type Mutation {
   createEDBoard(
     name: String,
     description: String
-  ): ErrorReponse
+  ): IErrorReponse
 }
 
-type EDBoard {
+type IEDBoard {
   id: ID!,
   name: String,
   description: String,
-  yeargoals: [YearGoal],
+  yeargoals: [IYearGoal],
 }
 
 type Query {
-  edboardQuery: [EDBoard],
+  edboardQuery: [IEDBoard],
 }

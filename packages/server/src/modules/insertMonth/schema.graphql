@@ -4,19 +4,19 @@ type Mutation {
     goal: Float!,
     yearName: Int!,
     description: String,
-  ): ErrorReponse
+  ): IErrorReponse
 }
 
 # scalar Date
 
-type MonthGoal {
+type IMonthGoal {
   id: ID!,
   month: Int!,
   goal: Float!,
   description: String,
-  ymmns: [YearToMonthMN!]
+  ymmns: [IYearToMonthMN!]
 }
 
 type Query {
-  monthGoalQuery: [MonthGoal],
+  monthGoalQuery: [IMonthGoal],
 }

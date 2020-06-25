@@ -10,7 +10,7 @@ import * as Yup from "yup";
 
 
 interface FormValues {  // extends InsertMonthMutationVariables{
-  month?: number;
+  month: number;
   goal: number;
   yearName: number;
   description?: string;
@@ -26,6 +26,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 
     const { message }: any = errors;
     console.log(" errors props : ", errors)
+    console.log("this.props: ", this.props);
 
     return (
       <Form style={{ display: "flex" }}> 
@@ -93,7 +94,7 @@ export const InsertMonthView = withFormik<Props, FormValues>({
     // validateOnChange : false,
     // validateOnBlur: false,
     validationSchema : InsertMonthSchema,
-    mapPropsToValues: () =>  ({ goal: 0, yearName: 0, }),
+    mapPropsToValues: () =>  ({ month: 0, goal: 0, yearName: 0, }),
     handleSubmit: async (values, {props, setErrors}) => {
         console.log("handleSubmit: ", values)
  

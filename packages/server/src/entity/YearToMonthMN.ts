@@ -27,10 +27,12 @@ export class YearToMonthMN extends BaseEntity {
   @Column("char", { length: 100, nullable: true })
   description: string;
 
-  @ManyToOne(_type => YearGoal, yeargoal => yeargoal.ymmns)
+  @ManyToOne(_type => YearGoal, yeargoal => yeargoal.ymmns,
+    { cascade: true })
   ygid!: YearGoal;
 
-  @ManyToOne(_type => MonthGoal, monthgoal => monthgoal.ymmns)
+  @ManyToOne(_type => MonthGoal, monthgoal => monthgoal.ymmns,
+    { cascade: true })
   mgid!: MonthGoal;
 
 }

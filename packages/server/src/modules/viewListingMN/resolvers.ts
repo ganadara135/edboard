@@ -28,16 +28,7 @@ export const resolvers: ResolverMap = {
         mnInfo: mnInfo as any,    // Very Important!!! It is different of TypeORM Entity and Graphql Type
         monthInfo: null,
         yearInfo: null
-        // mnInfo: [IYearToMonthMN],
-        // monthInfo: [IMonthGoal],
-        // yearInfo: [IYearGoal]
       } 
-
-      // return {
-      //   ok: false,
-      //   message: "input value is null or undefined",
-      //   path: "yeargoals edboardName"
-      // }
     }
   }
 };

@@ -43,6 +43,16 @@ export const resolvers: ResolverMap = {
           path: "edboard.id"
         }
       }
+
+      const yeargoalchk = await YearGoal.findOne({ year: yeargoals.year } as unknown as number);
+      console.log("chk yeargoalchk: ", yeargoalchk);
+      if(yeargoalchk){  
+        return {
+          ok: false,
+          message: yeargoalchk.year + " is already inputed",
+          path: "YearGoalInput.year"
+        }
+      }
       
 
       // const yearGoalVal = yeargoals?.pop();

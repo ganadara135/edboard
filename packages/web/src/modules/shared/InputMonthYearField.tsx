@@ -25,20 +25,6 @@ export const InputMonthYearField: React.SFC<
     console.log("props : ", props)
     // const {yearName} = props;
 
-
-    // const myContainer = ( className: any, children: any ) : any => {
-    //     return (
-    //       <div style={{ padding: "16px", background: "#216ba5", color: "#fff" }}>
-    //         <CalendarContainer className={className} >
-    //           <div style={{ background: "#f0f0f0" }}>
-    //             What is your favorite day?
-    //           </div>
-    //           <div style={{ position: "relative" }}>{children}</div>
-    //         </CalendarContainer>
-    //       </div>
-    //     );
-    // };
-
     return (
         <Form.Item 
             label={label}
@@ -55,7 +41,6 @@ export const InputMonthYearField: React.SFC<
                 showYearPicker={pickerVal==='year' ? true : false}
                 // showMonthYearDropdown
                 
-
                 // {...props.prefix} 
                 // {...props.children} 
                 // placeholder={field.name}

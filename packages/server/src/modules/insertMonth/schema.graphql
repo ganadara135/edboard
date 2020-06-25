@@ -9,14 +9,8 @@ type Mutation {
 
 # scalar Date
 
-type IMonthGoal {
-  id: ID!,
-  month: Int!,
-  goal: Float!,
-  description: String,
-  ymmns: [IYearToMonthMN!]
-}
+
 
 type Query {
-  monthGoalQuery: [IMonthGoal],
+  monthGoalQuery: [MonthGoal],
 }

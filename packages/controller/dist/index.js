@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./modules/InsertYearController"), exports);
 __exportStar(require("./modules/CreateEDBoardController"), exports);
 __exportStar(require("./modules/InsertMonthController"), exports);
+__exportStar(require("./modules/ViewListingMN"), exports);
 __exportStar(require("./schemaTypes"), exports);
 __exportStar(require("./types/NormalizedErrorMap"), exports);
 //# sourceMappingURL=index.js.map

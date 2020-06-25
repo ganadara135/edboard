@@ -1,53 +1,53 @@
-export const typeDefs = ["type Mutation {\n  createEDBoard(name: String, description: String): IErrorReponse\n  insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): IErrorReponse\n  insertYear(edboardName: String!, yeargoals: YearGoalInput): IErrorReponse\n}\n\ntype IEDBoard {\n  id: ID!\n  name: String\n  description: String\n  yeargoals: [IYearGoal]\n}\n\ntype Query {\n  edboardQuery: [IEDBoard]\n  monthGoalQuery: [IMonthGoal]\n  yearGoalQuery: [IYearGoal]\n  yearGoalDeepQuery: [IYearToMonthMN]\n  viewListingYear(yearName: Int!): IListingYear\n}\n\ntype IMonthGoal {\n  id: ID!\n  month: Int!\n  goal: Float!\n  description: String\n  ymmns: [IYearToMonthMN!]\n}\n\ninput YearGoalInput {\n  year: Int\n  goal: Int\n  description: String\n}\n\ntype IYearGoal {\n  id: ID!\n  year: Int!\n  goal: Int!\n  description: String\n  ymmns: [IYearToMonthMN]\n  edboard: IEDBoard\n}\n\ntype IYearToMonthMN {\n  id: ID\n  ygid: IYearGoal\n  mgid: IMonthGoal\n  description: String\n}\n\ntype IErrorReponse {\n  ok: Boolean\n  path: String\n  message: String\n}\n\ntype IListingYear {\n  mnInfo: [IYearToMonthMN]\n  monthInfo: [IMonthGoal]\n  yearInfo: [IYearGoal]\n}\n\ntype Error {\n  path: String!\n  message: String!\n}\n"];
+export type typeDefs = ["type Mutation {\n  createEDBoard(name: String, description: String): IErrorReponse\n  insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): IErrorReponse\n  insertYear(edboardName: String!, yeargoals: YearGoalInput): IErrorReponse\n}\n\ntype Query {\n  edboardQuery: [EDBoard]\n  monthGoalQuery: [MonthGoal]\n  yearGoalQuery: [YearGoal]\n  yearGoalDeepQuery: [YearToMonthMN]\n  viewListingMN(yearName: Int!): ListingMN\n}\n\ninput YearGoalInput {\n  year: Int\n  goal: Int\n  description: String\n}\n\ntype IErrorReponse {\n  ok: Boolean\n  path: String\n  message: String\n}\n\ntype EDBoard {\n  id: ID!\n  name: String\n  description: String\n  yeargoals: [YearGoal]\n}\n\ntype YearGoal {\n  id: ID!\n  year: Int!\n  goal: Int!\n  description: String\n  ymmns: [YearToMonthMN]\n  edboard: EDBoard\n}\n\ntype YearToMonthMN {\n  id: ID\n  ygid: YearGoal\n  mgid: MonthGoal\n  description: String\n}\n\ntype MonthGoal {\n  id: ID!\n  month: Int!\n  goal: Float!\n  description: String\n  ymmns: [YearToMonthMN!]\n}\n\ntype ListingMN {\n  mnInfo: [YearToMonthMN]\n  monthInfo: [MonthGoal]\n  yearInfo: [YearGoal]\n}\n\ntype Error {\n  path: String!\n  message: String!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
-  edboardQuery: Array<IEDBoard> | null;
-  monthGoalQuery: Array<IMonthGoal> | null;
-  yearGoalQuery: Array<IYearGoal> | null;
-  yearGoalDeepQuery: Array<IYearToMonthMN> | null;
-  viewListingYear: IListingYear | null;
+  edboardQuery: Array<EDBoard> | null;
+  monthGoalQuery: Array<MonthGoal> | null;
+  yearGoalQuery: Array<YearGoal> | null;
+  yearGoalDeepQuery: Array<YearToMonthMN> | null;
+  viewListingMN: ListingMN | null;
 }
 
-export interface ViewListingYearQueryArgs {
+export interface ViewListingMnQueryArgs {
   yearName: number;
 }
 
-export interface IEDBoard {
+export interface EDBoard {
   id: string;
   name: string | null;
   description: string | null;
-  yeargoals: Array<IYearGoal> | null;
+  yeargoals: Array<YearGoal> | null;
 }
 
-export interface IYearGoal {
+export interface YearGoal {
   id: string;
   year: number;
   goal: number;
   description: string | null;
-  ymmns: Array<IYearToMonthMN> | null;
-  edboard: IEDBoard | null;
+  ymmns: Array<YearToMonthMN> | null;
+  edboard: EDBoard | null;
 }
 
-export interface IYearToMonthMN {
+export interface YearToMonthMN {
   id: string | null;
-  ygid: IYearGoal | null;
-  mgid: IMonthGoal | null;
+  ygid: YearGoal | null;
+  mgid: MonthGoal | null;
   description: string | null;
 }
 
-export interface IMonthGoal {
+export interface MonthGoal {
   id: string;
   month: number;
   goal: number;
   description: string | null;
-  ymmns: Array<IYearToMonthMN>;
+  ymmns: Array<YearToMonthMN>;
 }
 
-export interface IListingYear {
-  mnInfo: Array<IYearToMonthMN> | null;
-  monthInfo: Array<IMonthGoal> | null;
-  yearInfo: Array<IYearGoal> | null;
+export interface ListingMN {
+  mnInfo: Array<YearToMonthMN> | null;
+  monthInfo: Array<MonthGoal> | null;
+  yearInfo: Array<YearGoal> | null;
 }
 
 export interface Mutation {

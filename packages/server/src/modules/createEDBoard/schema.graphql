@@ -5,13 +5,7 @@ type Mutation {
   ): IErrorReponse
 }
 
-type IEDBoard {
-  id: ID!,
-  name: String,
-  description: String,
-  yeargoals: [IYearGoal],
-}
 
 type Query {
-  edboardQuery: [IEDBoard],
+  edboardQuery: [EDBoard],
 }

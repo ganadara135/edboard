@@ -21,7 +21,7 @@ services:
             - -c 
             - "yarn start"
 
-volumes:
-    rdb-data:
+# volumes:
+#     rdb-data:
 networks:
     net-abb:

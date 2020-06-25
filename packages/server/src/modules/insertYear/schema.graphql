@@ -11,23 +11,8 @@ input YearGoalInput {
   description: String
 }
 
-type IYearGoal {
-  id: ID!
-  year: Int!
-  goal: Int!
-  description: String
-  ymmns: [IYearToMonthMN],
-  edboard: IEDBoard
-}
-
-type IYearToMonthMN {
-  id: ID,
-  ygid: IYearGoal,
-  mgid: IMonthGoal,
-  description: String,
-}
 
 type Query {
-  yearGoalQuery: [IYearGoal],
-  yearGoalDeepQuery: [IYearToMonthMN],
+  yearGoalQuery: [YearGoal],
+  yearGoalDeepQuery: [YearToMonthMN],
 }

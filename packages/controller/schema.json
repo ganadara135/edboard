@@ -76,6 +76,33 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "viewListingMN",
+            "description": null,
+            "args": [
+              {
+                "name": "yearName",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "ListingMN",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -285,6 +312,18 @@
         "description": null,
         "fields": [
           {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "ygid",
             "description": null,
             "args": [],
@@ -429,6 +468,65 @@
       },
       {
         "kind": "OBJECT",
+        "name": "ListingMN",
+        "description": null,
+        "fields": [
+          {
+            "name": "mnInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "YearToMonthMN",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "monthInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "MonthGoal",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "yearInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "YearGoal",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
         "name": "Mutation",
         "description": null,
         "fields": [
@@ -459,7 +557,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "ErrorReponse",
+              "name": "IErrorReponse",
               "ofType": null
             },
             "isDeprecated": false,
@@ -524,7 +622,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "ErrorReponse",
+              "name": "IErrorReponse",
               "ofType": null
             },
             "isDeprecated": false,
@@ -561,7 +659,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "ErrorReponse",
+              "name": "IErrorReponse",
               "ofType": null
             },
             "isDeprecated": false,
@@ -575,7 +673,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "ErrorReponse",
+        "name": "IErrorReponse",
         "description": null,
         "fields": [
           {

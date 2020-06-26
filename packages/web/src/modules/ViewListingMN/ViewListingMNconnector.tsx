@@ -34,8 +34,9 @@ export class ViewListingMNConnector extends React.PureComponent<
                   // cover={ }
                 >
                   <Link to={`/listing/${l?.id}-mm`}>
-                    <Card.Meta title={l?.__typename}  description={l?.id} >
+                    <Card.Meta title={l?.ygid?.year + '년'}  description={l?.id} >
                     {l?.id}
+                      {/* {l.} */}
                     </Card.Meta>
 
                   </Link>

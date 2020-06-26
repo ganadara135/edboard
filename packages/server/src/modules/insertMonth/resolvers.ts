@@ -36,7 +36,7 @@ export const resolvers: ResolverMap = {
                 const subQuery = qb.subQuery()
                     .select("mn.mgid")
                     .from(YearToMonthMN, "mn")
-                    .where("mn.ygid = "+ yearVal.id)
+                    .where("mn.ygid = :yeargoalId",{yeargoalId: yearVal.id})
                     .getQuery();
                 return "monthgoals.id IN " + subQuery;
             })

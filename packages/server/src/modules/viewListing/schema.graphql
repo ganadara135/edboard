@@ -1,0 +1,9 @@
+type Query {
+  viewListing(yearName: Int!): ListingOrdered
+}
+
+scalar raw
+
+type ListingOrdered {
+  ordered: [raw],
+}

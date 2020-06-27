@@ -24,9 +24,11 @@ export class CreateEDBoardConnector extends React.PureComponent
 
     render() {         
         return (
+            
             <CreateEDBoardController >
                 {({ submit }) => <CreateEDBoardView onFinish={this.onFinish} submit={submit} />} 
             </CreateEDBoardController>
+
         );
         
     }

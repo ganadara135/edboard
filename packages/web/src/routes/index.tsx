@@ -12,10 +12,12 @@ import { CreateEDBoardConnector } from "../modules/CreateEDBoard/CreateEDBoardCo
 import { ViewListingMNConnector } from "../modules/ViewListingMN/ViewListingMNconnector";
 import { ViewListingConnector } from "../modules/ViewListing/ViewListingconnector";
 import Home  from "../modules/Home";
+import Header from "../modules/Header";
 
 
 export const Routes = () => (
     <BrowserRouter>
+        <Header/>
         <Switch>
         {/* <div> <h1>Hello</h1></div>; */}
             <Route exact={true} path="/"  component={Home} />

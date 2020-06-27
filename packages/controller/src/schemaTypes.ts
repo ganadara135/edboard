@@ -81,6 +81,28 @@ export interface InsertYearMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: ViewListingQuery
+// ====================================================
+
+export interface ViewListingQuery_viewListing {
+  __typename: "ListingOrdered";
+  ordered: (any | null)[] | null;
+}
+
+export interface ViewListingQuery {
+  viewListing: ViewListingQuery_viewListing | null;
+}
+
+export interface ViewListingQueryVariables {
+  yearName: number;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: ViewListingMNQuery
 // ====================================================
 

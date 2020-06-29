@@ -33,30 +33,14 @@ export class ViewListingConnector extends React.PureComponent<
                 <Card
                   key={`${l?.mn_id}-card`}
                   hoverable={true}
-                  style={{ width: 350 }}
+                  style={{ width: 500 }}
                   // cover={ }
                 >
                   <Link to={`/listing/${l.mn_id}-mm`}>
-                    <Card.Meta title={l.y_year + '년'}  description={l.y_description} >
-                    {l.mn_description}
-                    {l.m_description}
-                    {l.y_description}
-                    {/* m_description: null
-                    m_goal: 222
-                    m_id: 1
-                    m_month: 1
-                    mn_description: null
-                    mn_id: 1
-                    mn_mgidId: 1
-                    mn_ygidId: 1
-                    y_description: "한글설명"
-                    y_edboardId: 1
-                    y_goal: 111
-                    y_id: 1
-                    y_year: 2020 */}
-                     
+                    <Card.Meta title={l.y_year + '년'}  description={
+                      l.mn_description+" / "+l.m_description+" / "+l.y_description+" / "+l.m_goal+" / "+l.m_id+" / "+l.m_month 
+                      +" / "+l.mn_id+" / "+l.mn_mgidId+" / "+l.mn_ygidId+" / "+l.y_edboardId+" / "+l.y_goal+" / "+l.y_id+" / "+l.y_year} >                 
                     </Card.Meta>
-
                   </Link>
                 </Card>
               )

@@ -78,6 +78,33 @@
             "deprecationReason": null
           },
           {
+            "name": "listYearQuery",
+            "description": null,
+            "args": [
+              {
+                "name": "yearName",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "viewListing",
             "description": null,
             "args": [

@@ -9,6 +9,7 @@ type Query {
   monthGoalQuery: [MonthGoal]
   yearGoalQuery: [YearGoal]
   yearGoalDeepQuery: [YearToMonthMN]
+  listYearQuery(yearName: Int): [Int]
   viewListing(yearName: Int!): ListingOrdered
   viewListingMN(yearName: Int!): ListingMN
 }

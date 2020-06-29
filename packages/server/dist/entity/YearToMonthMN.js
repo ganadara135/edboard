@@ -23,11 +23,11 @@ __decorate([
     __metadata("design:type", String)
 ], YearToMonthMN.prototype, "description", void 0);
 __decorate([
-    typeorm_1.ManyToOne(_type => YearGoal_1.YearGoal, yeargoal => yeargoal.ymmns),
+    typeorm_1.ManyToOne(_type => YearGoal_1.YearGoal, yeargoal => yeargoal.ymmns, { cascade: true }),
     __metadata("design:type", YearGoal_1.YearGoal)
 ], YearToMonthMN.prototype, "ygid", void 0);
 __decorate([
-    typeorm_1.ManyToOne(_type => MonthGoal_1.MonthGoal, monthgoal => monthgoal.ymmns),
+    typeorm_1.ManyToOne(_type => MonthGoal_1.MonthGoal, monthgoal => monthgoal.ymmns, { cascade: true }),
     __metadata("design:type", MonthGoal_1.MonthGoal)
 ], YearToMonthMN.prototype, "mgid", void 0);
 YearToMonthMN = __decorate([

@@ -18,13 +18,17 @@ __decorate([
     __metadata("design:type", Number)
 ], MonthGoal.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column("int"),
+    typeorm_1.Column({ type: 'int' }),
     __metadata("design:type", Number)
 ], MonthGoal.prototype, "month", void 0);
 __decorate([
-    typeorm_1.Column("int"),
+    typeorm_1.Column("float"),
     __metadata("design:type", Number)
 ], MonthGoal.prototype, "goal", void 0);
+__decorate([
+    typeorm_1.Column("varchar", { length: 255, nullable: true }),
+    __metadata("design:type", String)
+], MonthGoal.prototype, "description", void 0);
 __decorate([
     typeorm_1.OneToMany(_type => YearToMonthMN_1.YearToMonthMN, ymnn => ymnn.mgid),
     __metadata("design:type", Array)

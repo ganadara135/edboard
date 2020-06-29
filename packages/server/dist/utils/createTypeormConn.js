@@ -10,8 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const User_1 = require("../entity/User");
-const Listing_1 = require("../entity/Listing");
 const EDboard_1 = require("../entity/EDboard");
 const YearGoal_1 = require("../entity/YearGoal");
 const YearToMonthMN_1 = require("../entity/YearToMonthMN");
@@ -19,26 +17,26 @@ const MonthGoal_1 = require("../entity/MonthGoal");
 exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* () {
     return process.env.NODE_ENV === "production"
         ? typeorm_1.createConnection({
-            type: 'mariadb',
-            host: 'rdb',
-            username: 'mysql',
-            password: 'mysql',
-            database: 'database',
+            type: process.env.TYPEORM_CONNECTION,
+            host: process.env.TYPEORM_HOST,
+            username: process.env.TYPEORM_USERNAME,
+            password: process.env.TYPEORM_PASSWORD,
+            database: process.env.TYPEORM_DATABASE,
             synchronize: false,
             logging: true,
             charset: "utf8mb4_unicode_ci",
-            entities: [Listing_1.Listing, User_1.User, EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],
+            entities: [EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],
             name: "default"
         })
         : typeorm_1.createConnection({
-            type: 'mariadb',
-            host: 'rdb',
-            username: process.env.MYSQL_USER,
-            password: process.env.MYSQL_PASSWORD,
-            database: process.env.MYSQL_DATABASE,
+            type: process.env.TYPEORM_CONNECTION,
+            host: process.env.TYPEORM_HOST,
+            username: process.env.TYPEORM_USERNAME,
+            password: process.env.TYPEORM_PASSWORD,
+            database: process.env.TYPEORM_DATABASE,
             synchronize: true,
             logging: true,
-            entities: [Listing_1.Listing, User_1.User, EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],
+            entities: [EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],
             name: "default"
         });
 });

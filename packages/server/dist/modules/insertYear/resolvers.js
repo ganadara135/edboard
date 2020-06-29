@@ -17,27 +17,37 @@ exports.resolvers = {
         insertYear: (_, args, __, ___) => __awaiter(void 0, void 0, void 0, function* () {
             const { edboardName, yeargoals } = args;
             console.log("args: ", args);
+            if (!yeargoals || !edboardName) {
+                return {
+                    ok: false,
+                    message: "input value is null or undefined",
+                    path: "yeargoals edboardName"
+                };
+            }
             const edboard = yield EDboard_1.EDboard.findOne({ name: edboardName });
             console.log("chk edboard: ", edboard);
             if (!edboard) {
                 return {
                     ok: false,
-                    message: "edboard is null or undefined",
+                    message: "EDBoard name is empty or duplicated",
                     path: "edboard.id"
                 };
             }
-            if (!yeargoals) {
+            const yeargoalchk = yield YearGoal_1.YearGoal.findOne({ year: yeargoals.year });
+            console.log("chk yeargoalchk: ", yeargoalchk);
+            if (yeargoalchk) {
                 return {
                     ok: false,
-                    message: "yeargoals is null or undefined",
-                    path: "yeargoals args"
+                    message: yeargoalchk.year + " is already inputed",
+                    path: "YearGoalInput.year"
                 };
             }
             const yearGoalVal = yeargoals;
             const yr = new YearGoal_1.YearGoal();
             yr.goal = yearGoalVal === null || yearGoalVal === void 0 ? void 0 : yearGoalVal.goal;
             yr.year = yearGoalVal === null || yearGoalVal === void 0 ? void 0 : yearGoalVal.year;
-            yr.edboard = edboard === null || edboard === void 0 ? void 0 : edboard.id;
+            yr.description = yearGoalVal === null || yearGoalVal === void 0 ? void 0 : yearGoalVal.description;
+            yr.edboard = edboard;
             yield yr.save();
             return {
                 ok: true,

@@ -39,6 +39,12 @@ export interface InsertYearMutationVariables {
     edboardName: string;
     yeargoals?: YearGoalInput | null;
 }
+export interface ListYearQuery {
+    listYearQuery: (number | null)[] | null;
+}
+export interface ListYearQueryVariables {
+    yearName: number;
+}
 export interface ViewListingQuery_viewListing {
     __typename: "ListingOrdered";
     ordered: (any | null)[] | null;

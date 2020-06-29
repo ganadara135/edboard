@@ -15,6 +15,7 @@ __exportStar(require("./modules/CreateEDBoardController"), exports);
 __exportStar(require("./modules/InsertMonthController"), exports);
 __exportStar(require("./modules/ViewListingMN"), exports);
 __exportStar(require("./modules/ViewListingController"), exports);
+__exportStar(require("./modules/ListYearController"), exports);
 __exportStar(require("./schemaTypes"), exports);
 __exportStar(require("./types/NormalizedErrorMap"), exports);
 //# sourceMappingURL=index.js.map

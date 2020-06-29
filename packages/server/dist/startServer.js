@@ -20,7 +20,6 @@ const RateLimit = require("express-rate-limit");
 const RateLimitRedisStore = require("rate-limit-redis");
 const redis_1 = require("./redis");
 const createTypeormConn_1 = require("./utils/createTypeormConn");
-const confirmEmail_1 = require("./routes/confirmEmail");
 const genSchema_1 = require("./utils/genSchema");
 const constants_1 = require("./constants");
 const createTestConn_1 = require("./testUtils/createTestConn");
@@ -76,7 +75,6 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
             maxAge: 1000 * 60 * 60 * 24 * 7
         }
     }));
-    app.get("/confirm/:id", confirmEmail_1.confirmEmail);
     if (process.env.NODE_ENV === "test") {
         yield createTestConn_1.createTestConn(true);
     }

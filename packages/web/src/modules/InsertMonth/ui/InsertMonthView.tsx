@@ -72,6 +72,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
                   name="yearName" 
                   label="해당년도" 
                   placeholder="연도선택"
+                  defaultValue={2020}
                   listing={data.listing}
                   component={SelectField}
                 />

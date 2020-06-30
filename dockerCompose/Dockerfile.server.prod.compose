@@ -24,12 +24,10 @@ RUN yarn install --${NODE_ENV}
 # .env 파일은 copy 안됨
 COPY ./.env.prod ./.env
 # 이건 현재 의미 있없음 루트 쪽 .env 로 다 옮김
-COPY ./packages/server/.env.production ./packages/server/.env       
+# COPY ./packages/server/.env.production ./packages/server/.env       
 COPY ./packages/common/dist/ ./packages/common/dist/
 COPY ./packages/server/dist/ ./packages/server/dist/
 COPY ./packages/controller/dist/ ./packages/controller/dist/
-
-
 
 
 

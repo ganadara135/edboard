@@ -3,8 +3,13 @@ FROM node:12-alpine as build
 # set working directory
 WORKDIR /abb
 
+ARG REACT_APP_SERVER_URL
+ARG SERVER_PORT
+RUN echo "REACT_APP_SERVER_URL: ${REACT_APP_SERVER_URL}"+':'+"${SERVER_PORT}"
+
 # add `/abb/node_modules/.bin` to $PATH
 ENV PATH /abb/web/node_modules/.bin:$PATH
+# ENV REACT_APP_SERVER_URL ${REACT_APP_SERVER_URL}"+':'+"${SERVER_PORT}"
 
 # install app dependencies
 COPY ./package.json ./
@@ -22,7 +27,11 @@ COPY ./packages/web/ ./packages/web/
 COPY ./packages/common/dist/ ./packages/common/dist/
 COPY ./packages/controller/dist/ ./packages/controller/dist/
 
+
 WORKDIR /abb/packages/web/
+
+# .env 파일은 copy 안됨
+COPY ./.env.prod ./.env
 
 RUN yarn build
 

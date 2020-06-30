@@ -10,9 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const removeAllUsersSessions_1 = require("./removeAllUsersSessions");
-const User_1 = require("../entity/User");
 exports.forgotPasswordLockAccount = (userId, redis) => __awaiter(void 0, void 0, void 0, function* () {
-    yield User_1.User.update({ id: userId }, { forgotPasswordLocked: true });
     yield removeAllUsersSessions_1.removeAllUsersSessions(userId, redis);
 });
 //# sourceMappingURL=forgotPasswordLockAccount.js.map

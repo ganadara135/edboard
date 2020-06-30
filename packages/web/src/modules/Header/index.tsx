@@ -8,37 +8,30 @@ function handleClick(info: { key: any; }) {
   console.log(info);
 }
 
-// const onOpenChange = (openKeys: any) => {
-//   console.log('onOpenChange', openKeys);
-//   // this.setState({
-//   //   openKeys,
-//   // });
-// };
-
 const Header = () => 
 <div style={{ margin: 20 }}>
 
 <Menu onClick={handleClick}  mode="horizontal">
         <Menu.Item key="mail" icon={<MailOutlined />}>
           <Link to={`/viewraw`}>
-          ViewListing Raw
+          전체목록보기 raw
           </Link>
         </Menu.Item>
         <Menu.Item key="app" icon={<AppstoreOutlined />}>
           <Link to={`/createedb`}>
-          CreateEDBoard
+          게시판생성
           </Link>
         </Menu.Item>
         <Menu.SubMenu icon={<SettingOutlined />} title="Navigation Three - Submenu">
           <Menu.ItemGroup title="Item 1">
             <Menu.Item key="setting:1">
               <Link to={`/insertyear`}>
-                InsertYear
+                연도생성
               </Link>
             </Menu.Item>
             <Menu.Item key="setting:2">
               <Link to={`/insertmonth`}>
-                InsertMonth
+                월입력
               </Link>
             </Menu.Item>
           </Menu.ItemGroup>

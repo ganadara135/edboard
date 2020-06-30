@@ -19,9 +19,8 @@ export const SelectField: React.SFC<
         listing?.map((l:any, i) =>  
         <Select.Option key={i} value={l as number}>{l as number}</Select.Option>)
     );
-    // const Comp = useNumberComponent ? InputNumber : Input;
-    // console.log("...props in InputField 333: ", props)
-    // const { prefix } = props;
+    // console.log("...field: ", field)
+    console.log("...props: ", {...props})
     return (
         <Form.Item 
             label={label}
@@ -30,11 +29,12 @@ export const SelectField: React.SFC<
         >
             <Select 
                 {...field}
-                {...props.meta}
+                // {...props.meta}
                 // {...props.prefix}
                 // {...props.children}
-                defaultValue={2020}
-                placeholder={field.name}
+                // defaultValue={2020}
+                {...props}
+                // placeholder={field.name}
                 onChange={
                     (newValue: any) => setFieldValue(field.name, newValue)
                 }

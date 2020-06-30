@@ -17,7 +17,7 @@ export class ViewListingConnector extends React.PureComponent<
     //   }
     // } = this.props;
     return (
-      <ViewListingController yearName={2019}>
+      <ViewListingController yearName={2020}>
         {(data) => {
           console.log(data);
           console.log(data.listing);

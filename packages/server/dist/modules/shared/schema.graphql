@@ -6,8 +6,8 @@ type IErrorReponse {
 
 type EDBoard {
   id: ID!,
-  name: String,
-  description: String,
+  name: String!,
+  description: String!,
   yeargoals: [YearGoal],
 }
 

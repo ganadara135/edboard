@@ -30,6 +30,9 @@ COPY ./packages/controller/dist/ ./packages/controller/dist/
 
 WORKDIR /abb/packages/web/
 
+# .env 파일은 copy 안됨
+# COPY ./.env ./.env
+
 # start app
 # CMD ["yarn", "start"]
 

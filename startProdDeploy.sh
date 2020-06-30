@@ -1,9 +1,10 @@
 #! /bin/bash
 # yarn build:server
-# yarn build:web
+yarn build:web
 
 # docker build -f ./dockerCompose/Dockerfile.server.prod.compose -t ganadara135/abbback:latest ./
 docker build -f ./dockerCompose/Dockerfile.web.prod.compose -t ganadara135/abbfront:latest ./
+# docker-compose -f ./dockerCompose/prod.web.yml --build
 
 # docker push ganadara135/abbback:latest
 docker push ganadara135/abbfront:latest

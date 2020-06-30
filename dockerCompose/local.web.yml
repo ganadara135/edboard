@@ -13,7 +13,8 @@ services:
             - net-abb
         environment:
             - CHOKIDAR_USEPOLLING=true  # hot-reloading work
-            - REACT_APP_SERVER_URL=${REACT_APP_SERVER_URL}:${SERVER_PORT}
+            - REACT_APP_SERVER_PORT=${REACT_APP_SERVER_PORT}        
+            - REACT_APP_SERVER_URL=${REACT_APP_SERVER_URL}
         volumes:
             - ../:/abb/
         command:   

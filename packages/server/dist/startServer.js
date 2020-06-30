@@ -45,7 +45,8 @@ exports.startServer = () => __awaiter(void 0, void 0, void 0, function* () {
                 req
             });
         }),
-        playground: true
+        playground: true,
+        introspection: true,
     });
     server.applyMiddleware({
         app,

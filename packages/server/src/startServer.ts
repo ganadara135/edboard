@@ -54,9 +54,10 @@ export const startServer = async () => {
       session: req.session,
       req
     }),
-    playground: true
+    playground: true,
+    introspection: true,  // for Production
     // playground: {
-    //   endpoint: '/dev/graphql'
+    //   endpoint: '/graphql'
     // }
     // typeDefs,
     // resolvers,

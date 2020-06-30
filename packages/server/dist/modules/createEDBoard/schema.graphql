@@ -1,7 +1,7 @@
 type Mutation {
   createEDBoard(
-    name: String,
-    description: String
+    name: String!,
+    description: String!
   ): IErrorReponse
 }
 

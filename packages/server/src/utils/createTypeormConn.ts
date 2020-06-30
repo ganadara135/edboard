@@ -26,7 +26,7 @@ export const createTypeormConn = async () => {
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
 
-      synchronize: false,      // 중요
+      synchronize: true,      // 중요
       logging: true,
       charset: "utf8mb4_unicode_ci",
       entities: [  EDboard, YearGoal, YearToMonthMN, MonthGoal],

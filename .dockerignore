@@ -13,6 +13,7 @@
 !./packages/server/.env.development
 !./packages/server/.env.production
 !./packages/web/.env.production
+!./packages/web/.env
 
 !./packages/
 !./.env.local

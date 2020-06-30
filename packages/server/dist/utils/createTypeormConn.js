@@ -22,7 +22,7 @@ exports.createTypeormConn = () => __awaiter(void 0, void 0, void 0, function* ()
             username: process.env.TYPEORM_USERNAME,
             password: process.env.TYPEORM_PASSWORD,
             database: process.env.TYPEORM_DATABASE,
-            synchronize: false,
+            synchronize: true,
             logging: true,
             charset: "utf8mb4_unicode_ci",
             entities: [EDboard_1.EDboard, YearGoal_1.YearGoal, YearToMonthMN_1.YearToMonthMN, MonthGoal_1.MonthGoal],

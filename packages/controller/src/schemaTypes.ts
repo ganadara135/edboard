@@ -19,8 +19,8 @@ export interface CreateEDBoardMutation {
 }
 
 export interface CreateEDBoardMutationVariables {
-  name?: string | null;
-  description?: string | null;
+  name: string;
+  description: string;
 }
 
 /* tslint:disable */

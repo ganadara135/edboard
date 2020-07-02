@@ -28,7 +28,7 @@ class C extends React.PureComponent {
     }
 }
 const CREATEEDBOARD_MUTATION = graphql_tag_1.default `
-    mutation CreateEDBoardMutation($name: String, $description: String) {
+    mutation CreateEDBoardMutation($name: String!, $description: String!) {
         createEDBoard(name: $name, description: $description){
             ok
             message

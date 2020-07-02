@@ -12,6 +12,7 @@ services:
         container_name: rdb
         image: mariadb:10.5
         volumes:
+            - /root/mariaDB_cnf:/etc/mysql/conf.d
             - rdb-data:/var/lib/mysql
         networks:
             - net-abb

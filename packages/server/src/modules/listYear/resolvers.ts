@@ -8,12 +8,12 @@ export const resolvers: ResolverMap = {
       )  => {
 
       let returnVal;
-      if(yearName){
+      if(yearName === 1970){
+        returnVal = await YearGoal.find();
+      }else{
         returnVal = await YearGoal.find({
           where:{year: yearName}
         });
-      }else{
-        returnVal = await YearGoal.find();
       }
 
       console.log("chk : ", returnVal)

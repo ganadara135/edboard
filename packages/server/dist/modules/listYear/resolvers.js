@@ -14,13 +14,13 @@ exports.resolvers = {
     Query: {
         listYearQuery: (_, { yearName }) => __awaiter(void 0, void 0, void 0, function* () {
             let returnVal;
-            if (yearName) {
+            if (yearName === 1970) {
+                returnVal = yield YearGoal_1.YearGoal.find();
+            }
+            else {
                 returnVal = yield YearGoal_1.YearGoal.find({
                     where: { year: yearName }
                 });
-            }
-            else {
-                returnVal = yield YearGoal_1.YearGoal.find();
             }
             console.log("chk : ", returnVal);
             const yearListVal = returnVal.map(val => val.year);

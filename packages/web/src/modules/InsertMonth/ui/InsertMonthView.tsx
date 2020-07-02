@@ -3,7 +3,7 @@ import {  Button } from 'antd';
 // import { Icon } from '@ant-design/icons';
 import { withFormik,   FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
-import { InputMonthYearField } from "../../shared/InputMonthYearField";
+import { InputMonthField } from "../../shared/InputMonthField";
 import { InputField } from "../../shared/InputField";
 import { SelectField } from "../../shared/SelectField";
 import { NormalizedErrorMap, ListYearController } from '@abb/controller';
@@ -29,26 +29,22 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
     console.log(" errors props : ", errors)
     console.log("this.props: ", this.props);
 
-    return (
-      <ListYearController yearName={0}>
+    return (              //  1970  means to request all years
+      <ListYearController yearName={1970}>
         {(data) => {
           if (data.loading) {
             return <div>...loading</div>;
           }
+          console.log("data.listing : ", data.listing)
           return (
             <Form style={{ display: "flex" }}> 
               <div style={{width: 700, margin:'auto'}}>
                 <Field  
                   name="month"
                   label="월"
-                  // useNumberComponent={true}
-                  // prefix={
-                  //   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-                  // }
-                  // style={{width: 700, height:'100%', }}
-                  yearName={new Date().getFullYear()}
                   pickerVal="month"
-                  component={InputMonthYearField}
+                  yearName={2020}
+                  component={InputMonthField}
                 />
                 <Field  
                   name="goal"
@@ -80,9 +76,6 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
                 <Field  
                   name="description"
                   label="설명"
-                  // prefix={
-                  //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-                  // }
                   component={InputField}
                 />
                 {/* <ErrorMessage name="message" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
@@ -97,8 +90,6 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             </Form>)
         }}
       </ListYearController>
-
-      
     );
   }
 }

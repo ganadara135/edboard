@@ -8,8 +8,8 @@ export interface CreateEDBoardMutation {
     createEDBoard: CreateEDBoardMutation_createEDBoard | null;
 }
 export interface CreateEDBoardMutationVariables {
-    name?: string | null;
-    description?: string | null;
+    name: string;
+    description: string;
 }
 export interface InsertMonthMutation_insertMonth {
     __typename: "IErrorReponse";

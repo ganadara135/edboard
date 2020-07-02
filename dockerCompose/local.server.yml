@@ -11,9 +11,9 @@ services:
     rdb:
         container_name: rdb
         image: mariadb:10.5
-        # image: mysql:8.0.20
         volumes:
-            - rdb-data:/var/lib/mysql
+            - ~/work/energy/crud/edboard/dockerCompose/mariaDB_cnf:/etc/mysql/conf.d
+            - rdb-data:/var/lib/mysql            
         networks:
             - net-abb
         ports:
@@ -24,20 +24,9 @@ services:
             - MYSQL_PASSWORD=${TYPEORM_PASSWORD}
             - MYSQL_DATABASE=${TYPEORM_DATABASE}
             - TZ=Asia/Seoul
-            # - init-connect=SET NAMES UTF8mb4
             # --init-connect=${FOR_EMPTY_STR}    this is for Mac, Linux is different
         command: mysqld --init-connect=${FOR_EMPTY_STR} --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         # command: ["mysqld", "--init-connect=SET NAMES UTF8mb4;", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
-        # command: --default-authentication-plugin=mysql_native_password
-        # image: "postgres:9.6"
-        # volumes:
-        #     - rdb-data:/var/lib/postgresql/data
-        # networks:
-        #     - net-abb
-        # environment: 
-        #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-        #     - POSTGRES_USER=${POSTGRES_USER}
-        #     - POSTGRES_DB=${POSTGRES_DB}
 
     backend:
         container_name: backend

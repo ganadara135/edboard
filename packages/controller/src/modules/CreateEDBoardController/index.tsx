@@ -37,7 +37,7 @@ class C extends React.PureComponent<
 }
 
 const CREATEEDBOARD_MUTATION = gql`
-    mutation CreateEDBoardMutation($name: String, $description: String) {
+    mutation CreateEDBoardMutation($name: String!, $description: String!) {
         createEDBoard(name: $name, description: $description){
             ok
             message

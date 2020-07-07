@@ -140,6 +140,8 @@
 7. keep watch SemVer  ^(caret, inverted caret) ~(tilde, swung dash)
 8. VScode 는 탐색창에서 소스 복사나 옮기는거 금지, 큰 용량은 제대로 이동 안됨.
 9. gql 문장 바로 위에는 첨삭문 넣지 마라, 아마 에러메시지도 없이 schema 생성하지 않는다
+10. MySQL 에 관리자툴 phpMyadmin 이나 adminer 연결시에 전체 설정 내역 완전 삭제후에 적용, docker system prune, docker volume prune
+
 
 
 # 참고링크

@@ -10,8 +10,12 @@ services:
         
     rdb:
         container_name: rdb
-        image: mariadb:10.5
+        image: mysql:8.0
+        # image: mariadb:10.5
+        # image: 'bitnami/mariadb:latest'
         volumes:
+            # - ~/work/energy/crud/edboard/dockerCompose/mariaDB_cnf:/opt/bitnami/mariadb/conf/
+            # - rdb-data:/bitnami/mariadb/data
             - ~/work/energy/crud/edboard/dockerCompose/mariaDB_cnf:/etc/mysql/conf.d
             - rdb-data:/var/lib/mysql            
         networks:
@@ -19,15 +23,47 @@ services:
         ports:
             - 3306:3306
         environment:
+            - ALLOW_EMPTY_PASSWORD=yes
+            # - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            # - MARIADB_USER=${TYPEORM_USERNAME}
+            # - MARIADB_PASSWORD=${TYPEORM_PASSWORD}
+            # - MARIADB_DATABASE=${TYPEORM_DATABASE}
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - MYSQL_USER=${TYPEORM_USERNAME}
             - MYSQL_PASSWORD=${TYPEORM_PASSWORD}
             - MYSQL_DATABASE=${TYPEORM_DATABASE}
             - TZ=Asia/Seoul
-            # --init-connect=${FOR_EMPTY_STR}    this is for Mac, Linux is different
-        command: mysqld --init-connect=${FOR_EMPTY_STR} --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+            # - MYSQL_ALLOW_EMPTY_PASSWORD=1
+        command: --default-authentication-plugin=mysql_native_password
+            # --default-authentication-plugin=mysql_native_password
+            # --init-connect=${FOR _EMPTY_STR}    this is for Mac, Linux is different
+        # command: mysqld --init-connect=${FOR_EMPTY_STR} --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         # command: ["mysqld", "--init-connect=SET NAMES UTF8mb4;", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
-
+    
+    # adminer:
+    #     container_name: adminer
+    #     image: adminer
+    #     ports:
+    #         - 33306:8080
+    #     depends_on:
+    #         - rdb
+    #     environment:
+    #         - ADMINER_DEFAULT_SERVER:rdb
+    phpmyadmin:
+        container_name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        ports:
+            - 33306:80
+        depends_on:
+            - rdb
+        environment:
+            - PMA_ARBITRARY=1
+            # - PMA_USER=mysql
+            # - PMA_PASSWORD=mysql
+            - PMA_HOST=127.0.0.1
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        
     backend:
         container_name: backend
         build: 
@@ -36,6 +72,7 @@ services:
             args: 
                 - "NODE_ENV=${NODE_ENV}"
         image: kcod/abbback:latest
+        restart: always
         ports:
             - ${SERVER_PORT}:${SERVER_PORT}
         networks:
@@ -58,7 +95,7 @@ services:
             - TYPEORM_CONNECTION=${TYPEORM_CONNECTION}
             - TYPEORM_HOST=${TYPEORM_HOST}
 
-            # - FOR_EMPTY_STR='SET NAMES UTF8mb4'               
+            - FOR_EMPTY_STR='SET NAMES UTF8mb4'               
         depends_on:
             - redis
             - rdb

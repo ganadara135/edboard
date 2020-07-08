@@ -106,15 +106,15 @@ export const InsertMonthView = withFormik<Props, FormValues>({
     validationSchema : InsertMonthSchema,
     mapPropsToValues: () =>  ({ month: 0, goal: 0, yearName: 0, }),
     handleSubmit: async (values, {props, setErrors}) => {
-        console.log("handleSubmit: ", values)
- 
-        const errors = await props.submit(values);
-        
-        if(errors){
-          console.log("error : ", errors)
-          setErrors(errors)
-        } else {
-          props.onFinish();
-        }
+      console.log("handleSubmit: ", values)
+
+      const errors = await props.submit(values);
+      
+      if(errors){
+        console.log("error : ", errors)
+        setErrors(errors)
+      } else {
+        props.onFinish();
+      }
     }
 })(C);

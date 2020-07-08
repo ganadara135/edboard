@@ -1,0 +1,3 @@
+type Query {
+  listEDboardQuery(boardName: String): [String]
+}

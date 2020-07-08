@@ -25,6 +25,10 @@ export class MonthGoal extends BaseEntity {
   @Column({type:'int'})
   month!: number;
 
+  // timestamp type is a kind of integer type
+  @Column({type:'timestamp', nullable: false})
+  myTimestamp: string;
+
   @Column("float",)
   goal?: number;
 

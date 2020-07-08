@@ -52,7 +52,7 @@ services:
     phpmyadmin:
         container_name: phpmyadmin
         image: phpmyadmin/phpmyadmin
-        restart: always
+        # restart: always
         ports:
             - 33306:80
         depends_on:

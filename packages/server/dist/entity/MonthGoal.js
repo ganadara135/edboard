@@ -22,6 +22,10 @@ __decorate([
     __metadata("design:type", Number)
 ], MonthGoal.prototype, "month", void 0);
 __decorate([
+    typeorm_1.Column({ type: 'timestamp', nullable: false }),
+    __metadata("design:type", String)
+], MonthGoal.prototype, "myTimestamp", void 0);
+__decorate([
     typeorm_1.Column("float"),
     __metadata("design:type", Number)
 ], MonthGoal.prototype, "goal", void 0);

@@ -3,7 +3,12 @@ import {  Button } from 'antd';
 import { withFormik, ErrorMessage,  FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
 import { InputField } from "../../shared/InputField";
-import { NormalizedErrorMap, InsertYearMutationVariables, YearGoalInput } from "@abb/controller";
+import { SelectField } from "../../shared/SelectField";
+import { 
+  NormalizedErrorMap, 
+  InsertYearMutationVariables, 
+  YearGoalInput,
+  ListEDboardController } from "@abb/controller";
 import * as Yup from "yup";
 
 interface FormValues extends InsertYearMutationVariables{
@@ -16,23 +21,31 @@ interface Props {
 }
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
     
-    render() {
-       const {  errors, touched} = this.props;
+  render() {
+    const {  errors, touched} = this.props;
+    const { message }: any = errors;
 
-       const { message }: any = errors;
-       console.log(" errors props : ", errors)
-      //  console.log(" message : ", message)
-
-        return (
+    return (
+      <ListEDboardController >
+        {(data) => {
+          if (data.loading) {
+            return <div>...loading</div>;
+          }
+          console.log("data.listing board : ", data.listing)
+          return (
           <Form style={{ display: "flex" }}> 
           <div style={{width: 400, margin:'auto'}}>
-            <Field  
+            {/* <Field  
               name="edboardName"
               label="게시판명"
-              // prefix={
-              //   <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-              // }
               component={InputField}
+            /> */}
+            <Field 
+              as="select" 
+              name="edboardName" 
+              label="게시판명"
+              listing={data.listing}
+              component={SelectField}
             />
             <Field  
               name="yeargoals.year"
@@ -48,19 +61,12 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
               name="yeargoals.goal"
               label="목표전력"
               useNumberComponent={true}
-              // as: object
-              // prefix={
-              //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-              // }
               component={InputField}
             />
             <ErrorMessage name="yeargoals.goal" render={msg => <div style={{ color:'red'}}>{msg}</div>} />
             <Field  
               name="yeargoals.description"
               label="설명"
-              // prefix={
-              //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-              // }
               component={InputField}
             />
             {/* <ErrorMessage name="message" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
@@ -73,8 +79,10 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
             </div>
           </div>
           </Form>
-        );
-    }
+        )}}
+      </ListEDboardController>
+    );
+  }
 }
 
 const InserYearSchema = Yup.object().shape({

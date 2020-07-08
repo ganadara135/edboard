@@ -39,6 +39,12 @@ export interface InsertYearMutationVariables {
     edboardName: string;
     yeargoals?: YearGoalInput | null;
 }
+export interface ListEDboardQuery {
+    /**
+     * listEDboardQuery(): [String]  # 위 방식은 에러 발생
+     */
+    listEDboardQuery: (string | null)[] | null;
+}
 export interface ListYearQuery {
     listYearQuery: (number | null)[] | null;
 }

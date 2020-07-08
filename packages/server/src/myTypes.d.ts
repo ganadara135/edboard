@@ -1,4 +1,4 @@
-export const typeDefs = ["type Mutation {\n  createEDBoard(name: String, description: String): IErrorReponse\n  insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): IErrorReponse\n  insertYear(edboardName: String!, yeargoals: YearGoalInput): IErrorReponse\n}\n\ntype Query {\n  edboardQuery: [EDBoard]\n  monthGoalQuery: [MonthGoal]\n  yearGoalQuery: [YearGoal]\n  yearGoalDeepQuery: [YearToMonthMN]\n  listYearQuery(yearName: Int): [Int]\n  viewListing(yearName: Int!): ListingOrdered\n  viewListingMN(yearName: Int!): ListingMN\n}\n\ninput YearGoalInput {\n  year: Int\n  goal: Int\n  description: String\n}\n\ntype IErrorReponse {\n  ok: Boolean\n  path: String\n  message: String\n}\n\ntype EDBoard {\n  id: ID!\n  name: String\n  description: String\n  yeargoals: [YearGoal]\n}\n\ntype YearGoal {\n  id: ID!\n  year: Int!\n  goal: Int!\n  description: String\n  ymmns: [YearToMonthMN]\n  edboard: EDBoard\n}\n\ntype YearToMonthMN {\n  id: ID\n  ygid: YearGoal\n  mgid: MonthGoal\n  description: String\n}\n\ntype MonthGoal {\n  id: ID!\n  month: Int!\n  goal: Float!\n  description: String\n  ymmns: [YearToMonthMN!]\n}\n\nscalar raw\n\ntype ListingOrdered {\n  ordered: [raw]\n}\n\ntype ListingMN {\n  mnInfo: [YearToMonthMN]\n  monthInfo: [MonthGoal]\n  yearInfo: [YearGoal]\n}\n\ntype Error {\n  path: String!\n  message: String!\n}\n"];
+export const typeDefs = ["type Mutation {\n  createEDBoard(name: String!, description: String!): IErrorReponse\n  insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): IErrorReponse\n  insertYear(edboardName: String!, yeargoals: YearGoalInput): IErrorReponse\n}\n\ntype Query {\n  edboardQuery: [EDBoard]\n  monthGoalQuery: [MonthGoal]\n  yearGoalQuery: [YearGoal]\n  yearGoalDeepQuery: [YearToMonthMN]\n  # listEDboardQuery(): [String]  # 위 방식은 에러 발생\n  listEDboardQuery: [String]\n  listYearQuery(yearName: Int): [Int]\n  viewListing(yearName: Int!): ListingOrdered\n  viewListingMN(yearName: Int!): ListingMN\n}\n\ninput YearGoalInput {\n  year: Int\n  goal: Int\n  description: String\n}\n\ntype IErrorReponse {\n  ok: Boolean\n  path: String\n  message: String\n}\n\ntype EDBoard {\n  id: ID!\n  name: String!\n  description: String!\n  yeargoals: [YearGoal]\n}\n\ntype YearGoal {\n  id: ID!\n  year: Int!\n  goal: Int!\n  description: String\n  ymmns: [YearToMonthMN]\n  edboard: EDBoard\n}\n\ntype YearToMonthMN {\n  id: ID\n  ygid: YearGoal\n  mgid: MonthGoal\n  description: String\n}\n\ntype MonthGoal {\n  id: ID!\n  month: Int!\n  goal: Float!\n  description: String\n  ymmns: [YearToMonthMN!]\n}\n\nscalar raw\n\ntype ListingOrdered {\n  ordered: [raw]\n}\n\ntype ListingMN {\n  mnInfo: [YearToMonthMN]\n  monthInfo: [MonthGoal]\n  yearInfo: [YearGoal]\n}\n\ntype Error {\n  path: String!\n  message: String!\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -6,6 +6,7 @@ export interface Query {
   monthGoalQuery: Array<MonthGoal> | null;
   yearGoalQuery: Array<YearGoal> | null;
   yearGoalDeepQuery: Array<YearToMonthMN> | null;
+  listEDboardQuery: Array<string> | null;
   listYearQuery: Array<number> | null;
   viewListing: ListingOrdered | null;
   viewListingMN: ListingMN | null;
@@ -25,8 +26,8 @@ export interface ViewListingMnQueryArgs {
 
 export interface EDBoard {
   id: string;
-  name: string | null;
-  description: string | null;
+  name: string;
+  description: string;
   yeargoals: Array<YearGoal> | null;
 }
 
@@ -73,8 +74,8 @@ export interface Mutation {
 }
 
 export interface CreateEdBoardMutationArgs {
-  name: string | null;
-  description: string | null;
+  name: string;
+  description: string;
 }
 
 export interface InsertMonthMutationArgs {

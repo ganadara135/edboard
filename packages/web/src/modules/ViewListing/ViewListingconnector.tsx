@@ -57,6 +57,7 @@ export class ViewListingConnector extends React.PureComponent<
                     >
                       <Link to={`/listing/${l.mn_id}-mm`}>
                         <Card.Meta title={l.y_year + '년'}  description={
+                          l.m_myTimestamp+" / "+
                           l.mn_description+" / "+l.m_description+" / "+l.y_description+" / "+l.m_goal+" / "+l.m_id+" / "+l.m_month 
                           +" / "+l.mn_id+" / "+l.mn_mgidId+" / "+l.mn_ygidId+" / "+l.y_edboardId+" / "+l.y_goal+" / "+l.y_id+" / "+l.y_year} >                 
                         </Card.Meta>

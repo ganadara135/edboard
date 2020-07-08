@@ -78,6 +78,22 @@
             "deprecationReason": null
           },
           {
+            "name": "listEDboardQuery",
+            "description": "listEDboardQuery(): [String]  # 위 방식은 에러 발생",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "listYearQuery",
             "description": null,
             "args": [

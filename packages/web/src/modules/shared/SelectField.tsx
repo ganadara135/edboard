@@ -2,7 +2,6 @@ import * as React from "react";
 import { FieldProps,  } from "formik";
 import { Form, Select } from 'antd';
 
-
 export const SelectField: React.SFC<
     FieldProps<any> & { prefix: React.ReactNode, label?: string, listing?: number[] }
 > = ({
@@ -15,12 +14,15 @@ export const SelectField: React.SFC<
 
     const errorMsg = touched[field.name] && errors[field.name];
 
+    // const selectOptionListing = (
+    //     listing?.map((l:any, i) =>  
+    //     <Select.Option key={i} value={l as number}>{l as number}</Select.Option>)
+    // );
     const selectOptionListing = (
         listing?.map((l:any, i) =>  
-        <Select.Option key={i} value={l as number}>{l as number}</Select.Option>)
+        <Select.Option key={i} value={l}>{l}</Select.Option>)
     );
-    // console.log("...field: ", field)
-    console.log("...props: ", {...props})
+
     return (
         <Form.Item 
             label={label}
@@ -29,12 +31,7 @@ export const SelectField: React.SFC<
         >
             <Select 
                 {...field}
-                // {...props.meta}
-                // {...props.prefix}
-                // {...props.children}
-                // defaultValue={2020}
                 {...props}
-                // placeholder={field.name}
                 onChange={
                     (newValue: any) => setFieldValue(field.name, newValue)
                 }

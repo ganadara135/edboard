@@ -4,5 +4,6 @@ export * from "./modules/InsertMonthController";
 export * from "./modules/ViewListingMN";
 export * from "./modules/ViewListingController";
 export * from "./modules/ListYearController";
+export * from "./modules/ListEDboardController";
 export * from "./schemaTypes";
 export * from "./types/NormalizedErrorMap";

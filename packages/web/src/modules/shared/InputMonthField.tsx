@@ -21,8 +21,8 @@ export const InputMonthField: React.SFC<
 
     // const Comp = DatePicker;
 
-    console.log("field : ", field)
-    console.log("props : ", props)
+    // console.log("field : ", field)
+    // console.log("props : ", props)
     // const {yearName} = props;
 
     return (
@@ -35,10 +35,12 @@ export const InputMonthField: React.SFC<
             <DatePicker 
                 {...field}
                 {...props}
-                dateFormat={"MM"}
-                showMonthYearPicker={true}
-                // showMonthYearDropdown
-                
+                dateFormat="MM"
+                showMonthYearPicker                   
+                withPortal
+                // portalId="root-portal"
+                // scrollableYearDropdown
+
                 selected={typeof field.value !== 'number' ? field.value : new Date(yearName as number,field.value)}
                 // selected={field.value}
                 onChange={(newValue) => {

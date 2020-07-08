@@ -1,5 +1,5 @@
 type Mutation {
-  createEDBoard(name: String, description: String): IErrorReponse
+  createEDBoard(name: String!, description: String!): IErrorReponse
   insertMonth(month: Int!, goal: Float!, yearName: Int!, description: String): IErrorReponse
   insertYear(edboardName: String!, yeargoals: YearGoalInput): IErrorReponse
 }
@@ -9,6 +9,8 @@ type Query {
   monthGoalQuery: [MonthGoal]
   yearGoalQuery: [YearGoal]
   yearGoalDeepQuery: [YearToMonthMN]
+  # listEDboardQuery(): [String]  # 위 방식은 에러 발생
+  listEDboardQuery: [String]
   listYearQuery(yearName: Int): [Int]
   viewListing(yearName: Int!): ListingOrdered
   viewListingMN(yearName: Int!): ListingMN
@@ -28,8 +30,8 @@ type IErrorReponse {
 
 type EDBoard {
   id: ID!
-  name: String
-  description: String
+  name: String!
+  description: String!
   yeargoals: [YearGoal]
 }
 

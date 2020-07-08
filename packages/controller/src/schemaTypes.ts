@@ -81,6 +81,22 @@ export interface InsertYearMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: ListEDboardQuery
+// ====================================================
+
+export interface ListEDboardQuery {
+  /**
+   * listEDboardQuery(): [String]  # 위 방식은 에러 발생
+   */
+  listEDboardQuery: (string | null)[] | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: ListYearQuery
 // ====================================================
 

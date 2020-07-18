@@ -5,9 +5,11 @@ services:
         container_name: frontend
         image: ganadara135/abbfront:latest
         ports:
-            - "80:80"
+            - 80:80
         networks:
             - net-abb
+        env_file:
+            - .env
         environment:
             - CHOKIDAR_USEPOLLING=true  # hot-reloading work
             - REACT_APP_SERVER_PORT=${REACT_APP_SERVER_PORT}        

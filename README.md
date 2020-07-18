@@ -1,3 +1,24 @@
+# grafana query 명령어  
+1. mixed 선택
+2. mysql <br>
+   2.1 Format as Time Series 선택 <br>
+   2.2 time range : 6개월  <br>
+   2.3 query 문   <br>
+      SELECT
+      -- month,
+      M.goal as mGoal,
+      -- Y.year,
+      -- Y.goal as yGoal,
+      M.myTimestamp as time
+      FROM MonthGoals as M
+      inner join YearToMonthMNs as MN on MN.mgidId = M.id
+      inner join YearGoals as Y on Y.id = MN.ygidId;
+3. influxql  <br>
+   3.1 Format as Time Series 선택  <br>
+   3.2 time range : 6개월  <br>
+   3.3 query 문 <br>
+      SELECT sum("meter0/ActivePower") as TwoWeeks FROM "data" WHERE time >= '2020-01-01T00:00:00Z' AND time <= '2020-07-30T23:59:59Z' GROUP BY time(15d)   <br>
+
 # 차후 진행 사항
   1. graphql-typescript-definitions  본  npm 모듈로, genSchema() 대체 함
      기존 건 암묵적으로 namespaces를 가져오는 방식이라서 현재 Typescript 와 안 맞는 거 같음

@@ -22,6 +22,8 @@ services:
             - net-abb
         ports:
             - 3306:3306
+        env_file:
+            - ../.env
         environment:
             - ALLOW_EMPTY_PASSWORD=yes
             # - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -57,6 +59,8 @@ services:
             - 33306:80
         depends_on:
             - rdb
+        env_file:
+            - ../.env
         environment:
             - PMA_ARBITRARY=1
             # - PMA_USER=mysql
@@ -77,6 +81,8 @@ services:
             - ${SERVER_PORT}:${SERVER_PORT}
         networks:
             - net-abb
+        env_file:
+            - ../.env
         environment:
             # - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@rdb:5432/${POSTGRES_DB}
             - REDIS_HOST=redis

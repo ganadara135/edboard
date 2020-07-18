@@ -18,6 +18,8 @@ services:
             - net-abb
         ports:
             - 3306:3306
+        env_file:
+            - .env
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - MYSQL_USER=${TYPEORM_USERNAME}
@@ -35,6 +37,8 @@ services:
             - 33306:80
         depends_on:
             - rdb
+        env_file:
+            - .env
         environment:
             - PMA_ARBITRARY=1
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -51,6 +55,8 @@ services:
             - ${SERVER_PORT}:${SERVER_PORT}
         networks:
             - net-abb
+        env_file:
+            - .env
         environment:
             - REDIS_HOST=redis
             - FRONTEND_HOST=${FRONTEND_HOST}

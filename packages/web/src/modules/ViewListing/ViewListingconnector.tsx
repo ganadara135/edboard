@@ -41,13 +41,12 @@ export class ViewListingConnector extends React.PureComponent<
             <ViewListingController yearName={this.state.selectedYear}>
             {(data) => {
               console.log(data);
-              // console.log(data.listing);
-              // console.log(data.listing?.ordered);
+
               if (data.loading) {
-                return <div>...loading</div>;
+                return <div style={{display: "flex", justifyContent: "center"}}>...loading</div>;
               }
               return (
-                <div>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", alignContent: "flex-start", }}>
                   { data.listing?.ordered?.map((l:any) =>
                     <Card
                       key={`${l?.mn_id}-card`}

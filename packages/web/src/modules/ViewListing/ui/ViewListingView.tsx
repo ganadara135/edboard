@@ -32,7 +32,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
           }
           console.log("data.listing : ", data.listing)
           return (
-            <Form style={{ display: "flex", justifyContent: "center" }}> 
+            <Form style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}> 
               <div style={{width: 300, marginLeft: 100, marginRight: 20}}>
                 <Field 
                   as="select" 

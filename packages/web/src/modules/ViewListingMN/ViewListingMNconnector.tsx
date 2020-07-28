@@ -21,7 +21,7 @@ export class ViewListingMNConnector extends React.PureComponent<
         {(data) => {
           console.log(data);
           if (data.loading) {
-            return <div>...loading</div>;
+            return <div >...loading</div>
           }
 
           return (
@@ -30,7 +30,7 @@ export class ViewListingMNConnector extends React.PureComponent<
                 <Card
                   key={`${l?.id}-card`}
                   hoverable={true}
-                  style={{ width: 240 }}
+                  // style={{ marginLeft: 500, display: "flex", justifyContent: "center" }}
                   // cover={ }
                 >
                   <Link to={`/listing/${l?.id}-mm`}>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {  Button } from 'antd';
-// import { Icon } from '@ant-design/icons';
+import { FireOutlined } from "@ant-design/icons";
 import { withFormik,   FormikProps, Field, Form } from 'formik';
 // import { validUserSchema } from "@abb/common";
 import { InputMonthField } from "../../shared/InputMonthField";
@@ -33,15 +33,16 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
       <ListYearController yearName={1970}>
         {(data) => {
           if (data.loading) {
-            return <div>...loading</div>;
+            // return <div>...loading</div>;
+            return <div style={{ margin: 20, display: "flex", justifyContent: "center" }}>...loading</div>
           }
           console.log("data.listing : ", data.listing)
           return (
             <Form style={{ display: "flex" }}> 
-              <div style={{width: 700, margin:'auto'}}>
+              <div style={{width: 400, margin:'auto'}}>
                 <Field  
                   name="month"
-                  label="월"
+                  label="월______"
                   pickerVal="month"
                   yearName={2020}
                   component={InputMonthField}
@@ -50,10 +51,11 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
                   name="goal"
                   label="목표전력"
                   useNumberComponent={true}
-                  // prefix={
-                  //   <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-                  // }
                   component={InputField}
+                  suffixIcon={
+                    <FireOutlined style={{ margin: 10}}/>
+                  }
+                  suffixLabel=" 단위:  kW"
                 />
                 {/* <ErrorMessage name="yeargoals.year" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
                 {/* <Field  
@@ -75,7 +77,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
                 {/* <ErrorMessage name="yeargoals.goal" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
                 <Field  
                   name="description"
-                  label="설명"
+                  label="설____명"
                   component={InputField}
                 />
                 {/* <ErrorMessage name="message" render={msg => <div style={{ color:'red'}}>{msg}</div>} /> */}
@@ -96,7 +98,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
 
 const InsertMonthSchema = Yup.object().shape({
   month: Yup.number().min(0, 'Too Short!').max(12, 'Too Long!').required('Required'),
-  goal: Yup.number().min(1, 'Too Short!').max(9999, 'Too Long!').required('Required'),
+  goal: Yup.number().min(1, 'Too Short!').max(99999, 'Too Long!').required('Required'),
   yearName: Yup.number().min(2018, 'Too Short!').max(2030, 'Too Long!').required('Required'),
 });
 

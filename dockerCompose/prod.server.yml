@@ -3,7 +3,7 @@ services:
     redis:
         image: "redis"
         networks:
-            - net-abb
+            - abb-net
         ports:
             - 6379:6379
         container_name: redis
@@ -15,7 +15,7 @@ services:
             - /root/mysqlDB_cnf:/etc/mysql/conf.d
             - rdb-data:/var/lib/mysql
         networks:
-            - net-abb
+            - abb-net
         ports:
             - 3306:3306
         env_file:
@@ -35,6 +35,8 @@ services:
         image: phpmyadmin/phpmyadmin
         ports:
             - 33306:80
+        networks:
+            - abb-net
         depends_on:
             - rdb
         env_file:
@@ -54,7 +56,7 @@ services:
         ports:
             - ${SERVER_PORT}:${SERVER_PORT}
         networks:
-            - net-abb
+            - abb-net
         env_file:
             - .env
         environment:
@@ -85,5 +87,7 @@ services:
         
 volumes:
     rdb-data:
+        name: rdb-data
 networks:
-    net-abb:
+    abb-net:
+        name: abb-net

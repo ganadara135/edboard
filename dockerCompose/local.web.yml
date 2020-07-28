@@ -8,9 +8,9 @@ services:
             dockerfile: ./dockerCompose/Dockerfile.web.local.compose
         image: kcod/abbfront:latest
         ports:
-            - "80:3000"
+            - 80:3000
         networks:
-            - net-abb
+            - abb-net
         env_file:
             - ../.env
         environment:
@@ -27,4 +27,5 @@ services:
 # volumes:
 #     rdb-data:
 networks:
-    net-abb:
+    abb-net:
+        name: abb-net

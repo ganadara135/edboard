@@ -2,7 +2,7 @@ import * as React from "react";
 import {BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 
-import { TextPage } from "../modules/TestPage";
+import { TextPage } from "../modules/TextPage";
 // import { AuthRoute } from "@abb/controller";
 // import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
 // import { DemoDelete } from "../modules/listing/delete/DemoDelete";
@@ -27,7 +27,7 @@ export const Routes = () => (
             <Route exact={true} path="/viewmn" component={ViewListingMNConnector} />
             <Route exact={true} path="/viewraw" component={ViewListingConnector} />
             
-            <Route path="/m" component={TextPage} />
+            <Route path="/donemsg" component={TextPage} />
             <Redirect from={"*"} to={"/"} />
             {/* <AuthRoute path="/create-listing" component={CreateListingConnector} />
             <AuthRoute path="/delete-demo" component={DemoDelete} /> */}

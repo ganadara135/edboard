@@ -9,7 +9,7 @@ function handleClick(info: { key: any; }) {
 }
 
 const Header = () => 
-<div style={{ margin: 20 }}>
+<div style={{ margin: 20, display: "flex", justifyContent: "center" }}>
 
 <Menu onClick={handleClick}  mode="horizontal">
         <Menu.Item key="list" icon={<OrderedListOutlined />}>
@@ -18,7 +18,7 @@ const Header = () =>
           </Link>
         </Menu.Item>
         <Menu.SubMenu icon={<EditOutlined />} title="데이터입력">
-          <Menu.ItemGroup title="Item 1">
+          <Menu.ItemGroup title="">
             <Menu.Item key="setting:1">
               <Link to={`/insertyear`}>
                 연도입력

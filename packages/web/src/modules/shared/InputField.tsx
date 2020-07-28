@@ -4,7 +4,7 @@ import { Form, Input, InputNumber } from 'antd';
 
 
 export const InputField: React.SFC<
-    FieldProps<any> & { prefix: React.ReactNode, label?: string, useNumberComponent?: boolean }
+    FieldProps<any> & { prefix?: React.ReactNode, label?: string, useNumberComponent?: boolean, suffixIcon?: React.ReactNode, suffixLabel?: string }
 > = ({
     field: {onChange, ...field},
     form: { touched, errors, setFieldValue },
@@ -17,28 +17,32 @@ export const InputField: React.SFC<
 
     const Comp = useNumberComponent ? InputNumber : Input;
 
-    // console.log("...props in InputField 333: ", props)
-    // const { prefix } = props;
-    // console.log("prefix : ", prefix);
+    console.log("suffix : ", props);
     return (
         <Form.Item 
             label={label}
             help={errorMsg}
             validateStatus={errorMsg ? "error" : undefined } 
+            style={{ padding:'auto'}}
         >
             <Comp 
                 {...field} 
-                // {...props.}
                 {...props.meta} 
-                // {...props.prefix} 
-                // {...props.children} 
+                // {...props?.prefix}
+                {...props.children} 
                 placeholder={field.name}
                 onChange={
                     useNumberComponent 
                     ? (newValue: any) => setFieldValue(field.name, newValue)
                     : onChange
                 }
-            />     {/* {...props} /> */}
+                // {...props.suffix as any}
+                {...props as any}
+            >
+                {/* {props.children } */}
+            </Comp>
+            {props.suffixIcon}
+            {props.suffixLabel}
         </Form.Item>
     );
 };

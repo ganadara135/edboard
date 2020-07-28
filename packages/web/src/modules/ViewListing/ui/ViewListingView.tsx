@@ -28,11 +28,11 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
       <ListYearController yearName={1970}>
         {(data) => {
           if (data.loading) {
-            return <div>...loading</div>;
+            return <div style={{ display: "flex", justifyContent: "center" }}>...loading</div>;
           }
           console.log("data.listing : ", data.listing)
           return (
-            <Form style={{ display: "flex" }}> 
+            <Form style={{ display: "flex", justifyContent: "center" }}> 
               <div style={{width: 300, marginLeft: 100, marginRight: 20}}>
                 <Field 
                   as="select" 

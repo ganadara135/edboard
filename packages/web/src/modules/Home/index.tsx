@@ -1,7 +1,7 @@
 import React from "react"; 
 
 
-const Home = () => <span>홈 페이지</span>;
+const Home = () => <div style={{ display: "flex", justifyContent: "center" }}><h1>첫 페이지입니다</h1></div>;
 
  
 export default Home;

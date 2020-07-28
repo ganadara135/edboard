@@ -71,8 +71,9 @@ export const resolvers: ResolverMap = {
             monthGoal.month = args?.month as number;
             monthGoal.description = args?.description as string;
             // monthGoal.myTimestamp = new Date(args?.yearName as number, args?.month) // .valueOf() / 1000;  //  timestamp 는 10자리, Date 형은 13자리
-            console.log("chk myTimestamp :  ", args?.yearName+'-'+args?.month)
-            monthGoal.myTimestamp = args?.yearName+'-'+args?.month;
+
+            console.log("chk myTimestamp :  ", args?.yearName+'-'+(args?.month + 1))
+            monthGoal.myTimestamp = args?.yearName+'-'+(args?.month + 1);
             console.log("monthGoal.myTimestamp : ", monthGoal.myTimestamp);
             monthGoal.ymmns = [ymMN];
             // await monthGoal.save();         // removed as Cascade : true

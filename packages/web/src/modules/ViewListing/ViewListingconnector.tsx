@@ -3,7 +3,7 @@ import { ViewListingController } from '@abb/controller';
 
 import { ViewListingView, FormValues } from "./ui/ViewListingView";
 import {  Link } from "react-router-dom";
-import { Card } from 'antd';
+import { Card,  } from 'antd';
 
 export class ViewListingConnector extends React.PureComponent<
     {},{selectedYear: number}
@@ -51,15 +51,24 @@ export class ViewListingConnector extends React.PureComponent<
                     <Card
                       key={`${l?.mn_id}-card`}
                       hoverable={true}
+                      loading={data.loading}
                       style={{ width: 500 }}
-                      // cover={ }
                     >
-                      <Link to={`/listing/${l.mn_id}-mm`}>
-                        <Card.Meta title={l.y_year + '년'}  description={
-                          l.m_myTimestamp+" / "+
-                          l.mn_description+" / "+l.m_description+" / "+l.y_description+" / "+l.m_goal+" / "+l.m_id+" / "+l.m_month 
-                          +" / "+l.mn_id+" / "+l.mn_mgidId+" / "+l.mn_ygidId+" / "+l.y_edboardId+" / "+l.y_goal+" / "+l.y_id+" / "+l.y_year} >                 
+                      <Link to={`/listing/${l.mn_id}-mm`}>  
+                        <Card.Meta title={l.y_year + '년  ' + (l.m_month+1) + '월'}  description={
+                          "연간전력목표: " + l.y_goal
+                          // l.m_myTimestamp
+                          // l.mn_description+" / "+l.m_description+" / "+l.y_description+" / "+l.m_goal+" / "+l.m_id+" / "+l.m_month 
+                          // +" / "+l.mn_id+" / "+l.mn_mgidId+" / "+l.mn_ygidId+" / "+l.y_edboardId+" / "+l.y_goal+" / "+l.y_id+" / "+l.y_year
+                        }> 
                         </Card.Meta>
+                      {/* <Typography.Text type="secondary"> 연간 전력목표: {l.y_goal}</Typography.Text> */}
+                        
+                        월전력목표: {l.m_goal} <br/>
+                        해당월설명: {l.m_description} <br/>
+                        연간 설명: {l.y_description} <br/>
+                        mn  설명: {l.mn_description} <br/>
+                      
                       </Link>
                     </Card>
                   )

@@ -29,6 +29,58 @@ export interface CreateEDBoardMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: EditYearMutation
+// ====================================================
+
+export interface EditYearMutation_editYear {
+  __typename: "IErrorReponse";
+  ok: boolean | null;
+  message: string | null;
+  path: string | null;
+}
+
+export interface EditYearMutation {
+  editYear: EditYearMutation_editYear | null;
+}
+
+export interface EditYearMutationVariables {
+  y_id: string;
+  year?: number | null;
+  goal?: number | null;
+  description?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetYearQuery
+// ====================================================
+
+export interface GetYearQuery_getYearQuery {
+  __typename: "YearGoal";
+  id: string;
+  year: number;
+  goal: number;
+  description: string | null;
+}
+
+export interface GetYearQuery {
+  getYearQuery: GetYearQuery_getYearQuery | null;
+}
+
+export interface GetYearQueryVariables {
+  y_id: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: InsertMonthMutation
 // ====================================================
 

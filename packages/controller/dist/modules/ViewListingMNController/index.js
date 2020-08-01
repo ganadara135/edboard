@@ -45,7 +45,7 @@ const VEIWLISTINGMN_QUERY = graphql_tag_1.default `
 class ViewListingMNController extends React.PureComponent {
     render() {
         const { children, yearName } = this.props;
-        return (React.createElement(react_apollo_1.Query, { query: VEIWLISTINGMN_QUERY, variables: { yearName: yearName } }, ({ data, loading }) => {
+        return (React.createElement(react_apollo_1.Query, { query: VEIWLISTINGMN_QUERY, variables: { yearName } }, ({ data, loading }) => {
             let listing = null;
             if (data && data.viewListingMN) {
                 listing = data.viewListingMN;

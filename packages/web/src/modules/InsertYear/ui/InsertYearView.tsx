@@ -89,7 +89,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
   }
 }
 
-const InserYearSchema = Yup.object().shape({
+const InsertYearSchema = Yup.object().shape({
   edboardName: Yup.string().min(2, 'Too Short!').max(30, 'Too Long!').required('Required'),
   yeargoals: Yup.object<YearGoalInput>({
     year: Yup.number().min(1970, 'Too Short!').max(9999, 'Too Long!').required(),
@@ -100,20 +100,20 @@ const InserYearSchema = Yup.object().shape({
 export const InsertYearView = withFormik<Props, FormValues>({
     // validateOnChange : false,
     // validateOnBlur: false,
-    validationSchema : InserYearSchema,
+    validationSchema : InsertYearSchema,
     mapPropsToValues: () =>  ({ edboardName: "", yeargoals: {
       year: 0, goal: 0, description: ""}
     }),
     handleSubmit: async (values, {props, setErrors}) => {
-        console.log("handleSubmit: ", values)
- 
-        const errors = await props.submit(values);
-        
-        if(errors){
-          console.log("error : ", errors)
-          setErrors(errors)
-        } else {
-          props.onFinish();
-        }
+      console.log("handleSubmit: ", values)
+
+      const errors = await props.submit(values);
+      
+      if(errors){
+        console.log("error : ", errors)
+        setErrors(errors)
+      } else {
+        props.onFinish();
+      }
     }
 })(C);

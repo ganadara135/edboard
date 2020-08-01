@@ -1,8 +1,10 @@
 import * as React from "react";
-import {BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import {BrowserRouter, Route, Switch,  } from 'react-router-dom';
 
 
 import { TextPage } from "../modules/TextPage";
+
+import { EditYearMonthDetail } from "../modules/EditYearMonthDetail";
 // import { AuthRoute } from "@abb/controller";
 // import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
 // import { DemoDelete } from "../modules/listing/delete/DemoDelete";
@@ -28,7 +30,8 @@ export const Routes = () => (
             <Route exact={true} path="/viewraw" component={ViewListingConnector} />
             
             <Route path="/donemsg" component={TextPage} />
-            <Redirect from={"*"} to={"/"} />
+            <Route path="/editpage/:m_id/:y_id/:y_year/:y_goal/:y_description" component={EditYearMonthDetail} />
+            {/* <Redirect from={"*"} to={"/"} /> */}
             {/* <AuthRoute path="/create-listing" component={CreateListingConnector} />
             <AuthRoute path="/delete-demo" component={DemoDelete} /> */}
         </Switch>

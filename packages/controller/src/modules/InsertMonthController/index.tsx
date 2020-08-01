@@ -35,7 +35,7 @@ class C extends React.PureComponent<
 }
 
 const INSERTMONTH_MUTATION = gql`
-    mutation InsertMonthMutation($month: Int!, $goal: Float!, $yearName: Int!, $description: String
+    mutation InsertMonthMutation($month: Int!, $goal: Int!, $yearName: Int!, $description: String
     ){
         insertMonth(month: $month, goal: $goal, yearName: $yearName, description: $description){
             ok

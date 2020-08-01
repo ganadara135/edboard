@@ -59,7 +59,7 @@ export class ViewListingMNController extends React.PureComponent<Props> {
     return (
       <Query<ViewListingMNQuery, ViewListingMNQueryVariables>
         query={VEIWLISTINGMN_QUERY}
-        variables={{ yearName: yearName }}
+        variables={{ yearName }}
       >
         {({ data, loading }) => {
           let listing: ViewListingMNQuery_viewListingMN | null = null;

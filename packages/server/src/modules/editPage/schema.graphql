@@ -1,0 +1,15 @@
+type Mutation {
+  editYear(
+    y_id: ID!,
+    year: Int,
+    goal: Int,
+    description: String
+  ): IErrorReponse,
+
+  editMonth(
+    m_id: ID!,
+    month: Int,
+    goal: Int,
+    description: String,
+  ): IErrorReponse
+}

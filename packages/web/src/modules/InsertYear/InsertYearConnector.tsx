@@ -7,7 +7,7 @@ export class InsertYearConnector extends React.PureComponent<
     RouteComponentProps<{}>
 > {
     onFinish = () => {
-        this.props.history.push("/donemsg", {
+        this.props.history.push('/donemsg', {
             message: "등록이 완료 됐습니다."
         });
     }

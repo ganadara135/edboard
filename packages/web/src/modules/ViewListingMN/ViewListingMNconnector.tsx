@@ -1,6 +1,7 @@
 import * as React from "react";
-import { ViewListingMNController,  } from "@abb/controller";
+import { ViewListingMNController  } from "@abb/controller";
 import { RouteComponentProps, Link } from "react-router-dom";
+
 
 import { Card } from 'antd';
 // const { Meta } = Card;

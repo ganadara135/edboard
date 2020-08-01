@@ -4,7 +4,14 @@ import { Form, Input, InputNumber } from 'antd';
 
 
 export const InputField: React.SFC<
-    FieldProps<any> & { prefix?: React.ReactNode, label?: string, useNumberComponent?: boolean, suffixIcon?: React.ReactNode, suffixLabel?: string }
+    FieldProps<any> & { 
+        prefix?: React.ReactNode, 
+        label?: string, 
+        useNumberComponent?: boolean, 
+        suffixIcon?: React.ReactNode, 
+        suffixLabel?: string,
+        defaultValue?: number
+     }
 > = ({
     field: {onChange, ...field},
     form: { touched, errors, setFieldValue },
@@ -29,8 +36,9 @@ export const InputField: React.SFC<
                 {...field} 
                 {...props.meta} 
                 // {...props?.prefix}
-                {...props.children} 
+                // {...props.children} 
                 placeholder={field.name}
+                // value={props.defaultValue}
                 onChange={
                     useNumberComponent 
                     ? (newValue: any) => setFieldValue(field.name, newValue)
@@ -39,7 +47,7 @@ export const InputField: React.SFC<
                 // {...props.suffix as any}
                 {...props as any}
             >
-                {/* {props.children } */}
+                {props.children}
             </Comp>
             {props.suffixIcon}
             {props.suffixLabel}

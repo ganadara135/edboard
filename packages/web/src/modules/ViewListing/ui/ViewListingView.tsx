@@ -11,7 +11,7 @@ export interface FormValues {  // extends InsertMonthMutationVariables{
   yearName: number;
 }
 interface Props {
-  onFinish: () => void;
+  // onFinish: () => void;
   submit: (values: FormValues) => Promise<FormValues | null>;
   // submit: (year: number) => Promise<number>;
 }
@@ -72,7 +72,7 @@ export const ViewListingView = withFormik<Props, FormValues>({
       console.log("error : ", errors)
       setErrors(errors as any)
     } else {
-      props.onFinish();
+      // props.onFinish();
     }
   }
 })(C);

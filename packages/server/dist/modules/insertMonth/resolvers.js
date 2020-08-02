@@ -51,8 +51,8 @@ exports.resolvers = {
             monthGoal.goal = args === null || args === void 0 ? void 0 : args.goal;
             monthGoal.month = args === null || args === void 0 ? void 0 : args.month;
             monthGoal.description = args === null || args === void 0 ? void 0 : args.description;
-            console.log("chk myTimestamp :  ", (args === null || args === void 0 ? void 0 : args.yearName) + '-' + (args === null || args === void 0 ? void 0 : args.month));
-            monthGoal.myTimestamp = (args === null || args === void 0 ? void 0 : args.yearName) + '-' + (args === null || args === void 0 ? void 0 : args.month);
+            console.log("chk myTimestamp :  ", (args === null || args === void 0 ? void 0 : args.yearName) + '-' + ((args === null || args === void 0 ? void 0 : args.month) + 1));
+            monthGoal.myTimestamp = (args === null || args === void 0 ? void 0 : args.yearName) + '-' + ((args === null || args === void 0 ? void 0 : args.month) + 1);
             console.log("monthGoal.myTimestamp : ", monthGoal.myTimestamp);
             monthGoal.ymmns = [ymMN];
             ymMN.ygid = yearVal;

@@ -1,7 +1,7 @@
 type Mutation {
   insertMonth(
     month: Int!,
-    goal: Float!,
+    goal: Int!,
     yearName: Int!,
     description: String,
   ): IErrorReponse

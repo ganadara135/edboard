@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { FieldProps,  } from "formik";
 import { Form,  } from 'antd';
 // import moment from "antd/node_modules/moment";
@@ -17,13 +17,10 @@ export const InputMonthField: React.SFC<
     ...props
 }) => {
 
+    const [startDate, setStartDate] = useState(new Date(yearName as number,field.value));
+
     const errorMsg = touched[field.name] && errors[field.name];
 
-    // const Comp = DatePicker;
-
-    // console.log("field : ", field)
-    // console.log("props : ", props)
-    // const {yearName} = props;
     console.log("field.value: ", field.value)
     console.log("typeof: ", typeof field.value)
     return (
@@ -42,12 +39,14 @@ export const InputMonthField: React.SFC<
                 // portalId="root-portal"
                 // scrollableYearDropdown
 
-                selected={typeof field.value !== 'number' ? field.value : new Date(yearName as number,field.value)}
+                selected={startDate}
+                onChange={(date : Date) => {setStartDate(date); setFieldValue(field.name, date?.getMonth());}}
+                // selected={typeof field.value !== 'number' ? field.value : new Date(yearName as number,field.value)}
                 // selected={field.value}
-                onChange={(newValue) => {
-                    setFieldValue(field.name, newValue?.getMonth());
-                    console.log("kkk: ", newValue);
-                }}
+                // onChange={(newValue) => {
+                //     // setFieldValue(field.name, typeof(newValue) !== 'number' ? newValue?.getMonth() : newValue);
+                //     setFieldValue(field.name, newValue?.getMonth());
+                // }}
             />
         </Form.Item>
     );

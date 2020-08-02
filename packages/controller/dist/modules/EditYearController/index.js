@@ -11,8 +11,9 @@ class C extends React.PureComponent {
         this.submit = async (values) => {
             console.log("cont: ", values);
             const { data: { editYear } } = await this.props.mutate({
-                variables: values
+                variables: values,
                 // variables: {insertGoal: values} as any 
+                fetchPolicy: "no-cache"
             });
             console.log('response : ', editYear);
             if (!editYear.ok) {

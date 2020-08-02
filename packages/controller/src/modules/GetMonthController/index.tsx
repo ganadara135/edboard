@@ -31,6 +31,7 @@ export class GetMonthController extends React.PureComponent<Props> {
       <Query<GetMonthQuery, GetMonthQueryVariables>
         query={GETMONTH_QUERY}
         variables={{ m_id }}
+        fetchPolicy="no-cache"
       >
         {({ data, loading }) => {
           let getData: EditMonthMutationVariables | null = null;

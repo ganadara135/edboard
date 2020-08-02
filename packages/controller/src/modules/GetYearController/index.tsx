@@ -32,6 +32,7 @@ export class GetYearController extends React.PureComponent<Props> {
       <Query<GetYearQuery, GetYearQueryVariables>
         query={GETYEAR_QUERY}
         variables={{ y_id }}
+        fetchPolicy="no-cache"
       >
         {({ data, loading }) => {
           let getData: YearGoalInput | null = null;

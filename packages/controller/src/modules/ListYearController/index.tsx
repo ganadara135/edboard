@@ -28,6 +28,7 @@ export class ListYearController extends React.PureComponent<Props> {
       <Query<ListYearQuery, ListYearQueryVariables>
         query={LISTYEAR_QUERY}
         variables={{ yearName }}
+        fetchPolicy="no-cache"
       >
         {({ data, loading }) => {
           let listing: (number | null)[] | null = null;

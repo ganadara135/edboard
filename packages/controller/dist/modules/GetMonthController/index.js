@@ -17,7 +17,7 @@ const GETMONTH_QUERY = graphql_tag_1.default `
 class GetMonthController extends React.PureComponent {
     render() {
         const { children, m_id } = this.props;
-        return (React.createElement(react_apollo_1.Query, { query: GETMONTH_QUERY, variables: { m_id } }, ({ data, loading }) => {
+        return (React.createElement(react_apollo_1.Query, { query: GETMONTH_QUERY, variables: { m_id }, fetchPolicy: "no-cache" }, ({ data, loading }) => {
             let getData = null;
             if (data && data.getMonthQuery) {
                 getData = data.getMonthQuery;

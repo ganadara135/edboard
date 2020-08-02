@@ -17,7 +17,7 @@ const GETYEAR_QUERY = graphql_tag_1.default `
 class GetYearController extends React.PureComponent {
     render() {
         const { children, y_id } = this.props;
-        return (React.createElement(react_apollo_1.Query, { query: GETYEAR_QUERY, variables: { y_id } }, ({ data, loading }) => {
+        return (React.createElement(react_apollo_1.Query, { query: GETYEAR_QUERY, variables: { y_id }, fetchPolicy: "no-cache" }, ({ data, loading }) => {
             let getData = null;
             if (data && data.getYearQuery) {
                 getData = data.getYearQuery;

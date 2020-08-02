@@ -30,6 +30,7 @@ export class ViewListingController extends React.PureComponent<Props> {
       <Query<ViewListingQuery, ViewListingQueryVariables>
         query={VEIWLISTING_QUERY}
         variables={{ yearName }}
+        fetchPolicy="no-cache"
       >
         {({ data, loading }) => {
           let listing: ViewListingQuery_viewListing | null = null;

@@ -15,7 +15,7 @@ const VEIWLISTING_QUERY = graphql_tag_1.default `
 class ViewListingController extends React.PureComponent {
     render() {
         const { children, yearName } = this.props;
-        return (React.createElement(react_apollo_1.Query, { query: VEIWLISTING_QUERY, variables: { yearName } }, ({ data, loading }) => {
+        return (React.createElement(react_apollo_1.Query, { query: VEIWLISTING_QUERY, variables: { yearName }, fetchPolicy: "no-cache" }, ({ data, loading }) => {
             let listing = null;
             if (data && data.viewListing) {
                 listing = data.viewListing;

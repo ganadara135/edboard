@@ -27,9 +27,8 @@ class C extends React.PureComponent {
     }
 }
 const EDITMONTH_MUTATION = graphql_tag_1.default `
-    mutation EditMonthMutation($m_id: ID!, $month: Int, $goal: Int, $description: String
-    ){
-        editMonth(m_id: $m_id, month: $month, goal: $goal, description: $description){
+    mutation EditMonthMutation($m_id: ID!, $month: Int, $goal: Int, $description: String, $y_id: ID, $year: Int ){
+        editMonth(m_id: $m_id, month: $month, goal: $goal, description: $description, y_id: $y_id, year: $year){
             ok
             message
             path

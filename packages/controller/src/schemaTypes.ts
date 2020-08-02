@@ -48,6 +48,8 @@ export interface EditMonthMutationVariables {
   month?: number | null;
   goal?: number | null;
   description?: string | null;
+  y_id?: string | null;
+  year?: number | null;
 }
 
 /* tslint:disable */

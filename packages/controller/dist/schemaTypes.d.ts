@@ -25,6 +25,8 @@ export interface EditMonthMutationVariables {
     month?: number | null;
     goal?: number | null;
     description?: string | null;
+    y_id?: string | null;
+    year?: number | null;
 }
 export interface EditYearMutation_editYear {
     __typename: "IErrorReponse";

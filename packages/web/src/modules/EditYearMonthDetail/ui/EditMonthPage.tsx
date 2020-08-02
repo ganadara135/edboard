@@ -1,16 +1,17 @@
 import * as React from "react";
-import { GetYearController } from "@abb/controller";
+import { GetMonthController } from "@abb/controller";
 // import { RouteComponentProps } from "react-router-dom";
 import { Form, Field, FormikProps, withFormik } from 'formik';
 import { Button } from 'antd';
 // import { SelectField } from "../../shared/SelectField";
 import { FireOutlined } from "@ant-design/icons";
 import { InputField } from "../../shared/InputField";
+import { InputMonthField } from "../../shared/InputMonthField";
 import * as Yup from "yup";
 
 export interface FormValues {  // extends InsertMonthMutationVariables{
-  y_id: string;
-  year: number;
+  m_id: string;
+  month: number;
   goal: number;
   description: string;
 }
@@ -29,10 +30,9 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
   
   render() {
     console.log("children: ", this.props.children)
-    console.log("check props: ", this.props)
     return (
-      <GetYearController y_id={this.props.children as string}>
-        {(data) => {
+      <GetMonthController m_id={this.props.children as string}>
+        {(data: { loading: any; getData: any; }) => {
           if (data.loading) {
             return <div style={{ display: "flex", justifyContent: "center" }}>...loading</div>;
           }
@@ -42,25 +42,18 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
             <Form style={{ margin:'auto', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", alignContent: "space-between" }}>
               {/* <div style={{width: 300, marginLeft: 100, marginRight: 20}}> */}
                 <Field  
+                  name="m_id"
                   type="hidden"
-                  name="y_id"
-                  // label="y_id"
-                  // values={this.props.children}
                   component={InputField}
                 />
                 <Field  
-                  name="year"
-                  label="목표연도"
-                  useNumberComponent={true}
-                  // defaultValue={data.getData?.year}
-                  // values={data.getData?.year}
-                  component={InputField}
-                  suffixIcon={
-                    <FireOutlined style={{ margin: 10}}/>
-                  }
-                  suffixLabel=" ex)  2020"
+                  name="month"
+                  label="목표월"
+                  pickerVal="month"
+                  yearName={2020}
+                  component={InputMonthField}
                 />
-                <Field  
+                <Field
                   name="goal"
                   label="목표전력"
                   useNumberComponent={true}
@@ -87,20 +80,20 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
             </Form>
           )
         }}
-      </GetYearController>
+      </GetMonthController>
     );
   }
 }
 
-const InsertYearSchema = Yup.object().shape({
-  year: Yup.number().min(1970, 'Too Short!').max(9999, 'Too Long!').required(),
-  goal: Yup.number().min(1, 'Too Short!').max(99999999, 'Too Long!').required(),
+const EditMonthSchema = Yup.object().shape({
+  month: Yup.number().min(0, 'Too Short!').max(12, 'Too Long!').required('Required'),
+  goal: Yup.number().min(1, 'Too Short!').max(99999, 'Too Long!').required('Required'),
 });
 
-export const EditYearPage = withFormik<Props, FormValues>({
+export const EditMonthPage = withFormik<Props, FormValues>({
   // enableReinitialize: true,
-  validationSchema : InsertYearSchema,
-  mapPropsToValues: (props: Props) =>  ({ y_id: props.y_id, year: props.year, goal: props.goal, description: props.description }),
+  validationSchema : EditMonthSchema,
+  mapPropsToValues: (props: Props) =>  ({ m_id: props.m_id, month: props.month, goal: props.goal, description: props.description }),
   handleSubmit: async (values, {props, setErrors}) => {
     console.log("handleSubmit: ", values)
     const errors = await props.submit(values);

@@ -19,6 +19,8 @@ __exportStar(require("./modules/ListEDboardController"), exports);
 __exportStar(require("./modules/ListYearController"), exports);
 __exportStar(require("./modules/GetYearController"), exports);
 __exportStar(require("./modules/EditYearController"), exports);
+__exportStar(require("./modules/GetMonthController"), exports);
+__exportStar(require("./modules/EditMonthController"), exports);
 __exportStar(require("./schemaTypes"), exports);
 __exportStar(require("./types/NormalizedErrorMap"), exports);
 //# sourceMappingURL=index.js.map

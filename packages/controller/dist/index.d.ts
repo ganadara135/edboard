@@ -7,5 +7,7 @@ export * from "./modules/ListEDboardController";
 export * from "./modules/ListYearController";
 export * from "./modules/GetYearController";
 export * from "./modules/EditYearController";
+export * from "./modules/GetMonthController";
+export * from "./modules/EditMonthController";
 export * from "./schemaTypes";
 export * from "./types/NormalizedErrorMap";

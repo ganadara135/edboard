@@ -8,6 +8,7 @@ type Mutation {
 
 type Query {
   edboardQuery: [EDBoard]
+  getMonthQuery(m_id: ID!): MonthGoal
   getYearQuery(y_id: ID!): YearGoal
   monthGoalQuery: [MonthGoal]
   yearGoalQuery: [YearGoal]

@@ -29,6 +29,33 @@ export interface CreateEDBoardMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: EditMonthMutation
+// ====================================================
+
+export interface EditMonthMutation_editMonth {
+  __typename: "IErrorReponse";
+  ok: boolean | null;
+  message: string | null;
+  path: string | null;
+}
+
+export interface EditMonthMutation {
+  editMonth: EditMonthMutation_editMonth | null;
+}
+
+export interface EditMonthMutationVariables {
+  m_id: string;
+  month?: number | null;
+  goal?: number | null;
+  description?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: EditYearMutation
 // ====================================================
 
@@ -48,6 +75,31 @@ export interface EditYearMutationVariables {
   year?: number | null;
   goal?: number | null;
   description?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: GetMonthQuery
+// ====================================================
+
+export interface GetMonthQuery_getMonthQuery {
+  __typename: "MonthGoal";
+  id: string;
+  month: number;
+  goal: number;
+  description: string | null;
+}
+
+export interface GetMonthQuery {
+  getMonthQuery: GetMonthQuery_getMonthQuery | null;
+}
+
+export interface GetMonthQueryVariables {
+  m_id: string;
 }
 
 /* tslint:disable */

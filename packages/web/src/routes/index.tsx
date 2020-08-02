@@ -30,7 +30,7 @@ export const Routes = () => (
             <Route exact={true} path="/viewraw" component={ViewListingConnector} />
             
             <Route path="/donemsg" component={TextPage} />
-            <Route path="/editpage/:m_id/:y_id/:y_year/:y_goal/:y_description" component={EditYearMonthDetail} />
+            <Route path="/editpage/:m_id/:m_month/:m_goal/:m_description/:y_id/:y_year/:y_goal/:y_description" component={EditYearMonthDetail} />
             {/* <Redirect from={"*"} to={"/"} /> */}
             {/* <AuthRoute path="/create-listing" component={CreateListingConnector} />
             <AuthRoute path="/delete-demo" component={DemoDelete} /> */}

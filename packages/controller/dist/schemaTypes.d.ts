@@ -11,6 +11,21 @@ export interface CreateEDBoardMutationVariables {
     name: string;
     description: string;
 }
+export interface EditMonthMutation_editMonth {
+    __typename: "IErrorReponse";
+    ok: boolean | null;
+    message: string | null;
+    path: string | null;
+}
+export interface EditMonthMutation {
+    editMonth: EditMonthMutation_editMonth | null;
+}
+export interface EditMonthMutationVariables {
+    m_id: string;
+    month?: number | null;
+    goal?: number | null;
+    description?: string | null;
+}
 export interface EditYearMutation_editYear {
     __typename: "IErrorReponse";
     ok: boolean | null;
@@ -25,6 +40,19 @@ export interface EditYearMutationVariables {
     year?: number | null;
     goal?: number | null;
     description?: string | null;
+}
+export interface GetMonthQuery_getMonthQuery {
+    __typename: "MonthGoal";
+    id: string;
+    month: number;
+    goal: number;
+    description: string | null;
+}
+export interface GetMonthQuery {
+    getMonthQuery: GetMonthQuery_getMonthQuery | null;
+}
+export interface GetMonthQueryVariables {
+    m_id: string;
 }
 export interface GetYearQuery_getYearQuery {
     __typename: "YearGoal";

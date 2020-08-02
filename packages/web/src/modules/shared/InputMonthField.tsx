@@ -24,7 +24,8 @@ export const InputMonthField: React.SFC<
     // console.log("field : ", field)
     // console.log("props : ", props)
     // const {yearName} = props;
-
+    console.log("field.value: ", field.value)
+    console.log("typeof: ", typeof field.value)
     return (
         <Form.Item 
             label={label}

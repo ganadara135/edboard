@@ -56,12 +56,10 @@ export class ViewListingConnector extends React.PureComponent<
                       loading={data.loading}
                       style={{ width: 500 }}
                     >
-                      <Link to={`/editpage/${l.m_id}/${l.y_id}/${l.y_year}/${l.y_goal}/${l.y_description}`}>  
+                      <Link to={`/editpage/${l.m_id}/${l.m_month}/${l.m_goal}/${l.m_description}/${l.y_id}/${l.y_year}/${l.y_goal}/${l.y_description}`}>  
                         <Card.Meta title={l.y_year + '년  ' + (l.m_month+1) + '월'}  description={
                           "연간전력목표: " + l.y_goal
                           // l.m_myTimestamp
-                          // l.mn_description+" / "+l.m_description+" / "+l.y_description+" / "+l.m_goal+" / "+l.m_id+" / "+l.m_month 
-                          // +" / "+l.mn_id+" / "+l.mn_mgidId+" / "+l.mn_ygidId+" / "+l.y_edboardId+" / "+l.y_goal+" / "+l.y_id+" / "+l.y_year
                         }>
                         </Card.Meta>
                       {/* <Typography.Text type="secondary"> 연간 전력목표: {l.y_goal}</Typography.Text> */}

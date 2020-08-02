@@ -14,6 +14,8 @@ export interface FormValues {  // extends InsertMonthMutationVariables{
   month: number;
   goal: number;
   description: string;
+  y_id: string;
+  year: number;
 }
 
 interface Props extends FormValues {
@@ -30,6 +32,10 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
   
   render() {
     console.log("children: ", this.props.children)
+    const {  errors, touched} = this.props;
+    const { message }: any = errors;
+    console.log(" errors props : ", errors)
+    console.log("this.props: ", this.props);
     return (
       <GetMonthController m_id={this.props.children as string}>
         {(data: { loading: any; getData: any; }) => {
@@ -41,8 +47,18 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
             // <Form style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}> 
             <Form style={{ margin:'auto', display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", alignContent: "space-between" }}>
               {/* <div style={{width: 300, marginLeft: 100, marginRight: 20}}> */}
-                <Field  
+                <Field
                   name="m_id"
+                  type="hidden"
+                  component={InputField}
+                />
+                <Field
+                  name="y_id"
+                  type="hidden"
+                  component={InputField}
+                />
+                <Field
+                  name="year"
                   type="hidden"
                   component={InputField}
                 />
@@ -71,12 +87,11 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
                   component={InputField}                 
                 />
                 
-              {/* </div> */}
-              {/* <div> */}
+                {errors && touched ? ( <div style={{color:'red', margin:'auto'}}>{message}</div> ) : null}
                 <Button type="primary" htmlType="submit" className="">
                   수정버튼
                 </Button>
-              {/* </div> */}
+
             </Form>
           )
         }}
@@ -93,7 +108,9 @@ const EditMonthSchema = Yup.object().shape({
 export const EditMonthPage = withFormik<Props, FormValues>({
   // enableReinitialize: true,
   validationSchema : EditMonthSchema,
-  mapPropsToValues: (props: Props) =>  ({ m_id: props.m_id, month: props.month, goal: props.goal, description: props.description }),
+  mapPropsToValues: (props: Props) =>  ({ m_id: props.m_id, month: props.month, 
+    goal: props.goal, description: props.description, 
+    y_id: props.y_id, year: props.year }),
   handleSubmit: async (values, {props, setErrors}) => {
     console.log("handleSubmit: ", values)
     const errors = await props.submit(values);

@@ -29,7 +29,10 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
   
   render() {
     console.log("children: ", this.props.children)
-    console.log("check props: ", this.props)
+    const {  errors, touched} = this.props;
+    const { message }: any = errors;
+    console.log(" errors props : ", errors)
+    console.log("this.props: ", this.props);
     return (
       <GetYearController y_id={this.props.children as string}>
         {(data) => {
@@ -78,8 +81,7 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props>{
                   component={InputField}                 
                 />
                 
-              {/* </div> */}
-              {/* <div> */}
+                {errors && touched ? ( <div style={{color:'red', margin:'auto'}}>{message}</div> ) : null}
                 <Button type="primary" htmlType="submit" className="">
                   수정버튼
                 </Button>

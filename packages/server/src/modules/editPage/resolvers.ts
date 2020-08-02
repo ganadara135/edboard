@@ -1,8 +1,10 @@
 import { ResolverMap } from "../../types/graphql-utils";
 import { YearGoal }  from "../../entity/YearGoal";
 import { MonthGoal }  from "../../entity/MonthGoal";
-// import { YearToMonthMN }  from "../../entity/YearToMonthMN";
+import { YearToMonthMN }  from "../../entity/YearToMonthMN";
+import { getRepository} from "typeorm";
 import { EditYearMutationArgs, EditMonthMutationArgs, IErrorReponse} from "../../myTypes";
+
 
 // select mn.*, y.*, m.*  from YearToMonthMNs as mn, MonthGoals as m, YearGoals as y WHERE y.id = mn.ygidId AND mn.mgidId = m.id;
 export const resolvers: ResolverMap = {
@@ -35,13 +37,16 @@ export const resolvers: ResolverMap = {
         }
       }
 
-      const checkAlreadyYear = await YearGoal.findOne({ year });
-      console.log("check AlreadyYear: ", checkAlreadyYear);
-      if(checkAlreadyYear){
-        return {
-          ok: false,
-          message: "Your year inputted already exist",
-          path: "YearGoal.findOne(year)"
+      // 이전과 같은해가 아닌 연도로 입력해야 중복 연도가 있는지 체크함
+      if(checkYearGoal.year !== year){
+        const checkAlreadyYear = await YearGoal.findOne({ year });
+        console.log("check AlreadyYear: ", checkAlreadyYear);
+        if(checkAlreadyYear){
+          return {
+            ok: false,
+            message: "Your year inputted already exist",
+            path: "YearGoal.findOne(year)"
+          }
         }
       }
 
@@ -56,6 +61,7 @@ export const resolvers: ResolverMap = {
         path: "YearGoal.save()"
       }
     },
+
     editMonth: async (
       _,// parent,
       args: EditMonthMutationArgs,  
@@ -63,12 +69,12 @@ export const resolvers: ResolverMap = {
       ___, // info
 
     ): Promise<IErrorReponse> => {
-      const { m_id, month, goal, description  } = args;
+      const { m_id, month, goal, description, y_id, year } = args;
       console.log("args: ", args)
-      if( !goal || !m_id){  // null or undefined
+      if( !goal || !m_id || !year){  // null or undefined
         return {
           ok: false,
-          message: "goal is null or undefined",
+          message: "goal, yearName is null or undefined",
           path: "checking args"
         }
       }
@@ -84,15 +90,31 @@ export const resolvers: ResolverMap = {
         }
       }
 
-      // const checkAlreadyYear = await MonthGoal.findOne({ month });
-      // console.log("check AlreadyYear: ", checkAlreadyYear);
-      // if(checkAlreadyYear){
-      //   return {
-      //     ok: false,
-      //     message: "Your year inputted already exist",
-      //     path: "YearGoal.findOne(year)"
-      //   }
-      // }
+
+      const mnVal = await getRepository(MonthGoal)
+        .createQueryBuilder("monthgoals")
+        .where((qb:any) => {
+            const subQuery = qb.subQuery()
+                .select("mn.mgid")
+                .from(YearToMonthMN, "mn")
+                .from(YearGoal, "y")
+                .where("mn.ygid = :yeargoalId",{yeargoalId: y_id})
+                .andWhere("y.year = :yearName", {yearName: year})
+                .getQuery();
+            return "monthgoals.id IN " + subQuery;
+        })
+        .andWhere("monthgoals.month = "+ month )
+        .getMany();
+      
+      console.log('chk mnVal :', mnVal)
+      if(mnVal.length !== 0){  // 중복 발생
+          return {
+          ok: false,
+          message: "month are dupulicated",
+          path: "getRepository()"
+          }
+      }
+
 
       // checkMonthGoal.month = month;
       // tslint:disable-next-line: prefer-conditional-expression

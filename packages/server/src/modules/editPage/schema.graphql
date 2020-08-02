@@ -11,5 +11,7 @@ type Mutation {
     month: Int,
     goal: Int,
     description: String,
+    y_id: ID,
+    year: Int,
   ): IErrorReponse
 }

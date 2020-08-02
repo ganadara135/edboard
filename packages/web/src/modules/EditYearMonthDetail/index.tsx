@@ -60,6 +60,9 @@ export class EditYearMonthDetail extends React.PureComponent<
               month={Number(m_month)}
               goal={Number(m_goal)}
               description={m_description}
+              y_id={y_id}
+              year={Number(y_year)}
+              
             >
               {m_id}
             </EditMonthPage>}

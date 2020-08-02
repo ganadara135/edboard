@@ -21,9 +21,7 @@ export class EditYearMonthDetail extends React.PureComponent<
 > {
     onFinish = () => {
       console.log("chk onFinish() in EditYearMonthDetail")
-      this.props.history.push("donemsg", {
-          message: "수정 됐습니다."
-      });
+      this.props.history.replace( { pathname: "/"});
     }
 
     render() {      

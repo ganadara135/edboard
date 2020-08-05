@@ -90,7 +90,6 @@ export const resolvers: ResolverMap = {
         }
       }
 
-
       const mnVal = await getRepository(MonthGoal)
         .createQueryBuilder("monthgoals")
         .where((qb:any) => {
@@ -107,7 +106,7 @@ export const resolvers: ResolverMap = {
         .getMany();
       
       console.log('chk mnVal :', mnVal)
-      if(mnVal.length !== 0){  // 중복 발생
+      if(mnVal.length !== 0 && month !== checkMonthGoal.month){  // 중복 발생
           return {
           ok: false,
           message: "month are dupulicated",
